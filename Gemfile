@@ -4,7 +4,9 @@ gem 'rails', '3.2.18'
 
 # Use Cucumber and capybara
 group :test do
-  gem 'cucumber'
+  gem 'cucumber-rails', :require => false
+  # database_cleaner is not required, but highly recommended
+  gem 'database_cleaner'
 end
 gem 'capybara'
 

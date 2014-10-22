@@ -6,8 +6,7 @@ gem 'rails', '3.2.18'
 group :test do
   gem 'cucumber'
 end
-gem 'capybara'
-
+gem capybara
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 

@@ -1,8 +1,8 @@
-class ResearcherController < ApplicationController
+class ParticipantController < ApplicationController
   def login
   end
 
-  def researcher
+  def my_studies
   end
 
   def all_studies

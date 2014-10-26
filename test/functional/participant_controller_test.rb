@@ -1,13 +1,13 @@
 require 'test_helper'
 
-class ResearcherControllerTest < ActionController::TestCase
+class ParticipantControllerTest < ActionController::TestCase
   test "should get login" do
     get :login
     assert_response :success
   end
 
-  test "should get researcher" do
-    get :researcher
+  test "should get my_studies" do
+    get :my_studies
     assert_response :success
   end
 

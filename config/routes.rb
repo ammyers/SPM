@@ -1,4 +1,36 @@
 TestManagement::Application.routes.draw do
+  get "participant/login"
+
+  get "participant/my_studies"
+
+  get "participant/all_studies"
+
+  get "participant/profile"
+
+  get "participant/create_study"
+
+  get "participant/study_details"
+
+  get "researcher/login"
+
+  get "researcher/researcher"
+
+  get "researcher/all_studies"
+
+  get "researcher/profile"
+
+  get "researcher/create_study"
+
+  get "researcher/study_details"
+
+  get "admin/admin"
+
+  get "admin/all_studies"
+
+  get "admin/profile"
+
+  get "admin/study_details"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

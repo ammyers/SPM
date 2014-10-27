@@ -1,34 +1,21 @@
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
 
-people = [{:title => 'Aladdin', :rating => 'G', :release_date => '25-Nov-1992'},
-    	  {:title => 'The Terminator', :rating => 'R', :release_date => '26-Oct-1984'},
-    	  {:title => 'When Harry Met Sally', :rating => 'R', :release_date => '21-Jul-1989'},
-      	  {:title => 'The Help', :rating => 'PG-13', :release_date => '10-Aug-2011'},
-      	  {:title => 'Chocolat', :rating => 'PG-13', :release_date => '5-Jan-2001'},
-      	  {:title => 'Amelie', :rating => 'R', :release_date => '25-Apr-2001'},
-      	  {:title => '2001: A Space Odyssey', :rating => 'G', :release_date => '6-Apr-1968'},
-      	  {:title => 'The Incredibles', :rating => 'PG', :release_date => '5-Nov-2004'},
-      	  {:title => 'Raiders of the Lost Ark', :rating => 'PG', :release_date => '12-Jun-1981'},
-      	  {:title => 'Chicken Run', :rating => 'G', :release_date => '21-Jun-2000'},
-  	 ]
+bobby = Person.new(:id => 0, :first_name => 'Bobby', :last_name => 'Carpenter-Participant', :email => 'bcarpenter@ups.edu', :password => 'chuck', :role => 'participant', :classes => [201])
 
-people.each do |person|
-  Person.create!(person)
-end
+sally = Person.new(:id => 1, :first_name => 'Sally', :last_name => 'Winthrop-Researcher', :email => 'swinthrop@ups.edu', :password => 'wendy', :role => 'researcher')
+    	  
+robin = Person.new(:id => 2, :first_name => 'Robin', :last_name => 'Dorn-Admin', :email => 'rdorn@ups.edu', :password => 'password', :role => 'admin')
 
-studies = [{:title => 'Aladdin', :rating => 'G', :release_date => '25-Nov-1992'},
-    	  {:title => 'The Terminator', :rating => 'R', :release_date => '26-Oct-1984'},
-    	  {:title => 'When Harry Met Sally', :rating => 'R', :release_date => '21-Jul-1989'},
-      	  {:title => 'The Help', :rating => 'PG-13', :release_date => '10-Aug-2011'},
-      	  {:title => 'Chocolat', :rating => 'PG-13', :release_date => '5-Jan-2001'},
-      	  {:title => 'Amelie', :rating => 'R', :release_date => '25-Apr-2001'},
-      	  {:title => '2001: A Space Odyssey', :rating => 'G', :release_date => '6-Apr-1968'},
-      	  {:title => 'The Incredibles', :rating => 'PG', :release_date => '5-Nov-2004'},
-      	  {:title => 'Raiders of the Lost Ark', :rating => 'PG', :release_date => '12-Jun-1981'},
-      	  {:title => 'Chicken Run', :rating => 'G', :release_date => '21-Jun-2000'},
-  	 ]
+robin.save
+sally.save
+bobby.save
 
-studies.each do |study|
-  Study.create!(study)
-end
+study = Study.new(:id => 101, :title => 'Testing the presence of studies and people', :description => 'Can we make this database work? Can we access the data?', :max_participants => 40, :special_instructions => 'none', :date_time => ['10/18 4:00 PM'], :location => ['WEY 230'], :participants => [0], :researchers => [1])
+
+bobby.studies = [101]
+sally.create_studies = [101]
+
+study.save
+bobby.save
+sally.save

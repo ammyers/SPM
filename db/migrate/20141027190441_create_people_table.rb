@@ -5,7 +5,7 @@ class CreatePeopleTable < ActiveRecord::Migration
       p.string :last_name
       p.string :email
       p.string :password
-      p.string :role
+      p.string :role, :default => 'participant'
 
       p.timestamps
     end

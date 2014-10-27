@@ -9,6 +9,6 @@ class CreatePeopleStudiesTable < ActiveRecord::Migration
   end
 
   def down
-    drop_table :restaurants_users
+    drop_table :people_studies
   end
 end

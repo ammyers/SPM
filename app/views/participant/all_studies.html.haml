@@ -1,5 +1,7 @@
--#  This file is app/views/movies/index.html.haml
 %h1 All Studies
+
+%p User will see list of studies here.
+%p For admins, participants, and researchers, all will be visable, but some options will be greyed out for some users.
 
 %table#studies
   %thead
@@ -14,6 +16,6 @@
         %td= study.title 
         %td= study.description
         %td= study.special_instructions
-        %td= link_to "More about #{study.title}", study_path(study)
+        %td= link_to "More about #{study.title}", 'www.google.com'
 
-= link_to 'Add new study', new_study_path
+= link_to 'Add new study', 'www.google.com'

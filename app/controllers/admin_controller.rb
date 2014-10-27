@@ -2,6 +2,9 @@ class AdminController < ApplicationController
   def admin
   end
 
+  def login
+  end
+
   def all_studies
   end
 

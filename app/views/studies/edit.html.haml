@@ -1,0 +1,16 @@
+-# edit.html.haml using partial
+
+%h1 Edit Existing Study
+
+= form_tag study_path(@study), :method => :put do
+
+  = label :study, :title, 'Title'
+  = text_field :study, 'title'
+
+  = label :study, :description, 'Description'
+  = select :study, :description, 'description'
+
+  = label :study, :date_time, 'Date/Time'
+  = date_select :study, :date_time
+
+  = submit_tag 'Update Study Info'

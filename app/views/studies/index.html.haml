@@ -1,0 +1,19 @@
+-#  This file is app/views/movies/index.html.haml
+%h1 All Studies
+
+%table#studies
+  %thead
+    %tr
+      %th Title
+      %th description
+      %th special instructions
+      %th More Info
+  %tbody
+    - @studies.each do |study|
+      %tr
+        %td= study.title 
+        %td= study.description
+        %td= study.special_instructions
+        %td= link_to "More about #{study.title}", study_path(study)
+
+= link_to 'Add new study', new_study_path

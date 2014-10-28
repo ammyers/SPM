@@ -1,0 +1,14 @@
+%h1 Create New Study
+
+= form_tag studies_path do
+
+  = label :study, :title, 'Title'
+  = text_field :study, 'title'
+
+  = label :study, :description, 'Description'
+  = select :study, :description, 'description'
+
+  = label :study, :date_time, 'Date/Time'
+  = date_select :study, :date_time
+
+  = submit_tag 'Save Changes'

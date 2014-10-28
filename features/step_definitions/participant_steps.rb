@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+# Scenario: Request login page
+# Given I request web page from localhost:3000/participant/login
+# I should see login.html
+=======
 Scenario: Request login page
 Given I request web page from localhost:3000/participant/login
 I should see login.html
@@ -21,3 +26,4 @@ I should see create_study.html
 Scenario: Request study_details page
 Given I request web page from localhost:3000/participant/study_details
 I should see study_details.html
+>>>>>>> 6e73b7d685b9390bd789337c5fd4ea17e7c63cb3

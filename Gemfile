@@ -14,6 +14,8 @@ end
 group :development, :test do
 	gem 'capybara'
 	gem 'sqlite3'
+  gem 'cucumber-rails-training-wheels' # some pre-fabbed step definitions  
+  #gem 'launchy'          # a useful debugging aid for user stories
 end
 
 group :production do
@@ -33,7 +35,9 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
+gem 'haml'
 gem 'jquery-rails'
+#gem 'therubyracer'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
@@ -48,4 +52,4 @@ gem 'jquery-rails'
 # gem 'capistrano'
 
 # To use debugger
-# gem 'debugger'
+gem 'debugger'

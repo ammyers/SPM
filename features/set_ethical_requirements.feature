@@ -1,4 +1,4 @@
-Feature: As a researcher, 
+Feature: As a researcher
 	I want to be able to set ethical requirements for the experiment,
 	so that the participants are qualified for the study.
 

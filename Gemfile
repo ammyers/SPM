@@ -14,6 +14,8 @@ end
 group :development, :test do
 	gem 'capybara'
 	gem 'sqlite3'
+  gem 'cucumber-rails-training-wheels' # some pre-fabbed step definitions  
+  gem 'launchy'          # a useful debugging aid for user stories
 end
 
 group :production do

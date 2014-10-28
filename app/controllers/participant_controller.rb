@@ -6,6 +6,7 @@ class ParticipantController < ApplicationController
   end
 
   def all_studies
+    @studies = Study.all 
   end
 
   def profile

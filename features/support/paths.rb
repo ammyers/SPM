@@ -17,7 +17,16 @@ module NavigationHelpers
       '/'
 
     when /^the login\s?page$/
-      'participant/login' #hard code ex, later add path routes
+      'login' #hard code ex, later add path routes
+
+    when /^the All\sStudies page$/
+      'all-studies'
+    when /^the Admin page$/
+      'admin'
+    when /^the My\sStudies page$/
+      'my_studies'
+    when /^the Create New Study page$/
+      'new_study'
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:

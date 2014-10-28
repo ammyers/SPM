@@ -8,14 +8,20 @@
     %tr
       %th Title
       %th description
+      %th max ps
       %th special instructions
+      %th researcher
+      %th participants
       %th More Info
   %tbody
     - @studies.each do |study|
       %tr
         %td= study.title 
         %td= study.description
+        %td= study.max_participants
         %td= study.special_instructions
+        %td= people_studies.participants
+        %td= study.researcher_id
         %td= link_to "More about #{study.title}", 'www.google.com'
 
 = link_to 'Add new study', 'www.google.com'

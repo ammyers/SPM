@@ -1,8 +1,8 @@
 class AddResearcherToStudies < ActiveRecord::Migration
   def up
   	change_table :studies do |t|
-		t.references :researcher
-	end
+		  t.belongs_to :researcher, class_name: "Person"
+    end
   end
 
   def down

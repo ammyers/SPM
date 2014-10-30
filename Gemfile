@@ -15,7 +15,7 @@ group :development, :test do
 	gem 'capybara'
 	gem 'sqlite3'
   gem 'cucumber-rails-training-wheels' # some pre-fabbed step definitions  
-  #gem 'launchy'          # a useful debugging aid for user stories
+  gem 'launchy'          # a useful debugging aid for user stories
 end
 
 group :production do
@@ -30,14 +30,13 @@ group :assets do
   gem 'coffee-rails', '~> 3.2.1'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  # gem 'therubyracer', :platforms => :ruby
+  gem 'therubyracer', :platforms => :ruby
 
   gem 'uglifier', '>= 1.0.3'
 end
 
 gem 'haml'
 gem 'jquery-rails'
-#gem 'therubyracer'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

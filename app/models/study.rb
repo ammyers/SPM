@@ -7,8 +7,8 @@ class Study < ActiveRecord::Base
 
   has_and_belongs_to_many :participants, class_name: "Person"
 
-  validates :title, :person, presence: true
-  #validates :date_time, presence: true
+  validates :title, presence: true
+  #validates :date_time, :researcher, presence: true
 
   before_save :capitalize_title
   	

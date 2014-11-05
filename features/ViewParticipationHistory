@@ -1,6 +1,0 @@
-Feature: As a professor, 
-I want to easily view students' test participation history, 
-so that I can confirm student participation.
-
-Given I am on the home page
-I should see "participation table."

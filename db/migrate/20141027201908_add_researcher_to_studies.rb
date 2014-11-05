@@ -1,4 +1,4 @@
--class AddResearcherToStudies < ActiveRecord::Migration
+class AddResearcherToStudies < ActiveRecord::Migration
   def up
   	change_table :studies do |t|
 		  t.belongs_to :researcher, class_name: "User"

@@ -1,0 +1,14 @@
+%h2 Details about #{@user.title}
+
+%ul#details
+  %li
+    Title:
+    = @user.title
+
+%h3 Role:
+
+%p#description= @user.role
+
+= link_to 'Edit', edit_user_path(@user)
+= button_to 'Delete', user_path(@user), :method => :delete, :confirm => 'Are you sure?'
+= link_to 'Back to users list', users_path

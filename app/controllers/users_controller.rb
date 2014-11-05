@@ -1,13 +1,13 @@
 class UsersController < ApplicationController
   
   def show
-    id = params[:id] # retrieve study ID from URI route
-    @study = User.find(id) # look up user by unique ID
+    id = params[:id] # retrieve user ID from URI route
+    @user = User.find(id) # look up user by unique ID
     # will render app/views/users/show.<extension> by default
   end
 
   def index
-    @studies = User.all 
+    @users = User.all 
   end
 
   def new
@@ -34,7 +34,7 @@ class UsersController < ApplicationController
   def destroy
     @user = User.find(params[:id])
     @user.destroy
-    flash[:notice] = "user '#{@study.title}' deleted."
+    flash[:notice] = "user '#{@user.title}' deleted."
     redirect_to users_path
   end
 end

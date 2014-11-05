@@ -11,35 +11,31 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20141029193558) do
+ActiveRecord::Schema.define(:version => 20141027201908) do
 
-  create_table "people", :force => true do |t|
+  create_table "studies", :force => true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.integer  "max_participants",     :default => 30
+    t.text     "special_instructions"
+    t.datetime "created_at",                           :null => false
+    t.datetime "updated_at",                           :null => false
+    t.integer  "researcher_id"
+  end
+
+  create_table "users", :force => true do |t|
     t.string   "first_name"
     t.string   "last_name"
     t.string   "email"
     t.string   "password"
-    t.string   "role"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-    t.integer  "study_id"
+    t.string   "role",       :default => "participant"
+    t.datetime "created_at",                            :null => false
+    t.datetime "updated_at",                            :null => false
   end
 
-  create_table "people_studies", :id => false, :force => true do |t|
-    t.integer "person_id"
+  create_table "users_studies", :id => false, :force => true do |t|
+    t.integer "user_id"
     t.integer "study_id"
-  end
-
-  add_index "people_studies", ["person_id", "study_id"], :name => "index_people_studies_on_person_id_and_study_id"
-  add_index "people_studies", ["study_id"], :name => "index_people_studies_on_study_id"
-
-  create_table "studies", :force => true do |t|
-    t.string   "title"
-    t.string   "description"
-    t.integer  "max_participants"
-    t.string   "special_instructions"
-    t.datetime "created_at",           :null => false
-    t.datetime "updated_at",           :null => false
-    t.integer  "researcher_id"
   end
 
 end

@@ -2,10 +2,12 @@ class CreateStudiesTable < ActiveRecord::Migration
   def up
   	create_table :studies do |s|
       s.string :title
+      s.string :researchers
+      s.string :email
       s.text :description
       s.integer :max_participants, :default => 30
-      s.text :special_instructions
-
+      s.integer :length_of_study
+      
       s.timestamps
     end
   end

@@ -24,3 +24,13 @@
             = t.time.to_s+", "
             </b>
         %td= link_to "More about #{study.title}", study_path(study)
+
+= link_to 'Add new study', new_study_path
+%br
+%br
+%button= link_to "Home", root_path
+%br
+%p= "Role = #{@role}"
+%br
+%p= "ID = #{@id}"
+

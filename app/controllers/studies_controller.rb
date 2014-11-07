@@ -7,7 +7,16 @@ class StudiesController < ApplicationController
   end
 
   def index
+    session[:role] = 'none'
+    session[:id] = 999
+    if (params[:email])
+      me = User.find_by email: params[:email]
+      session[:role] = me.role
+      session[:id] = me.id
+    end
     @studies = Study.all
+    @id = session[:id]
+    @role = session[:role] 
   end
 
   def new

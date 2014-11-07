@@ -21,7 +21,7 @@ class StudiesController < ApplicationController
   end
 
   def edit
-    @movie = Study.find params[:id]
+    @study = Study.find params[:id]
   end
 
   def update

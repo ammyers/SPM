@@ -13,7 +13,9 @@ class UsersController < ApplicationController
   def login
     if (params[:email])
       theEmail = params[:email]
+      thePassword = params[:password]
       me = User.find_by_email(theEmail)
+      # if thePassword == me.password
       session[:role] = me.role
       session[:id] = me.id
       session[:logged_in] = true

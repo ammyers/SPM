@@ -11,6 +11,6 @@ robin.save
 sally.save
 bobby.save
 
-study = Study.new(:title => 'Testing the presence of studies and people', :description => 'Can we make this database work? Can we access the data?', :max_participants => 40, :special_instructions => 'none')
+study = Study.new(:title => 'Test Study', :description => 'Can we make this database work? Can we access the data?', :max_participants => 40, :length '30 min', :times '2014,11,21,18,0,0','2014,');
 
 study.save

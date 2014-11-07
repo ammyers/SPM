@@ -11,31 +11,39 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20141027201908) do
+ActiveRecord::Schema.define(:version => 20141107181210) do
+
+  create_table "participants", :force => true do |t|
+    t.integer "user_id"
+    t.integer "study_id"
+  end
+
+  create_table "researchers", :force => true do |t|
+    t.integer "user_id"
+    t.integer "study_id"
+  end
 
   create_table "studies", :force => true do |t|
-    t.string   "title"
-    t.text     "description"
-    t.integer  "max_participants",     :default => 30
-    t.text     "special_instructions"
-    t.datetime "created_at",                           :null => false
-    t.datetime "updated_at",                           :null => false
-    t.integer  "researcher_id"
+    t.integer "study_ID"
+    t.string  "title"
+    t.text    "description"
+    t.integer "max_participants", :default => 30
+    t.string  "length"
+  end
+
+  create_table "time_slots", :force => true do |t|
+    t.datetime "time"
+    t.integer  "study_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "users", :force => true do |t|
-    t.string   "first_name"
-    t.string   "last_name"
-    t.string   "email"
-    t.string   "password"
-    t.string   "role",       :default => "participant"
-    t.datetime "created_at",                            :null => false
-    t.datetime "updated_at",                            :null => false
-  end
-
-  create_table "users_studies", :id => false, :force => true do |t|
-    t.integer "user_id"
-    t.integer "study_id"
+    t.string "first_name"
+    t.string "last_name"
+    t.string "email"
+    t.string "password"
+    t.string "role",       :default => "participant"
   end
 
 end

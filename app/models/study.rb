@@ -3,7 +3,7 @@ class Study < ActiveRecord::Base
 
   belongs_to :researcher, class_name: "User"
 
-  has_many :date_time
+  has_many :time_slots
 
   has_and_belongs_to_many :participants, class_name: "User"
 

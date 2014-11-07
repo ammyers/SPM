@@ -1,22 +1,37 @@
 -#  This file is app/views/movies/index.html.haml
 %h1 All Studies
 
+%button= link_to "Home", root_path
+%button= link_to 'Add new study', new_study_path
 %table#studies
   %thead
     %tr
       %th Title
-      %th description
-      %th special instructions
-      %th More Info
+      %th Researcher
+      %th Description
+      %th Times
+      %th Learn More
+      %th Sign Up
   %tbody
     - @studies.each do |study|
       %tr
         %td= study.title 
+        %td= study.researcher
         %td= study.description
-        %td= study.special_instructions
+        %td
+          - study.time_slots.each do |t|
+            <b>
+            = t.time.to_s+", "
+            </b>
         %td= link_to "More about #{study.title}", study_path(study)
 
 = link_to 'Add new study', new_study_path
 %br
 %br
 %button= link_to "Home", root_path
+%br
+%p= "You ARE#{if session[:logged_in] == false then " NOT " else " INDEED " end}currently logged in"
+%br
+%p= "Role = #{session[:role]}"
+%br
+%p= "ID = #{session[:id]}"

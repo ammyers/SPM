@@ -7,7 +7,7 @@ class StudiesController < ApplicationController
   end
 
   def index
-    @studies = Study.all 
+    @studies = Study.all
   end
 
   def new
@@ -21,7 +21,7 @@ class StudiesController < ApplicationController
   end
 
   def edit
-    @movie = Study.find params[:id]
+    @study = Study.find params[:id]
   end
 
   def update

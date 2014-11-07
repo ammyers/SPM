@@ -2,6 +2,8 @@ TestManagement::Application.routes.draw do
 
   root :to => "pages#login"
 
+  get 'users/login' => 'users#login'
+  
   resources :users, :studies
 
   # The priority is based upon order of creation:

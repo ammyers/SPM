@@ -7,6 +7,6 @@
 
 %button= link_to "Users", users_path
 
-%button= link_to "Log in as Participant", studies_path(:email=>"bcarpenter@ups.edu", :password=>"chuck")
+%button= link_to "Log in as Participant", users_login_path(:email=>"bcarpenter@ups.edu", :password=>"chuck")
 
 %button= link_to "Log in as Admin", users_path

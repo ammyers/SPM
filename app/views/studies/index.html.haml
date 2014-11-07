@@ -21,6 +21,8 @@
 %br
 %button= link_to "Home", root_path
 %br
-%p= "Role = #{@role}"
+%p= "You ARE#{if session[:logged_in] == false then " NOT " else " INDEED " end}currently logged in"
 %br
-%p= "ID = #{@id}"
+%p= "Role = #{session[:role]}"
+%br
+%p= "ID = #{session[:id]}"

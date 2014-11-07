@@ -10,6 +10,17 @@ class UsersController < ApplicationController
     @users = User.all 
   end
 
+  def login
+    if (params[:email])
+      theEmail = params[:email]
+      me = User.find_by_email(theEmail)
+      session[:role] = me.role
+      session[:id] = me.id
+      session[:logged_in] = true
+    end
+    redirect_to studies_path
+  end
+
   def new
     # default: render 'new' template
   end

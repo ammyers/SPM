@@ -24,11 +24,15 @@ ActiveRecord::Schema.define(:version => 20141107181210) do
   end
 
   create_table "studies", :force => true do |t|
-    t.integer "study_ID"
     t.string  "title"
     t.text    "description"
     t.integer "max_participants", :default => 30
     t.string  "length"
+  end
+
+  create_table "study_times", :force => true do |t|
+    t.integer  "study_ID"
+    t.datetime "time"
   end
 
   create_table "time_slots", :force => true do |t|

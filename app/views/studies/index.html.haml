@@ -28,10 +28,9 @@
 = link_to 'Add new study', new_study_path
 %br
 %br
-%button= link_to "Home", root_path
-%br
-%p= "You ARE#{if session[:logged_in] == false then " NOT " else " INDEED " end}currently logged in"
-%br
-%p= "Role = #{session[:role]}"
-%br
-%p= "ID = #{session[:id]}"
+- if session[:logged_in]
+  %p= "You are logged in as #{@me.first_name} #{@me.last_name}"
+  %p= "Your role is: #{@me.role.upcase}"
+  %p= "Your user ID is: #{@me.id}"
+- else
+  %p You are not currently logged in as anyone!    

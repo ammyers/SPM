@@ -1,12 +1,14 @@
 -# Pages#login
 -# Find me in app/views/page/login.html -->
 
-%h2 Welcome
+- if flash.alert
+	%div.alert= flash.alert
 
-%button= link_to "Studies", studies_path
+%h1 Welcome to the cake
 
-%button= link_to "Users", users_path
-
-%button= link_to "Log in as Participant", users_login_path(:email=>"bcarpenter@ups.edu", :password=>"chuck")
-
-%button= link_to "Log in as Admin", users_path
+%ul.navbar
+	%li= link_to "Log in as Participant", users_login_path(:email=>"bcarpenter@ups.edu", :password=>"chuck")
+	%li= link_to "Log in as Researcher", users_login_path(:email=>"swinthrop@ups.edu", :password=>"wendy")
+	%li= link_to "Log in as Admin", users_login_path(:email=>"rdorn@ups.edu", :password=>"password")
+	%li= link_to "Invalid Account", users_login_path(:email=>"nope", :password=>"nope")
+	%li= link_to "Invalid Password", users_login_path(:email=>"rdorn@ups.edu", :password=>"nope")

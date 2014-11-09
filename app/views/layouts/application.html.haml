@@ -7,10 +7,13 @@
 
   %body
     %h1.title PsychBook!
-    #main
-      - if flash[:notice]
-        #notice.message= flash[:notice]
-      - elsif flash[:warning]
-        #warning.message= flash[:warning]
 
-      = yield
+    %ul.navbar
+      - if session[:logged_in]
+        %li= link_to "Log Out", root_path(logout: true)
+      - else
+        %li= link_to "Home", root_path
+      %li= link_to "All Studies", studies_path
+      %li= link_to "All Users", users_path
+      
+  = yield

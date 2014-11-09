@@ -37,7 +37,10 @@ h1 {
   display: block;
   width: 100%;
   border-bottom: 1px solid DarkSlateGrey;
+  margin: 0 0 1em;
+  padding: 10px;
 }
+
 h1.title {
   margin: 0 0 1em;
   padding: 10px;
@@ -47,33 +50,46 @@ h1.title {
   font-size: 2em;
   font-style: normal;
 }
-table#movies {
+
+table {
   margin: 10px;
   border-collapse: collapse;
   width: 100%;
   border-bottom: 2px solid black;
-}
-table#movies th {
-  border: 2px solid white;
-  font-weight: bold;
-  background-color: wheat;
-}
-table#movies th, table#movies td {
-  padding: 4px;
-  text-align: left;
-}
-table#movies th.hilite {
-  background-color: yellow;
-}
-
-#notice #warning {
-  background: rosybrown;
-  margin: 1em 0;
-  padding: 4px;
+  td {
+    padding: 4px;
+    text-align: left;
+  }
+  th {
+    border: 2px solid white;
+    font-weight: bold;
+    background-color: wheat;
+    padding: 4px;
+    text-align: left;
+  }
 }
 form label {
   display: block;
   line-height: 25px;
   font-weight: bold;
   color: maroon;
+}
+
+ul.navbar {
+  list-style-type: none;
+
+  li {
+    display: inline;
+    a {
+      color: white;
+      text-decoration: none;
+      padding: 10;
+      background: green;
+    }
+
+    :hover {
+      background: orange;
+      color: black;
+    }
+  }
 }

@@ -19,4 +19,9 @@
 = link_to 'Add new user', new_user_path
 %br
 %br
-%button= link_to "Home", root_path
+- if session[:logged_in]
+  %p= "You are logged in as #{@me.first_name} #{@me.last_name}"
+  %p= "Your role is: #{@me.role.upcase}"
+  %p= "Your user ID is: #{@me.id}"
+- else
+  %p You are not currently logged in as anyone!

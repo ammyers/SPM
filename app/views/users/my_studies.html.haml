@@ -1,8 +1,6 @@
--#  This file is app/views/movies/index.html.haml
-%h1 All Studies
+-#  This file is app/views/movies/my_studies.html.haml
+%h1 My Studies
 
-%button= link_to "Home", root_path
-%button= link_to 'Add new study', new_study_path
 %table#studies
   %thead
     %tr
@@ -11,7 +9,6 @@
       %th Description
       %th Times
       %th Learn More
-      %th Sign Up
   %tbody
     - @studies.each do |study|
       %tr
@@ -33,4 +30,4 @@
   %p= "Your role is: #{@me.role.upcase}"
   %p= "Your user ID is: #{@me.id}"
 - else
-  %p You are not currently logged in as anyone!    
+  %p You are not currently logged in as anyone!

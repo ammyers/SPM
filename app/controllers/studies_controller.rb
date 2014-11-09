@@ -7,9 +7,7 @@ class StudiesController < ApplicationController
   end
 
   def index
-    if session[:logged_in]
-      @me = User.find(session[:id])
-    end
+    @me = get_user
     @studies = Study.all
   end
 

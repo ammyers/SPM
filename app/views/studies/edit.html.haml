@@ -8,9 +8,13 @@
   = text_field :study, 'title'
 
   = label :study, :description, 'Description'
-  = select :study, :description, 'description'
+  = text_area :study, 'description'
 
   = label :study, :date_time, 'Date/Time'
-  = date_select :study, :date_time
+  /= date_select :time_slot, :date_time
+  = datetime_select :time_slot, :date_time
+
+  = label :study, :max_participants, 'Max Number of Participants'
+  = text_field :study, :max_participants
 
   = submit_tag 'Update Study Info'

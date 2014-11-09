@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-  
   def show
     id = params[:id] # retrieve user ID from URI route
     @user = User.find(id) # look up user by unique ID
@@ -7,10 +6,13 @@ class UsersController < ApplicationController
   end
 
   def index
-    if session[:logged_in]
-      @me = User.find(session[:id])
-    end
+    @me = get_user
     @users = User.all 
+  end
+
+  def my_studies
+    @id = session[:id]
+    @studies = {}
   end
 
   def login
@@ -20,7 +22,6 @@ class UsersController < ApplicationController
       me = User.find_by_email(theEmail)
       if me && thePassword == me.password
         session[:id] = me.id
-        session[:logged_in] = true
         if me.role == 'admin'
           redirect_to users_path
         else

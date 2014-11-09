@@ -19,7 +19,7 @@
 = link_to 'Add new user', new_user_path
 %br
 %br
-- if session[:logged_in]
+- if @me
   %p= "You are logged in as #{@me.first_name} #{@me.last_name}"
   %p= "Your role is: #{@me.role.upcase}"
   %p= "Your user ID is: #{@me.id}"

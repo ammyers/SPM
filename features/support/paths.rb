@@ -24,9 +24,11 @@ module NavigationHelpers
     when /^the Admin page$/
       'admin'
     when /^the My\sStudies page$/
-      'my_studies'
+      'studies/1'
     when /^the Create New Study page$/
-      'new_study'
+      '/studies/new'
+    when /^list of student electing to write essays/
+      'admin'
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:

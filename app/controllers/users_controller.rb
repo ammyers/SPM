@@ -7,20 +7,30 @@ class UsersController < ApplicationController
   end
 
   def index
+    if session[:logged_in]
+      @me = User.find(session[:id])
+    end
     @users = User.all 
   end
 
   def login
-    if (params[:email])
+    if params
       theEmail = params[:email]
       thePassword = params[:password]
       me = User.find_by_email(theEmail)
-      # if thePassword == me.password
-      session[:role] = me.role
-      session[:id] = me.id
-      session[:logged_in] = true
+      if me && thePassword == me.password
+        session[:id] = me.id
+        session[:logged_in] = true
+        if me.role == 'admin'
+          redirect_to users_path
+        else
+          redirect_to studies_path
+        end
+      else
+        flash.alert = "Invalid login credentials"
+        redirect_to root_path
+      end
     end
-    redirect_to studies_path
   end
 
   def new

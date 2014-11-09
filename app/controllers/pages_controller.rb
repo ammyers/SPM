@@ -8,9 +8,5 @@ class PagesController < ApplicationController
   	if session[:id]
   		session.delete :id
   	end
-  	if session[:role]
-  		session.delete :role
-  	end
-  	session[:logged_in] = false
   end
 end

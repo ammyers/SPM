@@ -1,10 +1,6 @@
--#  This file is app/views/movies/index.html.haml
+-#  This file is app/views/movies/my_studies.html.haml
+%h1 My Studies
 
-%h1 All Studies
-<div id="indent1">
-
-%button= link_to "Home", root_path
-%button= link_to 'Add new study', new_study_path
 %table#studies
   %thead
     %tr
@@ -13,7 +9,6 @@
       %th Description
       %th Times
       %th Learn More
-      %th Sign Up
   %tbody
     - @studies.each do |study|
       %tr
@@ -22,7 +17,9 @@
         %td= study.description
         %td
           - study.time_slots.each do |t|
-            = t.time.to_s+"\n"
+            <b>
+            = t.time.to_s+", "
+            </b>
         %td= link_to "More about #{study.title}", study_path(study)
 
 = link_to 'Add new study', new_study_path
@@ -33,6 +30,4 @@
   %p= "Your role is: #{@me.role.upcase}"
   %p= "Your user ID is: #{@me.id}"
 - else
-  %p You are not currently logged in as anyone!    
-
-</div>
+  %p You are not currently logged in as anyone!

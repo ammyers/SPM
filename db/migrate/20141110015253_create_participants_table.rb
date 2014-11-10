@@ -1,3 +1,4 @@
+# This table connect participants with their studytimes
 class CreateParticipantsTable < ActiveRecord::Migration
   def up
   	create_table :participants, :id => false do |s|

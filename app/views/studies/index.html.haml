@@ -9,6 +9,7 @@
   %thead
     %tr
       %th Title
+      %th Researchers
       %th Description
       %th Times
       %th Learn More
@@ -17,10 +18,11 @@
     - @studies.each do |study|
       %tr
         %td= study.title 
+        %td= study.researchers
         %td= study.description
         %td
           - study.studytimes.each do |t|
-            = t.datetime.to_s+"\n"
+            = t.datetime.strftime("%a %b %d, %Y, %l:%M")
         %td= link_to "More about #{study.title}", study_path(study)
 
 = link_to 'Add new study', new_study_path

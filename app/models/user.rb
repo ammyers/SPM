@@ -3,11 +3,11 @@ class User < ActiveRecord::Base
 
   #validates :first_name, :last_name, :email, :password, presence: true
 
-  has_and_belongs_to_many :studies
+  has_and_belongs_to_many :studies, join_table: "Participants"
 
   has_many :classes
 
-  has_many :created_studies, class_name: "Study", foreign_key: "researcher_id"
+  has_and_belongs_to_many :created_studies, join_table: "Researchers", class_name: "Study"
 
   def capitalize_name
   	self.first_name = self.first_name.capitalize

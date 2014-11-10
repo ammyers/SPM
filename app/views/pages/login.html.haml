@@ -12,3 +12,4 @@
 	%li= link_to "Log in as Admin", users_login_path(:email=>"rdorn@ups.edu", :password=>"password")
 	%li= link_to "Invalid Account", users_login_path(:email=>"nope", :password=>"nope")
 	%li= link_to "Invalid Password", users_login_path(:email=>"rdorn@ups.edu", :password=>"nope")
+	%li= link_to "Log in as No Studies", users_login_path(:email=>"da", :password=>"password")

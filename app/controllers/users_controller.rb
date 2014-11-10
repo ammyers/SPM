@@ -11,8 +11,8 @@ class UsersController < ApplicationController
   end
 
   def my_studies
-    @id = session[:id]
-    @studies = {}
+    @me = get_user
+    @my_studies = @me.studies
   end
 
   def login

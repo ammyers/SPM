@@ -7,7 +7,6 @@
   %thead
     %tr
       %th Title
-      %th Researcher
       %th Description
       %th Times
       %th Learn More
@@ -16,7 +15,6 @@
     - @studies.each do |study|
       %tr
         %td= study.title 
-        %td= study.researcher
         %td= study.description
         %td
           - study.time_slots.each do |t|

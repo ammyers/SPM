@@ -13,12 +13,12 @@
 
 ActiveRecord::Schema.define(:version => 20141107181210) do
 
-  create_table "participants", :force => true do |t|
+  create_table "participants", :id => false, :force => true do |t|
     t.integer "user_id"
     t.integer "study_id"
   end
 
-  create_table "researchers", :force => true do |t|
+  create_table "researchers", :id => false, :force => true do |t|
     t.integer "user_id"
     t.integer "study_id"
   end
@@ -28,11 +28,6 @@ ActiveRecord::Schema.define(:version => 20141107181210) do
     t.text    "description"
     t.integer "max_participants", :default => 30
     t.string  "length"
-  end
-
-  create_table "study_times", :force => true do |t|
-    t.integer  "study_ID"
-    t.datetime "time"
   end
 
   create_table "time_slots", :force => true do |t|

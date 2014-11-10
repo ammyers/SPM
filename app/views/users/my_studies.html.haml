@@ -9,12 +9,12 @@
       %th Time
       %th Learn More
   %tbody
-    - @my_studytimes.each do |time|
-      - s = time.study
+    - @my_studytimes.each do |studytime|
+      - s = studytime.study
       %tr
         %td= s.title 
         %td= s.description
-        %td= time.datetime.to_s
+        %td= studytime.datetime.strftime("%a %b %d, %Y, %l:%M")
         %td= link_to "More about #{s.title}", study_path(s)
 
 = link_to 'Add new study', new_study_path

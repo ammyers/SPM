@@ -15,7 +15,8 @@
         %td= s.description
         %td
           - s.studytimes.each do |t|
-            = t.datetime.to_s+"\n"
+            = t.datetime.strftime("%a %b %d, %Y, %l:%M")
+            %br
         %td= link_to "More about #{s.title}", study_path(s)
 
 = link_to 'Add new study', new_study_path

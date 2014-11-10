@@ -3,12 +3,11 @@
 %h1 All Studies
 <div id="indent1">
 
-%button= link_to "Home", root_path
-%button= link_to 'Add new study', new_study_path
 %table#studies
   %thead
     %tr
       %th Title
+      %th Researchers
       %th Description
       %th Times
       %th Learn More
@@ -17,10 +16,14 @@
     - @studies.each do |study|
       %tr
         %td= study.title 
+        %td
+          - study.researchers.each do |r|
+            = link_to "#{r.first_name} #{r.last_name}", user_path(r)
         %td= study.description
         %td
-          - study.time_slots.each do |t|
-            = t.time.to_s+"\n"
+          - study.studytimes.each do |t|
+            = t.datetime.strftime("%a %b %d, %Y, %l:%M")
+            %br
         %td= link_to "More about #{study.title}", study_path(study)
 
 = link_to 'Add new study', new_study_path

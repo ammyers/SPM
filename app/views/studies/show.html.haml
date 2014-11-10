@@ -12,13 +12,12 @@
 
 %h2 Maximum Number of Participants: #{@study.max_participants}
 
-%h2 Length of Study: #{@study.length}
+%h2 Length of Study: #{@study.duration}
 
 %h2 Times
-
-/ %p
-/ 	= time_slot.each do |t|
-/ 		= t.time.to_s+"\n"
+- @study.studytimes.each do |t|
+	= t.datetime.strftime("%a %b %d %Y %l:%M")
+	%br
 <br><br>
 
 = link_to 'Edit', edit_study_path(@study)

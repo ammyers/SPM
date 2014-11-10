@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   def show
+    @me = get_user
     id = params[:id] # retrieve user ID from URI route
     @user = User.find(id) # look up user by unique ID
     # will render app/views/users/show.<extension> by default
@@ -12,7 +13,12 @@ class UsersController < ApplicationController
 
   def my_studies
     @me = get_user
-    @my_studies = @me.studies
+    @my_studytimes = @me.studytimes
+  end
+
+  def created_studies
+    @me = get_user
+    @studies = @me.created_studies
   end
 
   def login
@@ -35,20 +41,24 @@ class UsersController < ApplicationController
   end
 
   def new
+    @me = get_user
     # default: render 'new' template
   end
 
   def create
+    @me = get_user
     @user = User.create!(params[:user])
     flash[:notice] = "#{@user.title} was successfully created."
     redirect_to users_path
   end
 
   def edit
-    @movie = User.find params[:id]
+    @me = get_user
+    @user = User.find params[:id]
   end
 
   def update
+    @me = get_user
     @user = User.find params[:id]
     @user.update_attributes!(params[:user])
     flash[:notice] = "#{@user.title} was successfully updated."
@@ -56,6 +66,7 @@ class UsersController < ApplicationController
   end
 
   def destroy
+    @me = get_user
     @user = User.find(params[:id])
     @user.destroy
     flash[:notice] = "user '#{@user.title}' deleted."

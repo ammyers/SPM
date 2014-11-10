@@ -1,9 +1,9 @@
-#connects participants and studies - for each participant, for each study a participant is in, there is a line in this database
+# This table connect participants with their studytimes
 class CreateParticipantsTable < ActiveRecord::Migration
   def up
   	create_table :participants, :id => false do |s|
+  		s.references :studytime
   		s.references :user
-  		s.references :study
   	end
   end
 

@@ -12,7 +12,12 @@ class UsersController < ApplicationController
 
   def my_studies
     @me = get_user
-    @my_studies = @me.studies
+    @my_studytimes = @me.studytimes
+  end
+
+  def created_studies
+    @me = get_user
+    @studies = @me.created_studies
   end
 
   def login

@@ -19,8 +19,8 @@
         %td= study.title 
         %td= study.description
         %td
-          - study.time_slots.each do |t|
-            = t.time.to_s+"\n"
+          - study.studytimes.each do |t|
+            = t.datetime.to_s+"\n"
         %td= link_to "More about #{study.title}", study_path(study)
 
 = link_to 'Add new study', new_study_path

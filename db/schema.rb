@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(:version => 20141107181210) do
     t.string  "title"
     t.text    "description"
     t.integer "max_participants", :default => 30
-    t.string  "length"
+    t.string  "duration"
   end
 
   create_table "time_slots", :force => true do |t|

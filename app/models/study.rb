@@ -1,5 +1,5 @@
 class Study < ActiveRecord::Base
-  attr_accessible :title, :description, :max_participants, :length
+  attr_accessible :title, :description, :max_participants, :duration
 
   has_and_belongs_to_many :researchers, join_table: "Researchers", class_name: "User"
 

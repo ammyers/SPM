@@ -18,7 +18,9 @@
     - @studies.each do |study|
       %tr
         %td= study.title 
-        %td= study.researchers
+        %td
+          - study.researchers.each do |r|
+            = r.first_name + " " + r.last_name
         %td= study.description
         %td
           - study.time_slots.each do |t|

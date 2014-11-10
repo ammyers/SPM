@@ -17,6 +17,8 @@ class StudiesController < ApplicationController
 
   def create
     @study = Study.create!(params[:study])
+    #:study.time_slots each do |t|
+      #time_slots.new(t, :study)
     flash[:notice] = "#{@study.title} was successfully created."
     redirect_to studies_path
   end

@@ -1,17 +1,31 @@
-%h2 Details about #{@study.title}
+%h1 Details about #{@study.title}
 
-%ul#details
-  %li
-    Title:
-    = @study.title
+<div id="indent1">
 
-%h3 Description:
+%h2 Researcher: 
+
+%p#researcher= @study.researcher
+
+%h2 Description:
 
 %p#description= @study.description
+
+%h2 Maximum Number of Participants: #{@study.max_participants}
+
+%h2 Length of Study: #{@study.length}
+
+%h2 Times
+
+/ %p
+/ 	= time_slot.each do |t|
+/ 		= t.time.to_s+"\n"
+<br><br>
 
 = link_to 'Edit', edit_study_path(@study)
 = button_to 'Delete', study_path(@study), :method => :delete, :confirm => 'Are you sure?'
 = link_to 'Back to studies list', studies_path
+
+</div>
 
 //show details: max_participants & num of open spots, length of study, times,
 

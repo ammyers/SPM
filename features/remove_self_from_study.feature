@@ -5,5 +5,5 @@ Feature: As a psychology student
 @wip
 Scenario:
 	Given I am on the My Studies page
-	when I click the remove button of a study
+	When I click the remove button of a study
 	Then my name should be removed from the study

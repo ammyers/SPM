@@ -4,5 +4,5 @@ so that I can confirm student participation.
 
 @wip
 Scenario:
-Given I am on the My Studies page
-I should see "participation table."
+	Given I am on the My Studies page
+	Then I should see "participation table."

@@ -1,22 +1,24 @@
+
 %h1 Create New Study
 
+<div id="indent1">
 = form_tag studies_path do
 
   = label :study, :title, 'Title'
   = text_field :study, 'title'
 
   = label :study, :description, 'Description'
-
   = text_area :study, 'description'
-
-  = label :study, :date_time, 'Date/Time'
-  /= date_select :time_slot, :date_time
-  = datetime_select :time_slot, :date_time
 
   = label :study, :max_participants, 'Max Number of Participants'
   = text_field :study, :max_participants
 
-  /= label :study, :special_instructions, 'Special Instructions to Participants'
-  /= text_field :study, :special_instructions
+  = label :study, :length, 'Length of Study'
+  = text_field :study, :length
 
+  = label :time_slot, :datetime, 'Date/Time'
+  = datetime_select :time_slot, :datetime
+  <br> <br>
   = submit_tag 'Save Changes'
+
+</div>

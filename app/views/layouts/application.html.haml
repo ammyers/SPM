@@ -9,13 +9,15 @@
     %h1.title PsychBook!
 
     %ul.navbar
+      %li= link_to "All Studies", studies_path
+      - if (@me) && (@me.role != 'admin') && (@me.studytimes != [])
+        %li= link_to "My Studies", users_my_studies_path
+      - if (@me) && (@me.role == 'researcher') && (@me.created_studies != [])
+        %li= link_to "My CREATED Studies (As researcher)", users_created_studies_path
+      %li= link_to "All Users", users_path
       - if @me
         %li= link_to "Log Out", root_path(logout: true)
       - else
         %li= link_to "Home", root_path
-      - if (@me) && (@me.role != 'admin') && (@me.studies != [])
-        %li= link_to "My Studies", users_my_studies_path
-      %li= link_to "All Studies", studies_path
-      %li= link_to "All Users", users_path
       
   = yield

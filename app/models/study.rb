@@ -3,12 +3,11 @@ class Study < ActiveRecord::Base
 
   has_and_belongs_to_many :researchers, join_table: "Researchers", class_name: "User"
 
-  has_many :time_slots
+  has_many :studytimes
 
-  has_and_belongs_to_many :participants, join_table: "Participants", class_name: "User"
+  validates :title, presence: true
 
-  #validates :title, presence: true
-  #validates :date_time, :researcher, presence: true
+  before_save :capitalize_title
   	
   def capitalize_title
   	self.title = self.title.capitalize

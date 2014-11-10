@@ -1,20 +1,22 @@
 -#  This file is app/views/movies/my_studies.html.haml
-%h1 My Studies
+%h1 My CREATED Studies (only accessible to researchers w/ studies)
 
 %table#studies
   %thead
     %tr
       %th Title
       %th Description
-      %th Time
+      %th Times
       %th Learn More
   %tbody
-    - @my_studytimes.each do |studytime|
-      - s = studytime.study
+    - @studies.each do |s|
       %tr
         %td= s.title 
         %td= s.description
-        %td= studytime.datetime.strftime("%a %b %d, %Y, %l:%M")
+        %td
+          - s.studytimes.each do |t|
+            = t.datetime.strftime("%a %b %d, %Y, %l:%M")
+            %br
         %td= link_to "More about #{s.title}", study_path(s)
 
 = link_to 'Add new study', new_study_path

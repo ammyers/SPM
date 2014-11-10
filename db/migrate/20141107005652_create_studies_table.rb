@@ -5,6 +5,7 @@ class CreateStudiesTable < ActiveRecord::Migration
   		s.text :description
   		s.integer :max_participants, :default => 30
   		s.string :duration
+      s.timestamps
   	end
   end
 

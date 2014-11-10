@@ -16,9 +16,8 @@
 
 %h2 Times
 
-/ %p
-/ 	= time_slot.each do |t|
-/ 		= t.time.to_s+"\n"
+- @study.time_slots.each do |t|
+	= t.time.strftime("%a %b %d %Y %l:%M")
 <br><br>
 
 = link_to 'Edit', edit_study_path(@study)

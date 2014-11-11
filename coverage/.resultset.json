@@ -480,6 +480,37 @@
         null,
         null
       ],
+      "/home/saasbook/TestManagement/spec/controllers/pages_controller_spec.rb": [
+        1,
+        null,
+        1,
+        1,
+        1,
+        1,
+        1,
+        null,
+        null
+      ],
+      "/home/saasbook/TestManagement/spec/controllers/studies_controller_spec.rb": [
+        1,
+        null,
+        1,
+        1,
+        1,
+        null,
+        null
+      ],
+      "/home/saasbook/TestManagement/spec/controllers/users_controller_spec.rb": [
+        1,
+        null,
+        1,
+        1,
+        1,
+        1,
+        1,
+        null,
+        null
+      ],
       "/home/saasbook/TestManagement/spec/models/study_spec.rb": [
         null,
         1,
@@ -517,6 +548,6 @@
         null
       ]
     },
-    "timestamp": 1415673370
+    "timestamp": 1415681549
   }
 }

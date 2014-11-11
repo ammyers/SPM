@@ -13,13 +13,11 @@ module NavigationHelpers
   def path_to(page_name)
     case page_name
 
-    when /^the home\s?page$/
-      '/index'
+    when /the home\s?page/
+      '/'
 
     when /^the login\s?page$/
       'login' #hard code ex, later add path routes
-        when /^the All\sStudies page$/
-      'studies'
     when /^the All\sStudies page$/
       'studies'
     when /^the Admin page$/

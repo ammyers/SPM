@@ -3,7 +3,6 @@ Feature: As a study participant,
 	so that I can sign up for studies.
 
 Scenario:
-	Given I am the Home page
+	Given I am on the home page
 	When I follow "Log in as Participant"
-	Then I should be on the All Studies page
-	Then I should see "studies"
+	Then I am on the All Studies page

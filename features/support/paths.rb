@@ -19,7 +19,7 @@ module NavigationHelpers
     when /^the login\s?page$/
       'login' #hard code ex, later add path routes
 
-    when /^the All\sStudies page$/
+    when /^the All Studies page$/
       'studies'
     when /^the Admin page$/
       'admin'

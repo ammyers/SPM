@@ -4,5 +4,5 @@ Feature: As a participant,
 
 Scenario:
 	Given that I am on the All Studies page
-	When I click on the More Details Button
+	When I press on the More Details 
 	Then the page should display the name/s of the researcher/s

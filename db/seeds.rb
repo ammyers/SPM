@@ -3,14 +3,18 @@
 
 bobby = User.create(:first_name => 'Bobby', :last_name => 'Carpenter', :email => 'bcarpenter@ups.edu', :password => 'chuck', :role => 'participant')
 sally = User.create(:first_name => 'Sally', :last_name => 'Winthrop', :email => 'swinthrop@ups.edu', :password => 'wendy', :role => 'researcher')   	  
+joel = User.create(:first_name => 'Joel', :last_name => 'Ross', :email => 'jross@ups.edu', :password => 'hello', :role => 'researcher')
 robin = User.create(:first_name => 'Robin', :last_name => 'Dorn', :email => 'rdorn@ups.edu', :password => 'password', :role => 'admin')
 no_studies = User.create(:first_name => 'Damon', :last_name => 'Templeton', :email => 'da', :password => 'password', :role => 'participant')
 
-db_study = Study.create(:title => 'Test Study', :description => 'Can we make this database work? Can we access the data?', :max_participants => 40);
-desert_study = Study.create(:title => 'Desert Study', :description => 'How many humps does a camel have?', :max_participants => 150);
-ocean_study = Study.create(:title => 'Ocean Study', :description => 'Dolphins and things', :max_participants => 2);
+db_study = Study.create(:title => 'Test Study', :description => 'Can we make this database work? Can we access the data?', :max_participants => 40, :duration => "30 min");
+desert_study = Study.create(:title => 'Desert Study', :description => 'How many humps does a camel have?', :max_participants => 150, :duration => "45 min");
+ocean_study = Study.create(:title => 'Ocean Study', :description => 'Dolphins and things', :max_participants => 2, :duration => "50 min");
 
 sally.created_studies << desert_study
+joel.created_studies << db_study
+sally.created_studies << ocean_study
+joel.created_studies << ocean_study
 
 db_time1 = Studytime.create(:datetime => DateTime.parse('9 Nov 2014 18:30:00'))
 desert_time1 = Studytime.create(:datetime => DateTime.parse('9 Nov 2014 17:30:00'))

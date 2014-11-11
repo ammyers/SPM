@@ -22,6 +22,10 @@ group :production do
 	gem 'pg'
 end
 
+group :development do
+  gem "debugger"
+end
+
 # Testing gems
 group :development, :test do
   gem 'rspec-rails', '~> 3.0.0'
@@ -57,5 +61,3 @@ gem 'jquery-rails'
 # Deploy with Capistrano
 # gem 'capistrano'
 
-# To use debugger
-gem 'debugger'

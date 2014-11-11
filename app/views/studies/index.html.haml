@@ -19,6 +19,7 @@
         %td
           - study.researchers.each do |r|
             = link_to "#{r.first_name} #{r.last_name}", user_path(r)
+            %br
         %td= study.description
         %td
           - study.studytimes.each do |t|

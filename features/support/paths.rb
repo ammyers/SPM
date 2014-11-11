@@ -14,13 +14,13 @@ module NavigationHelpers
     case page_name
 
     when /^the home\s?page$/
-      '/'
+      '/index'
 
     when /^the login\s?page$/
       'login' #hard code ex, later add path routes
 
     when /^the All\sStudies page$/
-      'all-studies'
+      'studies'
     when /^the Admin page$/
       'admin'
     when /^the My\sStudies page$/

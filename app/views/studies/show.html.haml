@@ -4,13 +4,15 @@
 
 %h2 Researcher: 
 
-%p#researcher= @study.researcher
+- @study.researchers.each do |r|
+	= r.first_name + " " + r.last_name
 
 %h2 Description:
 
 %p#description= @study.description
 
-%h2 Maximum Number of Participants: #{@study.max_participants}
+%h2 Maximum Number of Participants: 
+%p#max_participants= @study.max_participants
 
 %h2 Length of Study: #{@study.duration}
 

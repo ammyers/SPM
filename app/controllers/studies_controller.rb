@@ -19,7 +19,13 @@ class StudiesController < ApplicationController
 
   def create
     @me = get_user
-    @study = Study.create!(params[:study])
+    @study = Study.new(params[:study])
+    studytime = Studytime.new(params[:time_slot])
+    @study.studytimes << studytime
+    @study.save!
+
+    # params[:study].time_slots each do |t|
+    #   time_slots.new(t, :study)
     flash[:notice] = "#{@study.title} was successfully created."
     redirect_to studies_path
   end

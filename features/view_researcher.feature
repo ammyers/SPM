@@ -3,7 +3,7 @@ Feature: As a participant,
 	so that I can choose to not sign up for studies my friends are conducting.
 
 Scenario:
-
+ 
 	Given I am on the All Studies page
 	When I press on the More Details 
 	Then the page should display the name/s of the researcher/s

@@ -2,10 +2,37 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-div.alert {
-  background-color: red;
-  color: black;
-  font-weight: bold;
-  border: 3px solid black;
-  padding: 0 20px 20px;
+// General color options - not necessarily used 
+$red-velvet-cake: #BA0000;
+$very-dark-red: #520000;
+$tannish: #FFF2C9;
+// Check app/assets/images for background image options
+$page-background-image: image-url("escheresque-light.png");
+
+// Nav bar variables
+$nav-button-background: $tannish;
+$nav-button-text-color: black;
+$nav-button-border-color: $very-dark-red;
+
+ul#login {
+	list-style-type: none;
+	margin: 0;
+	padding: 22px 9px;
+	li {
+		display: inline;
+		a {
+      		color: $nav-button-text-color;
+      		text-decoration: none;
+      		font-weight: bold;
+      		padding: 10;
+      		background: $nav-button-background;
+      		border: 3px solid $nav-button-border-color;
+      		border-radius: 16px;
+    	}
+
+    	:hover {
+      		background: $page-background-image repeat fixed;
+      		color: black;
+    	}
+	}
 }

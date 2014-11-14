@@ -18,11 +18,3 @@
         %td= link_to "More about #{s.title}", study_path(s)
 
 = link_to 'Add new study', new_study_path
-%br
-%br
-- if @me
-  %p= "You are logged in as #{@me.first_name} #{@me.last_name}"
-  %p= "Your role is: #{@me.role.upcase}"
-  %p= "Your user ID is: #{@me.id}"
-- else
-  %p You are not currently logged in as anyone!

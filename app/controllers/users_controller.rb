@@ -34,7 +34,7 @@ class UsersController < ApplicationController
           redirect_to studies_path
         end
       else
-        flash.alert = "Invalid login credentials"
+        flash.alert = "INVALID LOGIN CREDENTIALS"
         redirect_to root_path
       end
     end

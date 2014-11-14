@@ -2,9 +2,73 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-#indent1 {
-	position:		absolute;
-	left:			5%;	
+// General color options - not necessarily used 
+$red-velvet-cake: #BA0000;
+$very-dark-red: #520000;
+$tannish: #FFF2C9;
+// Check app/assets/images for background image options
+$page-background: white image-url("escheresque-light.png") repeat fixed;
 
+// Colors for study-specific pages
+$listitem-background: rgba(172,0,0,0.2);
+$listitem-textcolor: black;
+$researcher-link-color: $very-dark-red;
+$researcher-link-hover-color: $red-velvet-cake;
+$selection-link-background: $page-background;
+$selection-link-color: black;
+$selection-link-hover-background: rgba(255,255,255,0.6);
+$selection-link-hover-color: black;
+$selection-link-border-color: $red-velvet-cake;
 
+ul#studies {
+	li {
+		background: $listitem-background;
+		border: 1px solid black;
+      	border-radius: 10px;
+      	color: $listitem-textcolor;
+      	overflow: auto;
+		div {
+			padding: 5px;
+			display: inline;
+		}
+     	div#left {
+     		float: left;
+     		p#title {
+     			font-size: 150%;
+     			font-weight: bold;
+     		}
+     		p#description {
+     			margin-bottom: 5px;
+     		}
+     		// This a-link is the researcher names
+     		a {
+     			text-decoration: none;
+     			color: $researcher-link-color;
+     		}
+     		:hover {
+     			color: $researcher-link-hover-color;
+     		}
+     	}
+     	div#right {
+     		float: right;
+     		// This a-link is the selection option
+     		a {
+     			text-decoration: none;
+     			font-weight: bold;
+     			border: 3px solid $selection-link-border-color;
+     			border-radius: 10px;
+     			padding: 17px 5px;
+     			background: $selection-link-background;
+     			color: $selection-link-color;
+     		}
+     		:hover {
+     			background: $selection-link-hover-background;
+     			color: $selection-link-hover-color;
+     		}
+     		.selection_link {
+     			position: relative;
+     			top: 20px;
+     		}
+     	}
+    }
 }

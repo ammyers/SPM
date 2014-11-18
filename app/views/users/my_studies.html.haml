@@ -1,20 +1,25 @@
--#  This file is app/views/movies/my_studies.html.haml
-%h1 My Studies
+-#  This file is app/views/studies/my_studies.html.haml
 
-%table#studies
-  %thead
-    %tr
-      %th Title
-      %th Description
-      %th Time
-      %th Learn More
-  %tbody
+%div#body
+  %h1 My Studies
+
+  %ul.maincontent#mystudies
     - @my_studytimes.each do |studytime|
-      - s = studytime.study
-      %tr
-        %td= s.title 
-        %td= s.description
-        %td= studytime.datetime.strftime("%a %b %d, %Y, %l:%M")
-        %td= link_to "More about #{s.title}", study_path(s)
-
-= link_to 'Add new study', new_study_path
+    - s = studytime.study
+      %li
+        %div#top
+          %div#left
+            %p#title= s.title
+            Researchers: 
+            - numresearchers = s.researchers.size
+            - s.researchers.each do |r|
+              = link_to "#{r.first_name} #{r.last_name}", user_path(r), { :class => "researcher_link"}
+              - numresearchers -= 1
+              - if numresearchers > 0
+                | 
+          %div#right
+            Time and Location:
+            %p#time= studytime.datetime.strftime("%A %b %e, %l:%M %p") + " in " + studytime.location
+        %div#bottom
+          %p#description= s.description
+  

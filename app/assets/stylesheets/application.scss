@@ -150,6 +150,34 @@ div#body {
     li {
       margin: 10px;
       padding: 5px;
+
+      div#top {
+        overflow: auto;
+        padding: 5px;
+        height: auto;
+      }
+
+      div#bottom {
+        padding: 5px;
+      }
+
+      div#left {
+        display: inline;
+        float: left;
+      }
+
+      div#right {
+        display: inline;
+        float: right;
+      }
+
+      p#description {
+        margin-bottom: 5px;
+      }
+      p#title {
+        font-size: 150%;
+        font-weight: bold;
+      }
     }
   }
 }

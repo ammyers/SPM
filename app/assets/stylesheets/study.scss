@@ -16,8 +16,8 @@ $researcher-link-color: $very-dark-red;
 $researcher-link-hover-color: $red-velvet-cake;
 $selection-link-background: $page-background;
 $selection-link-color: black;
-$selection-link-hover-background: rgba(255,255,255,0.6);
-$selection-link-hover-color: black;
+$selection-link-hover-background: rgba(0,0,0,0.3);
+$selection-link-hover-color: white;
 $selection-link-border-color: $red-velvet-cake;
 
 ul#studies {
@@ -27,48 +27,41 @@ ul#studies {
       	border-radius: 10px;
       	color: $listitem-textcolor;
       	overflow: auto;
-		div {
-			padding: 5px;
-			display: inline;
-		}
+
+          div#top {
+               min-height: 50px;
+          }
+
      	div#left {
-     		float: left;
-     		p#title {
-     			font-size: 150%;
-     			font-weight: bold;
-     		}
-     		p#description {
-     			margin-bottom: 5px;
-     		}
      		// This a-link is the researcher names
      		a {
      			text-decoration: none;
      			color: $researcher-link-color;
+                    margin-bottom: 5px;
      		}
      		:hover {
      			color: $researcher-link-hover-color;
      		}
      	}
-     	div#right {
-     		float: right;
-     		// This a-link is the selection option
-     		a {
-     			text-decoration: none;
-     			font-weight: bold;
-     			border: 3px solid $selection-link-border-color;
-     			border-radius: 10px;
-     			padding: 17px 5px;
-     			background: $selection-link-background;
-     			color: $selection-link-color;
-     		}
-     		:hover {
-     			background: $selection-link-hover-background;
-     			color: $selection-link-hover-color;
-     		}
-     		.selection_link {
-     			position: relative;
-     			top: 20px;
-     		}
-     	}
+
+          div#right {
+               // This a-link is the selection option
+               a {
+                    text-decoration: none;
+                    font-weight: bold;
+                    border: 3px solid $selection-link-border-color;
+                    border-radius: 10px;
+                    padding: 17px 5px;
+                    background: $selection-link-background;
+                    color: $selection-link-color;
+                    margin-left: 5px;
+                    position: relative;
+                    top: 20px;
+               }
+               :hover {
+                    background: $selection-link-hover-background;
+                    color: $selection-link-hover-color;
+               }
+          }   
     }
 }

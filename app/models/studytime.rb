@@ -1,5 +1,5 @@
 class Studytime < ActiveRecord::Base
-  attr_accessible :datetime
+  attr_accessible :datetime, :location
 
   belongs_to :study
 

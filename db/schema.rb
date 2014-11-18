@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(:version => 20141110015253) do
 
   create_table "studytimes", :force => true do |t|
     t.datetime "datetime"
+    t.string   "location"
     t.integer  "study_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false

@@ -1,19 +1,14 @@
--#  This file is app/views/movies/index.html.haml
-%h1 All Users
+-#  This file is app/views/users/index.html.haml
 
-%table#users
-  %thead
-    %tr
-      %th First Name
-      %th Last Name
-      %th Role
-      %th More Info
-  %tbody
+%div#body
+  %h1 All Users
+
+  %ul.maincontent#users
     - @users.each do |user|
-      %tr
-        %td= user.first_name 
-        %td= user.last_name
-        %td= user.role
-        %td= link_to "More about #{user.first_name}", user_path(user)
-
-= link_to 'Add new user', new_user_path
+      %li
+        %div#top
+          %div#left
+            %p#title= user.first_name + " " + user.last_name 
+            %p#role= "Role: " + user.role.capitalize
+          %div#right
+            = link_to "MORE INFO", user_path(user), { :class => "selection_link"}

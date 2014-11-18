@@ -1,4 +1,4 @@
--#  This file is app/views/movies/index.html.haml
+-#  This file is app/views/studies/index.html.haml
 
 %div#body
   %h1 All Current Studies
@@ -6,19 +6,21 @@
   %ul.maincontent#studies
     - @studies.each do |study|
       %li
-        %div#left
-          %p#title= study.title
+        %div#top
+          %div#left
+            %p#title= study.title
+            Researchers: 
+            - numresearchers = study.researchers.size
+            - study.researchers.each do |r|
+              = link_to "#{r.first_name} #{r.last_name}", user_path(r), { :class => "researcher_link"}
+              - numresearchers -= 1
+              - if numresearchers > 0
+                | 
+          %div#right
+            = link_to "SELECT THIS STUDY", study_path(study), { :class => "selection_link"}
+          %div#right
+            Available Times:
+            - study.studytimes.each do |t|
+              %p#time= t.datetime.strftime("%A %b %e, %l:%M %p") + " in " + t.location
+        %div#bottom
           %p#description= study.description
-          Researchers: 
-          - numresearchers = study.researchers.size
-          - study.researchers.each do |r|
-            = link_to "#{r.first_name} #{r.last_name}", user_path(r), { :class => "researcher_link"}
-            - numresearchers -= 1
-            - if numresearchers > 0
-              | 
-        %div#right
-          = link_to "SELECT THIS STUDY", study_path(study), { :class => "selection_link"}
-        %div#right
-          Available Times:
-          - study.studytimes.each do |t|
-            %p#time= t.datetime.strftime("%A %b %e, %l:%M %p")

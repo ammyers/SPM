@@ -1,7 +1,5 @@
 %div#header
   %h1 PROJECT CAKE
-  - if flash.alert
-    %p#alert= flash.alert
   - if @me
     %ul.headerlink#navbar
       %li= link_to "ALL STUDIES", studies_path
@@ -11,5 +9,8 @@
         %li= link_to "STUDIES I RUN", users_created_studies_path
       - if (@me.role == 'admin')
         %li= link_to "ALL USERS", users_path
+  - if flash.alert
+    %p#alert= flash.alert
   - if @me
     %p.headerlink#logout= link_to "LOG OUT", root_path(logout: true)
+    %p.headerlink#myaccount= link_to "MY ACCOUNT", user_path(@me)

@@ -30,8 +30,15 @@ $nav-button-background-hover: rgba(255,255,255,0.6);
 $nav-button-text-color: black;
 $nav-button-border-color: $very-dark-red;
 
-// Main content variable
+// Main content variables
 $maincontent-list-background: transparent;
+$researcher-link-color: $very-dark-red;
+$researcher-link-hover-color: $red-velvet-cake;
+$selection-link-background: $page-background;
+$selection-link-color: black;
+$selection-link-hover-background: rgba(0,0,0,0.3);
+$selection-link-hover-color: white;
+$selection-link-border-color: $red-velvet-cake;
 
 // Footer stuff
 $footer-background-color: $header-background-color;
@@ -99,6 +106,11 @@ div#header {
 
   p#logout {
     float: right;
+    margin: 13px 0 13px 5px;
+  }
+
+  p#myaccount {
+    float: right;
     margin: 13px 0;
   }
 }
@@ -139,13 +151,24 @@ div#body {
     padding: 0 0 10px 0;
   }
 
-  // Main content lists, such as studies and users
-  ul.maincontent {
+  .maincontent {
     padding: 0;
     border: 3px solid $very-dark-red;
     border-radius: 10px;
-    list-style-type: none;
     background: $maincontent-list-background;
+
+    p#description {
+      margin-bottom: 5px;
+    }
+    p#title {
+      font-size: 150%;
+      font-weight: bold;
+    }
+  }
+
+  // Main content lists, such as studies and users
+  ul.maincontent {
+    list-style-type: none;
 
     li {
       margin: 10px;
@@ -170,15 +193,45 @@ div#body {
         display: inline;
         float: right;
       }
-
-      p#description {
-        margin-bottom: 5px;
-      }
-      p#title {
-        font-size: 150%;
-        font-weight: bold;
-      }
     }
+  }
+
+  div.maincontent {
+    h2 {
+      padding: 5px;
+    }
+
+    p {
+      padding: 5px;
+    }
+
+    a.researcher_link {
+      padding: 5px;
+    }
+  }
+
+  // This a-link is the researcher names
+  a.researcher_link {
+    text-decoration: none;
+    color: $researcher-link-color;
+    margin-bottom: 5px;
+  }
+  :hover.researcher_link {
+    color: $researcher-link-hover-color;
+  }
+
+  // This a-link is the selection option
+  a.selection_link {
+    text-decoration: none;
+    font-weight: bold;
+    border: 3px solid $selection-link-border-color;
+    border-radius: 10px;
+    background: $selection-link-background;
+    color: $selection-link-color;
+  }
+  :hover.selection_link {
+    background: $selection-link-hover-background;
+    color: $selection-link-hover-color;
   }
 }
 

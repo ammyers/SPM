@@ -12,56 +12,63 @@ $page-background: white image-url("escheresque-light.png") repeat fixed;
 // Colors for study-specific pages
 $listitem-background: rgba(172,0,0,0.2);
 $listitem-textcolor: black;
-$researcher-link-color: $very-dark-red;
-$researcher-link-hover-color: $red-velvet-cake;
-$selection-link-background: $page-background;
-$selection-link-color: black;
-$selection-link-hover-background: rgba(0,0,0,0.3);
-$selection-link-hover-color: white;
-$selection-link-border-color: $red-velvet-cake;
+$full-background: DarkGray;
+$full-color: $tannish;
+$full-border-color: black;
+$joined-background: LightGreen;
+$joined-color: black;
+$joined-border-color: DarkGreen;
 
-ul#studies {
+#studies {
 	li {
 		background: $listitem-background;
 		border: 1px solid black;
-      	border-radius: 10px;
-      	color: $listitem-textcolor;
-      	overflow: auto;
+    border-radius: 10px;
+    color: $listitem-textcolor;
+    overflow: auto;
 
-          div#top {
-               min-height: 50px;
-          }
-
-     	div#left {
-     		// This a-link is the researcher names
-     		a {
-     			text-decoration: none;
-     			color: $researcher-link-color;
-                    margin-bottom: 5px;
-     		}
-     		:hover {
-     			color: $researcher-link-hover-color;
-     		}
-     	}
-
-          div#right {
-               // This a-link is the selection option
-               a {
-                    text-decoration: none;
-                    font-weight: bold;
-                    border: 3px solid $selection-link-border-color;
-                    border-radius: 10px;
-                    padding: 17px 5px;
-                    background: $selection-link-background;
-                    color: $selection-link-color;
-                    margin-left: 5px;
-                    position: relative;
-                    top: 20px;
-               }
-               :hover {
-                    background: $selection-link-hover-background;
-                    color: $selection-link-hover-color;
-               }
-          }   
+    div#top {
+      min-height: 50px;
     }
+    div#right {
+      // This a-link is the selection option
+      a {
+        padding: 17px 5px;
+        margin-left: 5px;
+        position: relative;
+        top: 20px;
+      }
+    }   
+  }
+}
+
+#studyinfo {
+  #time {
+  }
+
+  #openings {
+  }
+
+  .selection_link {
+    display: block;
+  }
+
+  p#full, p#joined {
+    display: block;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 10px;
+  }
+
+  p#full {
+    border: 3px solid $full-border-color;
+    background: $full-background;
+    color: $full-color;
+  }
+
+  p#joined {
+    border: 3px solid $joined-border-color;
+    background: $joined-background;
+    color: $joined-color;
+  }
 }

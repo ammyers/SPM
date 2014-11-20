@@ -19,21 +19,22 @@ joel.created_studies << ocean_study
 db_time1 = Studytime.create(:datetime => DateTime.parse('9 Nov 2014 18:30:00'), :location => "Wey 310")
 desert_time1 = Studytime.create(:datetime => DateTime.parse('9 Nov 2014 17:30:00'), :location => "Wey 246")
 desert_time2 = Studytime.create(:datetime => DateTime.parse('9 Nov 2014 15:30:00'), :location => "Wey 340")
+desert_time3 = Studytime.create(:datetime => DateTime.parse('9 Jan 2014 08:30:00'), :location => "Wey 114")
+desert_time4 = Studytime.create(:datetime => DateTime.parse('23 Feb 2014 12:30:00'), :location => "Wey 114")
 ocean_time1 = Studytime.create(:datetime => DateTime.parse('14 Dec 2014 14:30:00'), :location => "Wey 298")
 ocean_time2 = Studytime.create(:datetime => DateTime.parse('1 Jan 2014 10:30:00'), :location => "Wey 114")
-ocean_time3 = Studytime.create(:datetime => DateTime.parse('9 Jan 2014 08:30:00'), :location => "Wey 114")
-ocean_time4 = Studytime.create(:datetime => DateTime.parse('23 Feb 2014 12:30:00'), :location => "Wey 114")
 
 db_study.studytimes << db_time1
 desert_study.studytimes << desert_time1
 desert_study.studytimes << desert_time2
+desert_study.studytimes << desert_time3
+desert_study.studytimes << desert_time4
 ocean_study.studytimes << ocean_time1
 ocean_study.studytimes << ocean_time2
-ocean_study.studytimes << ocean_time3
-ocean_study.studytimes << ocean_time4
 
 bobby.studytimes << db_time1
 bobby.studytimes << desert_time2
+bobby.completedstudies << db_time1
 
 sally.studytimes << desert_time1
 sally.studytimes << ocean_time1

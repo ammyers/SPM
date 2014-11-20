@@ -67,3 +67,16 @@ ul#mycreatedstudies, ul#users {
     	min-height: 50px;
 	}
 }
+
+ul#studylist {
+    li {
+        padding: 5;
+    }
+
+    li#complete {
+        color: green;
+    }
+    li#incomplete {
+        color: black;
+    }
+} 

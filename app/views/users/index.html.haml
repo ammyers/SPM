@@ -5,10 +5,13 @@
 
   %ul.maincontent#users
     - @users.each do |user|
-      %li
-        %div#top
-          %div#left
-            %p#title= user.first_name + " " + user.last_name 
-            %p#role= "Role: " + user.role.capitalize
-          %div#right
-            = link_to "MORE INFO", user_path(user), { :class => "selection_link"}
+      - if user.role != 'admin'
+        %li
+          %div#top
+            %div#left
+              %p#title= user.first_name + " " + user.last_name 
+              %p#role= "Role: " + user.role.capitalize
+              %p= "Studies signed up for: #{user.studytimes.size}"
+              %p= "Studies completed: #{user.completedstudies.size}"
+            %div#right
+              = link_to "MORE INFO", user_path(user), { :class => "selection_link"}

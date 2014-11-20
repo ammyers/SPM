@@ -50,4 +50,12 @@ class StudiesController < ApplicationController
     flash[:notice] = "Study '#{@study.title}' deleted."
     redirect_to studies_path
   end
+
+  def join
+    @me = get_user
+    @me.studytimes << Studytime.find(params[:studytime])
+    count = @me.studytimes.size
+    flash.alert = "You are now registered for #{count} studies"
+    redirect_to users_my_studies_path
+  end
 end

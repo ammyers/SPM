@@ -47,6 +47,10 @@ ActiveRecord::Schema.define(:version => 20141110015253) do
     t.string   "role",       :default => "participant"
     t.datetime "created_at",                            :null => false
     t.datetime "updated_at",                            :null => false
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "name"
+    t.string   "member_of"
   end
 
 end

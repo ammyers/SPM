@@ -1,10 +1,18 @@
-%h2 Details about #{@user.first_name} #{@user.last_name}
-
-%ul#details
-	%li= "First Name: #{@user.first_name}"
-	%li= "Last Name: #{@user.last_name}"
-	%li= "Role: #{@user.role}"
-
-= link_to 'Edit', edit_user_path(@user)
-= button_to 'Delete', user_path(@user), :method => :delete, :confirm => 'Are you sure?'
-= link_to 'Back to users list', users_path
+%div#body
+	- name = @user.first_name + " " + @user.last_name
+	%h1= name
+	%div.maincontent#userinfo
+		%h2 Role: 
+		%p= @user.role
+		%h2 Studies signed up for:
+		%p= @user.studytimes.size
+		%h2 Studies completed:
+		%p= @user.completedstudies.size
+		%h2 Studylist:
+		%ul#studylist
+			- @user.studytimes.each do |s|
+				- study = s.study
+				- if @user.completedstudies.exists?(s)
+					%li#complete= study.title + " | " + s.datetime.strftime("%A %b %e, %l:%M %p") + " | " + s.location + " | COMPLETED"
+				- else
+					%li#incomplete= study.title + " | " + s.datetime.strftime("%A %b %e, %l:%M %p") + " | " + s.location + " | NOT YET COMPLETED"

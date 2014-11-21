@@ -23,7 +23,7 @@ module NavigationHelpers
     when /^the Admin page$/
       'admin'
     when /^the My\sStudies page$/
-      'studies/1'
+      '/users/my_studies'
     when /^the Create New Study page$/
       '/studies/new'
     when /^list of student electing to write essays/

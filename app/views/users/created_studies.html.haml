@@ -1,30 +1,26 @@
 -#  This file is app/views/movies/my_studies.html.haml
-%h1 My CREATED Studies (only accessible to researchers w/ studies)
 
-%table#studies
-  %thead
-    %tr
-      %th Title
-      %th Description
-      %th Times
-      %th Learn More
-  %tbody
-    - @studies.each do |s|
-      %tr
-        %td= s.title 
-        %td= s.description
-        %td
-          - s.studytimes.each do |t|
-            = t.datetime.strftime("%a %b %d, %Y, %l:%M")
-            %br
-        %td= link_to "More about #{s.title}", study_path(s)
+%div#body
+  %h1 My Created Studies (only available to researchers)
 
-= link_to 'Add new study', new_study_path
-%br
-%br
-- if @me
-  %p= "You are logged in as #{@me.first_name} #{@me.last_name}"
-  %p= "Your role is: #{@me.role.upcase}"
-  %p= "Your user ID is: #{@me.id}"
-- else
-  %p You are not currently logged in as anyone!
+  %ul.maincontent#mycreatedstudies
+    - @studies.each do |study|
+      %li
+        %div#top
+          %div#left
+            %p#title= study.title
+            Researchers: 
+            - numresearchers = study.researchers.size
+            - study.researchers.each do |r|
+              = link_to "#{r.first_name} #{r.last_name}", user_path(r), { :class => "researcher_link"}
+              - numresearchers -= 1
+              - if numresearchers > 0
+                | 
+          %div#right
+            = link_to "EDIT THIS STUDY", study_path(study), { :class => "selection_link"}
+          %div#right
+            Times and Locations:
+            - study.studytimes.each do |studytime|
+              %p#time= studytime.datetime.strftime("%A %b %e, %l:%M %p") + " in " + studytime.location
+        %div#bottom
+          %p#description= study.description

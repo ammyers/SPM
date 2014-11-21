@@ -2,9 +2,73 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-#indent1 {
-	position:		absolute;
-	left:			5%;	
+// General color options - not necessarily used 
+$red-velvet-cake: #BA0000;
+$very-dark-red: #520000;
+$tannish: #FFF2C9;
+// Check app/assets/images for background image options
+$page-background: white image-url("escheresque-light.png") repeat fixed;
 
+// Colors for study-specific pages
+$listitem-background: rgba(172,0,0,0.2);
+$listitem-textcolor: black;
+$full-background: DarkGray;
+$full-color: $tannish;
+$full-border-color: black;
+$joined-background: LightGreen;
+$joined-color: black;
+$joined-border-color: DarkGreen;
 
+#studies {
+	li {
+		background: $listitem-background;
+		border: 1px solid black;
+    border-radius: 10px;
+    color: $listitem-textcolor;
+    overflow: auto;
+
+    div#top {
+      min-height: 50px;
+    }
+    div#right {
+      // This a-link is the selection option
+      a {
+        padding: 17px 5px;
+        margin-left: 5px;
+        position: relative;
+        top: 20px;
+      }
+    }   
+  }
+}
+
+#studyinfo {
+  #time {
+  }
+
+  #openings {
+  }
+
+  .selection_link {
+    display: block;
+  }
+
+  p#full, p#joined {
+    display: block;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 10px;
+  }
+
+  p#full {
+    border: 3px solid $full-border-color;
+    background: $full-background;
+    color: $full-color;
+  }
+
+  p#joined {
+    border: 3px solid $joined-border-color;
+    background: $joined-background;
+    color: $joined-color;
+  }
 }

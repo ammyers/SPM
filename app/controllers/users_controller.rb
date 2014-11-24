@@ -7,12 +7,16 @@ class UsersController < ApplicationController
   end
 
   def index
-     @me = get_user
+    @me = get_user
+    if @me.role != 'admin'
+      redirect_to studies_path
+    end
     @users = User.all 
-    #@class = params[:class]
-    #@class_students = User.find(:all, conditions => {:class => @class})
+    #if(params[:course]) 
+     # @course = Course.find(params[:course])
+      #@course_students = @course.students
+    #end 
   end
-
 
   def my_studies
     @me = get_user

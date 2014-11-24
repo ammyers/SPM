@@ -1,12 +1,7 @@
 -# Pages#login
--# Find me in app/views/page/login.html -->
+-# Find me in app/views/pages/login.html -->
 
-- if flash.alert
-	%div.alert= flash.alert
-
-%h1 Welcome to the cake
-
-%ul.navbar
+%ul#login
 	%li= link_to "Log in as Participant", users_login_path(:email=>"bcarpenter@ups.edu", :password=>"chuck")
 	%li= link_to "Log in as Researcher", users_login_path(:email=>"swinthrop@ups.edu", :password=>"wendy")
 	%li= link_to "Log in as Admin", users_login_path(:email=>"rdorn@ups.edu", :password=>"password")

@@ -13,12 +13,12 @@ class StudiesController < ApplicationController
   end
 
   def new
-    @me = get_user
+    #@me = get_user
     # default: render 'new' template
   end
 
   def create
-    @me = get_user
+    #@me = get_user
     @study = Study.new(params[:study])
     studytime = Studytime.new(params[:time_slot])
     @study.studytimes << studytime
@@ -49,5 +49,13 @@ class StudiesController < ApplicationController
     @study.destroy
     flash[:notice] = "Study '#{@study.title}' deleted."
     redirect_to studies_path
+  end
+
+  def join
+    @me = get_user
+    @me.studytimes << Studytime.find(params[:studytime])
+    count = @me.studytimes.size
+    flash.alert = "You are now registered for #{count} studies"
+    redirect_to users_my_studies_path
   end
 end

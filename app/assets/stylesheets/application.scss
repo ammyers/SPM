@@ -10,86 +10,253 @@
  *
  *= require_self
  *= require_tree .
- */
+ */ 
+
+// General color options - not necessarily used 
+$red-velvet-cake: #BA0000;
+$very-dark-red: #520000;
+$tannish: #FFF2C9;
+// Check app/assets/images for background image options
+$page-background: white image-url("escheresque-light.png") repeat fixed;
+
+// Header variables
+$header-background-color: rgba(172,0,0,0.3);
+$header-text-color: black;
+$header-border-color: $red-velvet-cake;
+
+// Nav bar variables
+$nav-button-background: $page-background;
+$nav-button-background-hover: rgba(255,255,255,0.6);
+$nav-button-text-color: black;
+$nav-button-border-color: $very-dark-red;
+
+// Main content variables
+$maincontent-list-background: transparent;
+$researcher-link-color: $very-dark-red;
+$researcher-link-hover-color: $red-velvet-cake;
+$selection-link-background: $page-background;
+$selection-link-color: black;
+$selection-link-hover-background: rgba(0,0,0,0.3);
+$selection-link-hover-color: white;
+$selection-link-border-color: $red-velvet-cake;
+
+// Footer stuff
+$footer-background-color: $header-background-color;
+$footer-border-color: $header-border-color;
+$footer-push-amount: 39px;
+$footer-push-amount-neg: -39px;
+
+* {
+  margin: 0;
+}
 
 html, body {
+  height: 100%;
   margin: 0;
   padding: 0;
-  background: White;
-  color: DarkSlateGrey;
-  font-family: Tahoma, Verdana, sans-serif;
+  background: $page-background;
+  color: black;
+  font-family: Georgia, serif;
   font-size: 10pt;
 }
-div#main {
-  margin: 0;
-  padding: 0 20px 20px;
-}
-a {
-  background: transparent;
-  color: maroon;
-  text-decoration: underline;
-  font-weight: bold;
-}
-h1 {
-  color: maroon;
-  font-size: 150%;
-  font-style: italic;
+
+div#header {
+  padding: 5px;
   display: block;
-  width: 100%;
-  border-bottom: 1px solid DarkSlateGrey;
-  margin: 0 0 1em;
-  padding: 10px;
-}
+  border-bottom: 4px solid $header-border-color;
+  background: $header-background-color;
+  overflow: auto;
 
-h1.title {
-  margin: 0 0 1em;
-  padding: 10px;
-  background-color: orange;
-  color: white;
-  border-bottom: 4px solid gold;
-  font-size: 2em;
-  font-style: normal;
-}
-
-table {
-  margin: 10px;
-  border-collapse: collapse;
-  width: 100%;
-  border-bottom: 2px solid black;
-  td {
-    padding: 4px;
-    text-align: left;
-  }
-  th {
-    border: 2px solid white;
+  h1 {
+    float: left;
+    margin: 3px 3px 3px 10px;
+    padding: 0;
+    color: $header-text-color;
+    font-size: 30px;
     font-weight: bold;
-    background-color: wheat;
-    padding: 4px;
-    text-align: left;
+    font-family: Georgia, serif
   }
-}
-form label {
-  display: block;
-  line-height: 25px;
-  font-weight: bold;
-  color: maroon;
-}
 
-ul.navbar {
-  list-style-type: none;
-
-  li {
-    display: inline;
+  .headerlink {
     a {
-      color: white;
+      color: $nav-button-text-color;
       text-decoration: none;
+      font-weight: bold;
       padding: 10;
-      background: green;
+      background: $nav-button-background;
+      border: 3px solid $nav-button-border-color;
+      border-radius: 16px;
     }
-
+  
     :hover {
-      background: orange;
+      background: $nav-button-background-hover;
       color: black;
     }
   }
+
+  ul#navbar {
+    float: left;
+    list-style-type: none;
+    margin: 13px 0;
+    li {
+      display: inline;
+      padding: 0 2px;
+    }
+  }
+
+  p#logout {
+    float: right;
+    margin: 13px 0 13px 5px;
+  }
+
+  p#myaccount {
+    float: right;
+    margin: 13px 0;
+  }
+}
+
+p#alert {
+  float: left;
+  margin: 0 0 0 40px;
+  background-color: $very-dark-red;
+  color: white;
+  font-weight: bold;
+  border: 3px solid red;
+  padding: 10;
+  border-radius: 10px;
+  // Try an animation?
+  -webkit-animation: fadeout 3s;
+  -moz-animation: fadeout 3s;
+  animation: fadeout 3s;
+}
+
+//Some possible animations for the alert bar
+@-webkit-keyframes fadeout {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+@-moz-keyframes fadeout {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+@keyframes fadeout {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+div#body {
+  padding: 15px;
+
+  h1 {
+    padding: 0 0 10px 0;
+  }
+
+  .maincontent {
+    padding: 0;
+    border: 3px solid $very-dark-red;
+    border-radius: 10px;
+    background: $maincontent-list-background;
+
+    p#description {
+      margin-bottom: 5px;
+    }
+    p#title {
+      font-size: 150%;
+      font-weight: bold;
+    }
+  }
+
+  // Main content lists, such as studies and users
+  ul.maincontent {
+    list-style-type: none;
+
+    li {
+      margin: 10px;
+      padding: 5px;
+
+      div#top {
+        overflow: auto;
+        padding: 5px;
+        height: auto;
+      }
+
+      div#bottom {
+        padding: 5px;
+      }
+
+      div#left {
+        display: inline;
+        float: left;
+      }
+
+      div#right {
+        display: inline;
+        float: right;
+      }
+    }
+  }
+
+  div.maincontent {
+    h2 {
+      padding: 5px;
+    }
+
+    p {
+      padding: 5px;
+    }
+
+    a.researcher_link {
+      padding: 5px;
+    }
+  }
+
+  // This a-link is the researcher names
+  a.researcher_link {
+    text-decoration: none;
+    color: $researcher-link-color;
+    margin-bottom: 5px;
+  }
+  :hover.researcher_link {
+    color: $researcher-link-hover-color;
+  }
+
+  // This a-link is the selection option
+  a.selection_link {
+    text-decoration: none;
+    font-weight: bold;
+    border: 3px solid $selection-link-border-color;
+    border-radius: 10px;
+    background: $selection-link-background;
+    color: $selection-link-color;
+  }
+  :hover.selection_link {
+    background: $selection-link-hover-background;
+    color: $selection-link-hover-color;
+  }
+}
+
+
+
+div#footer {
+  border-top: 4px solid $footer-border-color;
+  //border-bottom: 4px solid $header-border-color;
+  background: $footer-background-color;
+  padding: 5px;
+  p {
+    padding: 5px;
+    font-weight: bold;
+  }
+}
+
+//  Sticky Footer by Ryan Fait
+//  http://ryanfait.com/
+.faitwrapper {
+  min-height: 100%;
+  height: auto !important; /* This line and the next line are not necessary unless you need IE6 support */
+  height: 100%;
+  margin: 0 auto $footer-push-amount-neg; /* the bottom margin is the negative value of the footer's height */
+}
+
+.faitfooter, .faitpush {
+  height: $footer-push-amount; /* .push must be the same height as .footer */
 }

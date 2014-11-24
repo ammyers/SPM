@@ -11,7 +11,11 @@
   = text_field :user, 'last_name'
 
   = label :user, :role, 'Role'
-  = select :user, :role, 'role'
+  <select name="user[role]">
+  <option value="participant">Participant</option>
+  <option value="researcher">Researcher</option>
+  <option value="admin">Administrator</option>
+  </select>
 
   = label :user, :paper_option, 'Paper Option'
   <select name="user[paper_option]">

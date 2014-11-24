@@ -1,40 +1,26 @@
--#  This file is app/views/movies/index.html.haml
+-#  This file is app/views/studies/index.html.haml
 
-%h1 All Studies
-<div id="indent1">
+%div#body
+  %h1 All Current Studies
 
-%table#studies
-  %thead
-    %tr
-      %th Title
-      %th Researchers
-      %th Description
-      %th Times
-      %th Learn More
-      %th Sign Up
-  %tbody
+  %ul.maincontent#studies
     - @studies.each do |study|
-      %tr
-        %td= study.title 
-        %td
-          - study.researchers.each do |r|
-            = link_to "#{r.first_name} #{r.last_name}", user_path(r)
-            %br
-        %td= study.description
-        %td
-          - study.studytimes.each do |t|
-            = t.datetime.strftime("%a %b %d, %Y, %l:%M")
-            %br
-        %td= link_to "More about #{study.title}", study_path(study)
-
-= link_to 'Add new study', new_study_path
-%br
-%br
-- if @me
-  %p= "You are logged in as #{@me.first_name} #{@me.last_name}"
-  %p= "Your role is: #{@me.role.upcase}"
-  %p= "Your user ID is: #{@me.id}"
-- else
-  %p You are not currently logged in as anyone!    
-
-</div>
+      %li
+        %div#top
+          %div#left
+            %p#title= study.title
+            Researchers: 
+            - numresearchers = study.researchers.size
+            - study.researchers.each do |r|
+              = link_to "#{r.first_name} #{r.last_name}", user_path(r), { :class => "researcher_link"}
+              - numresearchers -= 1
+              - if numresearchers > 0
+                | 
+          %div#right
+            = link_to "SELECT THIS STUDY", study_path(study), { :class => "selection_link"}
+          %div#right
+            Available Times:
+            - study.studytimes.each do |t|
+              %p#time= t.datetime.strftime("%A %b %e, %l:%M %p") + " in " #+ t.location
+        %div#bottom
+          %p#description= study.description

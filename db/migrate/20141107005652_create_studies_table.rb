@@ -1,5 +1,5 @@
 class CreateStudiesTable < ActiveRecord::Migration
-  def up
+  def change
   	create_table :studies do |s|
   		s.string :title
   		s.text :description
@@ -7,8 +7,5 @@ class CreateStudiesTable < ActiveRecord::Migration
   		s.string :duration
       s.timestamps
   	end
-  end
-
-  def down
   end
 end

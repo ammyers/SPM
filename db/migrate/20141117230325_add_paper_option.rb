@@ -1,8 +1,5 @@
 class AddPaperOption < ActiveRecord::Migration
-  def up
-  	add_column :users, :paper_option, :bool, :defalut => false
-  end
-
-  def down
+  def change
+  	add_column :users, :paper_option, :boolean, :defalut => false
   end
 end

@@ -1,5 +1,4 @@
 -#  This file is app/views/users/index.html.haml
-
 %div#body
   %h1 All Users
 
@@ -13,5 +12,7 @@
               %p#role= "Role: " + user.role.capitalize
               %p= "Studies signed up for: #{user.studytimes.size}"
               %p= "Studies completed: #{user.completedstudies.size}"
+              - if @me.admin?
+                %p= "Paper Option:  #{user.paper_yes_or_no}"
             %div#right
               = link_to "MORE INFO", user_path(user), { :class => "selection_link"}

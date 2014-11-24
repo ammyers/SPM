@@ -1,5 +1,5 @@
 #rspec for testing models
-require 'spec_helper'
+require 'rails_helper'
 
 RSpec.describe Study, :type => :model do
 

@@ -13,12 +13,12 @@ class StudiesController < ApplicationController
   end
 
   def new
-    @me = get_user
+    #@me = get_user
     # default: render 'new' template
   end
 
   def create
-    @me = get_user
+    #@me = get_user
     @study = Study.new(params[:study])
     studytime = Studytime.new(params[:time_slot])
     @study.studytimes << studytime

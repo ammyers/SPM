@@ -10,4 +10,12 @@
 			= label :user, :last_name, 'Last Name'
 			= text_field :user, 'last_name'
 
+			= label :user, :paper_option, 'Paper Option'
+  			<select name="user[paper_option]">
+  			<option value=true>Yes</option>
+  			<option value=false>No</option>
+  			</select>
+
 		= submit_tag 'Update User Info', {:class => :input_edit}
+
+		%div#wrapper= link_to "DELETE ACCOUNT", user_path(@user), {:method => :delete, :confirm => "Are you sure?", :class => "selection_link"}

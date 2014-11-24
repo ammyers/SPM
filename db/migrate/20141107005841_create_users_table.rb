@@ -1,5 +1,5 @@
 class CreateUsersTable < ActiveRecord::Migration
-  def up
+  def change
   	create_table :users do |p|
       p.string :first_name
       p.string :last_name
@@ -8,8 +8,5 @@ class CreateUsersTable < ActiveRecord::Migration
       p.string :role, :default => 'participant'
       p.timestamps
  	 end
-  end
-
-  def down
   end
 end

@@ -21,6 +21,6 @@
           %div#right
             Available Times:
             - study.studytimes.each do |t|
-              %p#time= t.datetime.strftime("%A %b %e, %l:%M %p") + " in " #+ t.location
+              %p#time= t.datetime.strftime("%A %b %e, %l:%M %p") + " in " + t.location
         %div#bottom
           %p#description= study.description

@@ -19,6 +19,9 @@
 		%p= @user.studytimes.size
 		%h2 Studies completed:
 		%p= @user.completedstudies.size
+		%h2 Courses enrolled in:
+		- @user.courses.each do |c|
+			%p= "Section: #{c.section} | Instructor: #{c.instructor}"
 		%h2 Studylist:
 		%ul#studylist
 			- @user.studytimes.each do |s|
@@ -27,3 +30,5 @@
 					%li#complete= study.title + " | " + s.datetime.strftime("%A %b %e, %l:%M %p") + " | " + s.location + " | COMPLETED"
 				- else
 					%li#incomplete= study.title + " | " + s.datetime.strftime("%A %b %e, %l:%M %p") + " | " + s.location + " | NOT YET COMPLETED"
+		%div#wrapper= link_to "EDIT ACCOUNT", edit_user_path(@user), { :class => "selection_link"}
+		%div#wrapper= link_to "DELETE ACCOUNT", user_path(@user), {:method => :delete, :confirm => "Are you sure?", :class => "selection_link"}

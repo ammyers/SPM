@@ -11,11 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20141120061531) do
+ActiveRecord::Schema.define(:version => 20141124015345) do
 
   create_table "completions", :id => false, :force => true do |t|
     t.integer "user_id"
     t.integer "studytime_id"
+  end
+
+  create_table "courses", :force => true do |t|
+    t.string   "section"
+    t.string   "instructor"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "participants", :id => false, :force => true do |t|
@@ -26,6 +33,11 @@ ActiveRecord::Schema.define(:version => 20141120061531) do
   create_table "researchers", :id => false, :force => true do |t|
     t.integer "user_id"
     t.integer "study_id"
+  end
+
+  create_table "studentcourses", :id => false, :force => true do |t|
+    t.integer "user_id"
+    t.integer "course_id"
   end
 
   create_table "studies", :force => true do |t|

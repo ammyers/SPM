@@ -13,4 +13,14 @@
   = label :user, :role, 'Role'
   = select :user, :role, 'role'
 
-  = submit_tag 'Update User Info'
+  = label :user, :paper_option, 'Paper Option'
+  <select name="user[paper_option]">
+  <option value=true>Yes</option>
+  <option value=false>No</option>
+  </select>
+
+ 
+ 
+  <br> <br>
+ 
+  = submit_tag'Update User Info'

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20141110015253) do
+ActiveRecord::Schema.define(:version => 20141117230325) do
 
   create_table "participants", :id => false, :force => true do |t|
     t.integer "studytime_id"
@@ -39,14 +39,7 @@ ActiveRecord::Schema.define(:version => 20141110015253) do
     t.datetime "updated_at", :null => false
   end
 
-  create_table "users", :force => true do |t|
-    t.string   "first_name"
-    t.string   "last_name"
-    t.string   "email"
-    t.string   "password"
-    t.string   "role",       :default => "participant"
-    t.datetime "created_at",                            :null => false
-    t.datetime "updated_at",                            :null => false
-  end
+# Could not dump table "users" because of following StandardError
+#   Unknown type 'bool' for column 'paper_option'
 
 end

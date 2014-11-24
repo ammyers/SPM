@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  attr_accessible :first_name, :last_name, :email, :password, :role
+  attr_accessible :first_name, :last_name, :email, :password, :role, :paper_option
 
   validates :first_name, :last_name, :email, :password, presence: true
 
@@ -13,4 +13,21 @@ class User < ActiveRecord::Base
   	self.first_name = self.first_name.capitalize
   	self.last_name = self.last_name.capitalize
   end
+
+  def paper_yes_or_no
+  	if (self.paper_option == true) 
+  		return "Yes"
+  	else 
+  		return "No"
+  	end
+  end
+
+  def admin?
+  	if (self.role == "admin") 
+  		return true
+  	else 
+  		return false
+  	end
+  end
+
 end

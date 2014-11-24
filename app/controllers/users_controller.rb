@@ -48,7 +48,7 @@ class UsersController < ApplicationController
   def create
     @me = get_user
     @user = User.create!(params[:user])
-    flash[:notice] = "#{@user.title} was successfully created."
+    #flash[:notice] = "#{@user.title} was successfully created."
     redirect_to users_path
   end
 
@@ -61,7 +61,7 @@ class UsersController < ApplicationController
     @me = get_user
     @user = User.find params[:id]
     @user.update_attributes!(params[:user])
-    flash[:notice] = "#{@user.title} was successfully updated."
+    #flash[:notice] = "#{@user.title} was successfully updated."
     redirect_to user_path(@user)
   end
 
@@ -69,7 +69,7 @@ class UsersController < ApplicationController
     @me = get_user
     @user = User.find(params[:id])
     @user.destroy
-    flash[:notice] = "user '#{@user.title}' deleted."
+    #flash[:notice] = "user '#{@user.title}' deleted."
     redirect_to users_path
   end
 end

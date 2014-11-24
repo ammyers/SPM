@@ -7,9 +7,12 @@ class UsersController < ApplicationController
   end
 
   def index
-    @me = get_user
+     @me = get_user
     @users = User.all 
+    #@class = params[:class]
+    #@class_students = User.find(:all, conditions => {:class => @class})
   end
+
 
   def my_studies
     @me = get_user

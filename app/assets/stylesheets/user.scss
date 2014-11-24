@@ -43,20 +43,10 @@ ul.maincontent {
      	div#right {
      		// This a-link is the selection option
      		a {
-     			text-decoration: none;
-     			font-weight: bold;
-     			border: 3px solid $selection-link-border-color;
-     			border-radius: 10px;
      			padding: 17px 5px;
-     			background: $selection-link-background;
-     			color: $selection-link-color;
-                    margin-left: 5px;
-                    position: relative;
-                    top: 20px;
-     		}
-     		:hover {
-     			background: $selection-link-hover-background;
-     			color: $selection-link-hover-color;
+                margin-left: 5px;
+                position: relative;
+                top: 20px;
      		}
      	}     	
 	}
@@ -80,3 +70,36 @@ ul#studylist {
         color: black;
     }
 } 
+
+div#userinfo {
+    div#wrapper {
+        padding: 8px;
+        margin: 5px;
+        height: auto;
+
+    }
+}
+
+div#edit {
+    label, select {
+        padding: 5px;
+    }
+    input {
+        margin: 5px;
+    }
+
+    input.input_edit {
+        text-decoration: none;
+        font-weight: bold;
+        border: 3px solid $selection-link-border-color;
+        border-radius: 10px;
+        background: $selection-link-background;
+        color: $selection-link-color;
+        padding: 5px;
+    }
+
+    :hover.input_edit {
+        background: $selection-link-hover-background;
+        color: $selection-link-hover-color;
+    }
+}

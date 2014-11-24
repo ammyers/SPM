@@ -9,6 +9,8 @@ class User < ActiveRecord::Base
 
   has_and_belongs_to_many :completedstudies, join_table: "completions", class_name: "Studytime"
 
+  has_and_belongs_to_many :courses, join_table: "studentcourses"
+
   before_save :capitalize_name
 
   def capitalize_name

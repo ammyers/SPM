@@ -11,3 +11,5 @@
 			= text_field :user, 'last_name'
 
 		= submit_tag 'Update User Info', {:class => :input_edit}
+
+		%div#wrapper= link_to "DELETE ACCOUNT", user_path(@user), {:method => :delete, :confirm => "Are you sure?", :class => "selection_link"}

@@ -1,16 +1,13 @@
 -# edit.html.haml using partial
 
-%h1 Edit Existing User
+%div#body
+	%h1 Edit Existing User
+	%div.maincontent#edit
+		= form_tag user_path(@user), :method => :put do
+			= label :user, :first_name, 'First Name'
+			= text_field :user, 'first_name'
+			
+			= label :user, :last_name, 'Last Name'
+			= text_field :user, 'last_name'
 
-= form_tag user_path(@user), :method => :put do
-
-  = label :user, :first_name, 'First Name'
-  = text_field :user, 'first_name'
-
-  = label :user, :last_name, 'Last Name'
-  = text_field :user, 'last_name'
-
-  = label :user, :role, 'Role'
-  = select :user, :role, 'role'
-
-  = submit_tag 'Update User Info'
+		= submit_tag 'Update User Info', {:class => :input_edit}

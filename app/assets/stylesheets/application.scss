@@ -228,6 +228,7 @@ div#body {
     border-radius: 10px;
     background: $selection-link-background;
     color: $selection-link-color;
+    padding: 5px;
   }
   :hover.selection_link {
     background: $selection-link-hover-background;

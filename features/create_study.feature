@@ -2,7 +2,7 @@ Feature: As a researcher,
 I want to be able to create a study,
 so that I can create a study.
 
-
+@wip
 Scenario:
 	Given I am on the All Studies page
 	When I follow "Add new study"

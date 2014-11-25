@@ -15,7 +15,7 @@
               - if numresearchers > 0
                 | 
           %div#right
-            = link_to "SELECT THIS STUDY", study_path(study), { :class => "selection_link"}
+            = link_to "SELECT STUDY: #{study.title}", study_path(study), { :class => "selection_link"}
           %div#right
             Available Times:
             - study.studytimes.each do |t|

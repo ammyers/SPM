@@ -11,13 +11,14 @@ Scenario:
 	Then I should see the Paper Option column
 
 # run 'rake db:seed RAILS_ENV=test' first; for this test data is needed in the test db for it to work. We should note as much on piazza so Joel knows.
+@wip
 Scenario:
 	Given I am on the Home Page
 	When I follow "Log in as Participant"
 	Then I should be on the All Studies page
 	When I follow "MY ACCOUNT"
 	Then I should be on the My Account page
-	When I follow "Edit"
+	When I follow "EDIT ACCOUNT"
 	Then I should be on the Edit User page
 	When I select "Yes" from "user[paper_option]"
 	And I press "Update User Info"

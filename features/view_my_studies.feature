@@ -3,8 +3,9 @@ Feature: As a study participant,
 	so that I can review my commitments.
 
 Scenario:
-	Given I am signed in
-	And I my role is "participant"
-	When I follow "View My Studies"
+	Given I am on the Home Page
+	When I follow "Log in as Participant"
+	Then I should be on the All Studies page
+	When I follow "MY STUDIES"
 	Then I should be on the My Studies page
-	Then I should see "studies"
+	Then I should see "My Studies"

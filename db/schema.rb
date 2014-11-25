@@ -65,7 +65,7 @@ ActiveRecord::Schema.define(:version => 20141124015345) do
     t.string   "role",         :default => "participant"
     t.datetime "created_at",                              :null => false
     t.datetime "updated_at",                              :null => false
-    t.boolean  "paper_option"
+    t.boolean  "paper_option", :default => false
   end
 
 end

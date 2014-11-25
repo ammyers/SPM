@@ -8,7 +8,14 @@ class UsersController < ApplicationController
 
   def index
     @me = get_user
+    if @me.role != 'admin'
+      redirect_to studies_path
+    end
     @users = User.all 
+    #if(params[:course]) 
+     # @course = Course.find(params[:course])
+      #@course_students = @course.students
+    #end 
   end
 
   def my_studies
@@ -48,7 +55,7 @@ class UsersController < ApplicationController
   def create
     @me = get_user
     @user = User.create!(params[:user])
-    flash[:notice] = "#{@user.title} was successfully created."
+    #flash[:notice] = "#{@user.title} was successfully created."
     redirect_to users_path
   end
 
@@ -59,9 +66,10 @@ class UsersController < ApplicationController
 
   def update
     @me = get_user
-    @user = User.find params[:id]
+    @user = User.find(params[:id])
     @user.update_attributes!(params[:user])
-    flash[:notice] = "#{@user.title} was successfully updated."
+    #flash[:notice] = "#{@user.title} was successfully updated."
+    flash.alert = "#{@user.first_name} #{@user.last_name} was successfully updated."
     redirect_to user_path(@user)
   end
 
@@ -69,7 +77,8 @@ class UsersController < ApplicationController
     @me = get_user
     @user = User.find(params[:id])
     @user.destroy
-    flash[:notice] = "user '#{@user.title}' deleted."
+    #flash[:notice] = "user '#{@user.title}' deleted."
+    flash.alert = "user #{@user.first_name} #{@user.last_name} deleted."
     redirect_to users_path
   end
 end

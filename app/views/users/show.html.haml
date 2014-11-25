@@ -4,15 +4,23 @@
 	%div.maincontent#userinfo
 		%h2 Role: 
 		%p= @user.role
+		%h2 Paper Option:
+		%p= @user.paper_yes_or_no
 		%h2 Studies signed up for:
 		%p= @user.studytimes.size
 		%h2 Studies completed:
 		%p= @user.completedstudies.size
-		%h2 Studylist:
-		%ul#studylist
-			- @user.studytimes.each do |s|
-				- study = s.study
-				- if @user.completedstudies.exists?(s)
-					%li#complete= study.title + " | " + s.datetime.strftime("%A %b %e, %l:%M %p") + " | " + s.location + " | COMPLETED"
-				- else
-					%li#incomplete= study.title + " | " + s.datetime.strftime("%A %b %e, %l:%M %p") + " | " + s.location + " | NOT YET COMPLETED"
+		- if @user.courses.size > 0
+			%h2 Courses enrolled in:
+			- @user.courses.each do |c|
+				%p= "Section: #{c.section} | Instructor: #{c.instructor}"
+		- if @user.studytimes.size > 0	
+			%h2 Studylist:
+			%ul#studylist
+				- @user.studytimes.each do |s|
+					- study = s.study
+					- if @user.completedstudies.exists?(s)
+						%li#complete= study.title + " | " + s.datetime.strftime("%A %b %e, %l:%M %p") + " | " + s.location + " | COMPLETED"
+					- else
+						%li#incomplete= study.title + " | " + s.datetime.strftime("%A %b %e, %l:%M %p") + " | " + s.location + " | NOT YET COMPLETED"
+		%div#wrapper= link_to "EDIT ACCOUNT", edit_user_path(@user), { :class => "selection_link"}

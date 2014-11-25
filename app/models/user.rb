@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
+
   attr_protected :uid, :provider #for omniauth authentication
-  attr_accessible :first_name, :last_name, :email, :password, :role, :name, :member_of #ups data fields
+  attr_accessible :first_name, :last_name, :email, :password, :role, :name, :member_of, :paper_option
+
 
   validates :first_name, :last_name, :email, presence: true
 
@@ -10,6 +12,8 @@ class User < ActiveRecord::Base
 
   has_and_belongs_to_many :completedstudies, join_table: "completions", class_name: "Studytime"
 
+  has_and_belongs_to_many :courses, join_table: "studentcourses"
+
   before_save :capitalize_name
 
   def capitalize_name
@@ -17,6 +21,7 @@ class User < ActiveRecord::Base
   	self.last_name = self.last_name.capitalize
   end
 
+<<<<<<< HEAD
   def full_name
     first_name + " " + last_name
   end
@@ -52,4 +57,22 @@ class User < ActiveRecord::Base
     user.save!
     return user
   end
+=======
+  def paper_yes_or_no
+  	if (self.paper_option == true) 
+  		return "Yes"
+  	else 
+  		return "No"
+  	end
+  end
+
+  def admin?
+  	if (self.role == "admin") 
+  		return true
+  	else 
+  		return false
+  	end
+  end
+
+>>>>>>> c0c3ca5ee31294fce0740b32409df69c6dca1762
 end

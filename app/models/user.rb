@@ -21,7 +21,6 @@ class User < ActiveRecord::Base
   	self.last_name = self.last_name.capitalize
   end
 
-<<<<<<< HEAD
   def full_name
     first_name + " " + last_name
   end
@@ -45,19 +44,13 @@ class User < ActiveRecord::Base
   		:first_name => auth["info"]["first_name"],
   		:member_of => auth["info"]["memberOf"]
   	)
-    
-    # if user.faculty?
-    #   :role => "admin"
-    # elsif user.student?
-    #   :role => "researcher"
-    # end
         
     user.provider = auth["provider"]
     user.uid = auth["uid"]
     user.save!
     return user
   end
-=======
+
   def paper_yes_or_no
   	if (self.paper_option == true) 
   		return "Yes"
@@ -73,6 +66,4 @@ class User < ActiveRecord::Base
   		return false
   	end
   end
-
->>>>>>> c0c3ca5ee31294fce0740b32409df69c6dca1762
 end

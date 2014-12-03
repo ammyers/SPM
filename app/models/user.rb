@@ -44,11 +44,11 @@ class User < ActiveRecord::Base
   		:first_name => auth["info"]["first_name"],
   		:member_of => auth["info"]["memberOf"]
   	)
-    
-    if(:member_of == "faculty")
-      user.role == "admin"
-    else
-      user.role == "researcher"
+
+    if user.faculty?
+      user.role == 'admin'
+    else user.student?
+      user.role == 'researchers'
     end
 
 

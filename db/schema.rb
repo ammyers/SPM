@@ -69,7 +69,7 @@ ActiveRecord::Schema.define(:version => 20141124015345) do
     t.string   "uid"
     t.string   "name"
     t.string   "member_of"
-    t.boolean  "paper_option"
+    t.boolean  "paper_option", :default => false
   end
 
 end

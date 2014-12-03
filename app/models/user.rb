@@ -44,7 +44,14 @@ class User < ActiveRecord::Base
   		:first_name => auth["info"]["first_name"],
   		:member_of => auth["info"]["memberOf"]
   	)
-        
+    
+    if(:member_of == "faculty")
+      user.role == "admin"
+    else
+      user.role == "researcher"
+    end
+
+
     user.provider = auth["provider"]
     user.uid = auth["uid"]
     user.save!

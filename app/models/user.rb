@@ -3,7 +3,6 @@ class User < ActiveRecord::Base
   attr_protected :uid, :provider #for omniauth authentication
   attr_accessible :first_name, :last_name, :email, :password, :role, :name, :member_of, :paper_option
 
-
   validates :first_name, :last_name, :email, presence: true
 
   has_and_belongs_to_many :created_studies, join_table: "researchers", class_name: "Study"
@@ -45,11 +44,10 @@ class User < ActiveRecord::Base
   		:member_of => auth["info"]["memberOf"]
   	)
 
-    if user.faculty?
-      user.role == 'admin'
-    else user.student?
-      user.role == 'researchers'
-    end
+      # if (user.student?)
+      #   user.role = :researchers
+      # end
+
 
 
     user.provider = auth["provider"]

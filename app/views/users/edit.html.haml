@@ -14,7 +14,13 @@
 			<option value=true>Yes</option>
 			<option value=false>No</option>
 			</select>
-		
-		= submit_tag 'Update User Info', {:class => :input_edit}
 
-		%div#wrapper= link_to "DELETE ACCOUNT", user_path(@user), {:method => :delete, :confirm => "Are you sure?", :class => "selection_link"}
+			= label :user, :role, 'Role'
+			<select name="user[role]">
+			<option value=researcher>Researcher</option>
+			<option value=participant>Participant</option>
+			</select>
+			
+			= submit_tag 'Update User Info', {:class => :input_edit}
+
+		%div#wrapper=link_to "Delete", user_path(@user), :method => :delete, :confirm => "Are you sure?", :class => "selection_link"

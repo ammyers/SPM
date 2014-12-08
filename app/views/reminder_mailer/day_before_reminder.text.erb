@@ -1,0 +1,15 @@
+Hi, <%= @user.name %>
+
+This is a reminder that you are signed up for a Psychology study TOMORROW.
+
+Study Details
+<%= @study.title %>
+
+<%= @study.description %>
+
+Session Details
+Time and Date: <%= @studytime.datetime.strftime("%A %b %e, %l:%M %p") %>
+
+Room Assignment: <%= @studytime.location %>
+
+Thank you

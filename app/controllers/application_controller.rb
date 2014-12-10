@@ -3,14 +3,14 @@ class ApplicationController < ActionController::Base
   before_filter :set_current_user #do this before any other controller
 
   def get_user
-    if session[:id]
-      return User.find(session[:id])
+    if session[:user_id] #:user_id
+      return User.find(session[:user_id]) #:user_id
     end
   end
 
   protected # prevents methods from being invoked by a route
 	  def set_current_user
-	    @current_user ||= User.find_by_id(session[:user_id])
+	    @me ||= User.find_by_id(session[:user_id])
 	    #redirect_to ____path and return unless @current_user #can redirect to somewhere if not logged in
 	  end
 

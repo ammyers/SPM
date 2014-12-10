@@ -44,9 +44,9 @@ class User < ActiveRecord::Base
   		:member_of => auth["info"]["memberOf"]
   	)
 
-      # if (user.student?)
-      #   user.role = :researchers
-      # end
+      if (user.student?)
+        user.role = 'researcher'
+      end
 
 
 

@@ -1,14 +1,16 @@
 class StudiesController < ApplicationController
 
+# @me unnecessary because of :set_current_user being performed in application controller 
+
   def show
-    @me = get_user
+    #@me = get_user
     id = params[:id] # retrieve study ID from URI route
     @study = Study.find(id) # look up study by unique ID
     # will render app/views/studys/show.<extension> by default
   end
 
   def index
-    @me = get_user
+    #@me = get_user
     @studies = Study.all
   end
 
@@ -23,9 +25,6 @@ class StudiesController < ApplicationController
     studytime = Studytime.new(params[:time_slot])
     @study.studytimes << studytime
     @study.save!
-
-    # params[:study].time_slots each do |t|
-    #   time_slots.new(t, :study)
     flash[:notice] = "#{@study.title} was successfully created."
     redirect_to studies_path
   end
@@ -36,7 +35,7 @@ class StudiesController < ApplicationController
   end
 
   def update
-    @me = get_user
+    #@me = get_user
     @study = Study.find params[:id]
     @study.update_attributes!(params[:study])
     flash[:notice] = "#{@study.title} was successfully updated."
@@ -44,7 +43,7 @@ class StudiesController < ApplicationController
   end
 
   def destroy
-    @me = get_user
+    #@me = get_user
     @study = Study.find(params[:id])
     @study.destroy
     flash[:notice] = "Study '#{@study.title}' deleted."
@@ -52,7 +51,7 @@ class StudiesController < ApplicationController
   end
 
   def join
-    @me = get_user
+    #@me = get_user
     @me.studytimes << Studytime.find(params[:studytime])
     count = @me.studytimes.size
     flash.alert = "You are now registered for #{count} studies"

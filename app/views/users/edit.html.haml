@@ -1,13 +1,13 @@
--# edit.html.haml using partial
+-
 %div#body
-	%h1 Edit Existing User
+	%h1 Edit Account
 	%div.maincontent#edit
 		= form_tag user_path(@user), :method => :put do
-			= label :user, :first_name, 'First Name'
-			= text_field :user, 'first_name'
+			/ = label :user, :first_name, 'First Name'
+			/ = text_field :user, 'first_name'
 			
-			= label :user, :last_name, 'Last Name'
-			= text_field :user, 'last_name'
+			/ = label :user, :last_name, 'Last Name'
+			/ = text_field :user, 'last_name'
 
 			= label :user, :paper_option, 'Paper Option'
 			<select name="user[paper_option]">

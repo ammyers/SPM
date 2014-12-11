@@ -60,9 +60,20 @@ bobby.studytimes << desert_time2
 bobby.completedstudies << db_time1
 sally.studytimes << desert_time1
 sally.studytimes << ocean_time1
-hailey.studytimes << sky_time1
-hailey.studytimes << moon_time1
-bill.studytimes << desert_time4
-tommy.studytimes << moon_time1
-tommy.studytimes << desert_time1
-tommy.studytimes << ocean_time1
+
+User.create(
+    	:name => "professor", #ups login
+  		:email => "professor@pugetsound.edu",
+  		:last_name => "Smith",
+  		:first_name => "Prof. Alice",
+  		:member_of => "CN=Faculty,OU=Security_Groups,DC=pugetsound,DC=edu" #example of faculty membership
+  	)
+
+User.create(
+    	:name => "student", #ups login
+  		:email => "student@pugetsound.edu",
+  		:last_name => "Ross",
+  		:first_name => "Bob",
+  		:member_of => "cn=studentaccts,OU=Security_groups,dc=pugetsound,dc=edu" #example of student membership
+  	)
+

@@ -16,13 +16,16 @@
 		%p#max_participants= @study.max_participants 
 		%h2 Available Times:
 		- @study.studytimes.each do |t|
-			-open = @study.max_participants - t.participants.size
+			- open = @study.max_participants - t.participants.size
 			%p#time= t.datetime.strftime("%A %b %e, %l:%M %p") + " in " + t.location
 			%p#openings= "Open spots: #{open}"
-			- if open==0
-				%p#full= "FULL"
-			- elsif @me.studytimes.exists?(t)
-				%p#joined= "JOINED"
-			- else
-				= link_to "JOIN THIS STUDY", studies_join_path(:studytime => t), { :class => "selection_link"}
-			%br
+			- if !@mine
+				- if @me.studytimes.exists?(t)
+					%p#joined= "JOINED"
+				- elsif open==0
+					%p#full= "FULL"
+				- else
+					= link_to "JOIN THIS STUDY", studies_join_path(:studytime => t), { :class => "selection_link"}
+				%br
+		- if @mine
+			= link_to "EDIT THIS STUDY", edit_study_path(@study), { :class => "selection_link"}

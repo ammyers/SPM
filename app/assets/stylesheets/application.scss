@@ -151,6 +151,11 @@ div#body {
     padding: 0 0 10px 0;
   }
 
+  div#wrapper {
+    padding: 8px;
+    height: auto;
+  }
+
   .maincontent {
     padding: 0;
     border: 3px solid $very-dark-red;

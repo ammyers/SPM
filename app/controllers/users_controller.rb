@@ -25,25 +25,6 @@ class UsersController < ApplicationController
     @studies = @me.created_studies
   end
 
-  def login
-    if params
-      theEmail = params[:email]
-      thePassword = params[:password]
-      me = User.find_by_email(theEmail)
-      if me && thePassword == me.password
-        session[:id] = me.id
-        if me.role == 'admin'
-          redirect_to users_path
-        else
-          redirect_to studies_path
-        end
-      else
-        flash.alert = "INVALID LOGIN CREDENTIALS"
-        redirect_to root_path
-      end
-    end
-  end
-
   def new
     #@me = get_user
     # default: render 'new' template

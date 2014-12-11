@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
 
   attr_protected :uid, :provider #for omniauth authentication
-  attr_accessible :first_name, :last_name, :email, :password, :role, :name, :member_of, :paper_option
+  attr_accessible :first_name, :last_name, :email, :password, :role, :name, :member_of, :paper_option, :setup
 
   validates :first_name, :last_name, :email, presence: true
 
@@ -41,12 +41,17 @@ class User < ActiveRecord::Base
   		:email => auth["info"]["email"],
   		:last_name => auth["info"]["last_name"],
   		:first_name => auth["info"]["first_name"],
-  		:member_of => auth["info"]["memberOf"]
+  		:member_of => auth["info"]["memberOf"],
+      :setup => false
   	)
 
-      if (user.student?)
-        user.role = 'researcher'
-      end
+    # Instead of assigning students automatically to a role
+    # this will be done on the setup page
+
+    # if user is a faculty member, auto assigned admin role
+    if (user.faculty?)
+      user.role = 'admin'
+    end
 
     user.provider = auth["provider"]
     user.uid = auth["uid"]

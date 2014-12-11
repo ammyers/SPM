@@ -47,6 +47,7 @@ class User < ActiveRecord::Base
 
     # Instead of assigning students automatically to a role
     # this will be done on the user_setup page
+    user.role = 'unspecified'
 
     # if user is a faculty member, auto assigned admin role
     if (user.faculty?)

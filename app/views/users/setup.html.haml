@@ -1,0 +1,20 @@
+%div#body
+	%div#setup.maincontent
+		%h1 Account Setup
+
+		= form_for @me, method: :put do |u|
+			%p Are you signing up as a study participant or as a researcher?
+			= u.radio_button :role, 'participant'
+			Participant
+			= u.radio_button :role, 'researcher'
+			Researcher
+			%br
+
+			%p If you are a participant, do you plan to write a paper instead of completing studies?
+			= u.radio_button :paper_option, true
+			Yes
+			= u.radio_button :paper_option, false
+			No
+			%br
+
+			= u.submit "Setup User Account"

@@ -4,8 +4,8 @@ class CreateUsersTable < ActiveRecord::Migration
       p.string :first_name
       p.string :last_name
       p.string :email
-      p.string :password
-      p.string :role, :default => 'participant'
+      p.string :role
+      p.boolean :setup
       p.timestamps
  	 end
   end

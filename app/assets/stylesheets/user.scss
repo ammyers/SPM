@@ -93,26 +93,12 @@ div#userinfo {
     }
 }
 
-div#edit {
-    label, select {
-        padding: 5px;
+#setup {
+    h1 {
+        margin: 10px;
     }
+
     input {
         margin: 5px;
-    }
-
-    input.input_edit {
-        text-decoration: none;
-        font-weight: bold;
-        border: 3px solid $selection-link-border-color;
-        border-radius: 10px;
-        background: $selection-link-background;
-        color: $selection-link-color;
-        padding: 5px;
-    }
-
-    :hover.input_edit {
-        background: $selection-link-hover-background;
-        color: $selection-link-hover-color;
     }
 }

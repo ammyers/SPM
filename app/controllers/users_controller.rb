@@ -2,7 +2,6 @@ class UsersController < ApplicationController
 
   # @me unnecessary because of :set_current_user being performed in application controller 
   def show
-    #@me = get_user
     @user = User.find(params[:id]) # look up user by unique ID
     @mine = (@me == @user)
     @admin = (@me.role == 'admin')

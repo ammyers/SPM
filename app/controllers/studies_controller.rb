@@ -3,7 +3,6 @@ class StudiesController < ApplicationController
 # @me unnecessary because of :set_current_user being performed in application controller 
 
   def show
-    #@me = get_user
     @study = Study.find(params[:id]) # look up study by unique ID
     # will render app/views/studys/show.<extension> by default
     @mine = @me.created_studies.include? @study
@@ -27,7 +26,6 @@ class StudiesController < ApplicationController
     @study.save!
 
     flash.alert = "#{@study.title} was successfully created."
-
     redirect_to studies_path
   end
 

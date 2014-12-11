@@ -30,7 +30,7 @@ class StudiesController < ApplicationController
   end
 
   def edit
-    @me = get_user
+    #@me = get_user
     @study = Study.find params[:id]
   end
 

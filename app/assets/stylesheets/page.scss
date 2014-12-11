@@ -1,7 +1,3 @@
-// Place all the styles related to the Page controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-
 // General color options - not necessarily used 
 $red-velvet-cake: #BA0000;
 $very-dark-red: #520000;
@@ -17,9 +13,10 @@ $nav-button-border-color: $very-dark-red;
 ul#login {
 	list-style-type: none;
 	margin: 0;
-	padding: 22px 9px;
-	li {
-		display: inline;
+	padding: 75px;
+  text-align: center;
+	dl {
+		display: block;
 		a {
       		color: $nav-button-text-color;
       		text-decoration: none;

@@ -44,11 +44,10 @@ class User < ActiveRecord::Base
   		:member_of => auth["info"]["memberOf"]
   	)
 
-      if (user.student?)
-        user.role = 'researcher'
-      end
-
-
+    # if user is a faculty member, auto assigned admin role
+    if (user.faculty?)
+      user.role = 'admin'
+    end
 
     user.provider = auth["provider"]
     user.uid = auth["uid"]

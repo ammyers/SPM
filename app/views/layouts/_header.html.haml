@@ -5,8 +5,11 @@
       %li= link_to "ALL STUDIES", studies_path
       - if (@me.role != 'admin') && (@me.studytimes != [])
         %li= link_to "MY STUDIES", users_my_studies_path
-      - if (@me.role == 'researcher') && (@me.created_studies != [])
-        %li= link_to "STUDIES I RUN", users_created_studies_path
+      - if (@me.role == 'researcher') 
+        - if (@me.created_studies != [])
+          %li= link_to "STUDIES I RUN", users_created_studies_path
+        - else
+          %li= link_to "CREATE A STUDY", new_study_path
       - if (@me.role == 'admin')
         %li= link_to "ALL USERS", users_path
   - if flash.alert

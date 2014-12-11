@@ -7,6 +7,7 @@ TestManagement::Application.routes.draw do
   get 'users/created_studies' => 'users#created_studies'
 
   get 'studies/join' => 'studies#join'
+  get 'studies/leave' => 'studies#leave'
   
   resources :users, :studies
 

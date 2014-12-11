@@ -1,20 +1,24 @@
--# edit.html.haml using partial
 %div#body
 	%h1 Edit Existing User
 	%div.maincontent#edit
-		= form_tag user_path(@user), :method => :put do
-			= label :user, :first_name, 'First Name'
-			= text_field :user, 'first_name'
+		= form_tag user_path(@user), method: "put" do
+			= label_tag :first_name, 'First Name'
+			= text_field_tag :first_name
 			
-			= label :user, :last_name, 'Last Name'
-			= text_field :user, 'last_name'
+			= label_tag :last_name, 'Last Name'
+			= text_field_tag :last_name
 
-			= label :user, :paper_option, 'Paper Option'
-			<select name="user[paper_option]">
-			<option value=true>Yes</option>
-			<option value=false>No</option>
-			</select>
-		
-		= submit_tag 'Update User Info', {:class => :input_edit}
+			Paper Option
+			= radio_button_tag :paper_option, true
+			= label_tag true, "Yes"
+			= radio_button_tag :paper_option, false
+			= label_tag false, "No"
 
-		%div#wrapper= link_to "DELETE ACCOUNT", user_path(@user), {:method => :delete, :confirm => "Are you sure?", :class => "selection_link"}
+			= label_tag :courses, 'Current courses'
+			- Course.all.each do |c|
+				= check_box_tag :c
+				= label_tag :c, "#{c.section} - #{c.instructor}"
+
+		= submit_tag 'Update User Info'
+
+		%div#wrapper= button_to "DELETE ACCOUNT", user_path(@user), {:method => :delete, :confirm => "Are you sure?"}

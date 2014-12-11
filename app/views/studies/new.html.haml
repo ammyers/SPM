@@ -16,8 +16,11 @@
   = label :study, :duration, 'Length of Study'
   = text_field :study, :duration
 
-  = label :time_slot, :datetime, 'Date/Time'
-  = datetime_select :time_slot, :datetime
+  = label :studytime, :datetime, 'Date and Time'
+  = datetime_select :studytime, :datetime
+
+  = label :studytime, :location, 'Location'
+  = text_field :studytime, :location
   <br> <br>
   <input type="submit" id="save_changes" value="Save Changes">
 

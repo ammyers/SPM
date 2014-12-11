@@ -1,9 +1,9 @@
 class UsersController < ApplicationController
   def show
     @me = get_user
-    id = params[:id] # retrieve user ID from URI route
-    @user = User.find(id) # look up user by unique ID
-    # will render app/views/users/show.<extension> by default
+    @user = User.find(params[:id]) # look up user by unique ID
+    @mine = (@me == @user)
+    @admin = (@me.role == 'admin')
   end
 
   def index
@@ -62,13 +62,13 @@ class UsersController < ApplicationController
   def edit
     @me = get_user
     @user = User.find params[:id]
+    @courses = @user.courses
   end
 
   def update
     @me = get_user
     @user = User.find(params[:id])
     @user.update_attributes!(params[:user])
-    #flash[:notice] = "#{@user.title} was successfully updated."
     flash.alert = "#{@user.first_name} #{@user.last_name} was successfully updated."
     redirect_to user_path(@user)
   end

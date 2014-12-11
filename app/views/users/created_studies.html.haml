@@ -1,7 +1,7 @@
 -#  This file is app/views/movies/my_studies.html.haml
 
 %div#body
-  %h1 My Created Studies (only available to researchers)
+  %h1 My Created Studies
 
   %ul.maincontent#mycreatedstudies
     - @studies.each do |study|
@@ -17,10 +17,13 @@
               - if numresearchers > 0
                 | 
           %div#right
-            = link_to "EDIT THIS STUDY", study_path(study), { :class => "selection_link"}
+            = link_to "EDIT THIS STUDY", edit_study_path(study), { :class => "selection_link"}
           %div#right
             Times and Locations:
             - study.studytimes.each do |studytime|
               %p#time= studytime.datetime.strftime("%A %b %e, %l:%M %p") + " in " + studytime.location
         %div#bottom
           %p#description= study.description
+
+  %br
+  = link_to "CREATE ANOTHER STUDY", new_study_path

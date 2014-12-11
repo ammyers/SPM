@@ -34,4 +34,8 @@ class User < ActiveRecord::Base
   	end
   end
 
+  # def leavestudy(st)
+  #   self.studytimes.delete(st)
+  #   redirect_to user_my_studies_path
+  # end
 end

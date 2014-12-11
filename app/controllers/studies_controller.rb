@@ -19,7 +19,6 @@ class StudiesController < ApplicationController
   end
 
   def create
-    #@me = get_user
     @study = Study.new(params[:study])
     studytime = Studytime.new(params[:studytime])
     @study.studytimes << studytime
@@ -30,13 +29,11 @@ class StudiesController < ApplicationController
   end
 
   def edit
-    #@me = get_user
     @study = Study.find params[:id]
     @studytimes = @study.studytimes
   end
 
   def update
-    #@me = get_user
     @study = Study.find params[:id]
     @study.update_attributes!(params[:study])
     flash.alert = "#{@study.title} was successfully updated."
@@ -60,9 +57,8 @@ class StudiesController < ApplicationController
   end
 
   def leave
-    times = get_user.studytimes
     studytime = Studytime.find(params[:studytime])
-    times.delete(studytime)
+    @me.studytimes.delete(studytime)
     flash.alert = "You have left #{studytime.study.title}"
     redirect_to users_my_studies_path
   end

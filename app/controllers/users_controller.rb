@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-  # @me unnecessary because of :set_current_user being performed in application controller 
+  # @me set using :set_current_user being performed in application controller 
   def show
     @user = User.find(params[:id]) # look up user by unique ID
     @mine = (@me == @user)
@@ -8,7 +8,6 @@ class UsersController < ApplicationController
   end
 
   def index
-    #@me = get_user
     if @me.role != 'admin'
       redirect_to studies_path
     end
@@ -37,24 +36,28 @@ class UsersController < ApplicationController
   end
 
   def edit
-    #@me = get_user
     @user = User.find params[:id]
     @courses = @user.courses
   end
 
+  # setup page similar to edit page
+  def setup
+    #@me set
+    @courses = @me.courses
+  end
+
   def update
-    #@me = get_user
     @user = User.find(params[:id])
-    @user.update_attributes params[:user]
-    flash.alert = "#{@user.first_name} #{@user.last_name} was successfully updated."
+    @user.update_attributes(params[:user])
+    courseparams = params[:user][:courses]
+    flash.alert = "Account updated."
     redirect_to user_path(@user)
   end
 
   def destroy
-    #@me = get_user
     @user = User.find(params[:id])
     @user.destroy
-    flash.alert = "user #{@user.first_name} #{@user.last_name} deleted."
+    flash.alert = "user #{@user.full_name} deleted."
     redirect_to users_path
   end
 end

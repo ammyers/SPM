@@ -24,3 +24,6 @@
           %p#description= s.description
 
           %div#wrapper= link_to "LEAVE THIS STUDY", studies_leave_path(:studytime => studytime), { :class => "selection_link"}
+
+  - if @my_studytimes.empty?
+    %h2 You are not signed up for any studies

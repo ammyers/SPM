@@ -1,6 +1,5 @@
 %div#body
-	- name = @user.first_name + " " + @user.last_name
-	%h1= name
+	%h1= @user.full_name
 	%div.maincontent#userinfo
 		%h2 Role: 
 		%p= @user.role.capitalize
@@ -15,7 +14,8 @@
 			- @user.courses.each do |c|
 				%p= "Section: #{c.section} | Instructor: #{c.instructor}"
 		- else
-			%div#wrapper= link_to "EDIT ACCOUNT TO ADD COURSE", edit_user_path(@user), { class: 'selection_link' }
+			%p None
+			%div#wrapper= link_to "ADD COURSE", edit_user_path(@user), { class: 'selection_link' }
 		- if @user.studytimes.size > 0	
 			%h2 Studylist:
 			%ul#studylist

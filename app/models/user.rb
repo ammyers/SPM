@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
 
   attr_protected :uid, :provider #for omniauth authentication
-  attr_accessible :first_name, :last_name, :email, :password, :role, :name, :member_of, :paper_option, :setup
+  attr_accessible :first_name, :last_name, :email, :role, :name, :member_of, :paper_option, :setup
 
   validates :first_name, :last_name, :email, presence: true
 
@@ -46,7 +46,7 @@ class User < ActiveRecord::Base
   	)
 
     # Instead of assigning students automatically to a role
-    # this will be done on the setup page
+    # this will be done on the user_setup page
 
     # if user is a faculty member, auto assigned admin role
     if (user.faculty?)

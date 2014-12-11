@@ -8,7 +8,15 @@ class SessionsController < ApplicationController
     auth = request.env["omniauth.auth"]
     user = User.find_by_provider_and_uid(auth["provider"],auth["uid"]) || User.create_with_omniauth(auth)
     session[:user_id] = user.id
-    if user.role == 'researcher' && user.courses == []
+    if user.student? && !user.setup
+      # this user hasn't seen the setup page yet
+      user.setup = true
+      redirect_to users_setup_path
+    end
+    if user.role == 'admin'
+      redirect_to users_path
+    end
+    #else
     redirect_to studies_path #where go to when logged in
   end
 

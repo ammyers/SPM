@@ -1,4 +1,4 @@
--#  This file is app/views/studies/my_studies.html.haml
+-#  This file is app/views/users/my_studies.html.haml
 
 %div#body
   %h1 My Studies
@@ -22,4 +22,8 @@
             %p#time= studytime.toString()
         %div#bottom
           %p#description= s.description
-  
+
+          %div#wrapper= link_to "LEAVE THIS STUDY", studies_leave_path(:studytime => studytime), { :class => "selection_link"}
+
+  - if @my_studytimes.empty?
+    %h2 You are not signed up for any studies

@@ -10,26 +10,43 @@ $nav-button-background: $tannish;
 $nav-button-text-color: black;
 $nav-button-border-color: $very-dark-red;
 
-ul#login {
-	list-style-type: none;
-	margin: 0;
-	padding: 75px;
-  text-align: center;
-	dl {
-		display: block;
-		a {
-      		color: $nav-button-text-color;
-      		text-decoration: none;
-      		font-weight: bold;
-      		padding: 10;
-      		background: $nav-button-background;
-      		border: 3px solid $nav-button-border-color;
-      		border-radius: 16px;
-    	}
+#login {
+  div#text {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-top: -59px;
+    margin-left: -224px;
+  }
+  div#link {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-top: 40px;
+    margin-left: -125px;
+  }
+  h1 {
+    color: $very-dark-red;
+    text-align: center;
+    font-size: 50px;
+    font-weight: bold;
+    font-family: Georgia, serif
+  }
+  h2 {
+    text-align: center;
+  }
+	a {
+		color: $nav-button-text-color;
+		text-decoration: none;
+		font-weight: bold;
+		padding: 10;
+		background: $nav-button-background;
+		border: 3px solid $nav-button-border-color;
+		border-radius: 16px;
+  }
 
-    	:hover {
-      		background: $page-background-image repeat fixed;
-      		color: black;
-    	}
+	:hover {
+		background: $page-background-image repeat fixed;
+		color: black;
 	}
 }

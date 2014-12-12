@@ -1,15 +1,15 @@
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
 
-bobby = User.create(:first_name => 'Bobby', :last_name => 'Carpenter', :email => 'bcarpenter@ups.edu', :password => 'chuck', :role => 'participant')
-sally = User.create(:first_name => 'Sally', :last_name => 'Winthrop', :email => 'swinthrop@ups.edu', :password => 'wendy', :role => 'researcher')   	  
-hailey = User.create(:first_name => 'Hailey', :last_name => 'Ember', :email => 'd', :password => 'd', :role => 'participant')   	  
-holly = User.create(:first_name => 'Holly', :last_name => 'Zender', :email => 'swin', :password => 'w', :role => 'participant')   	  
-tommy = User.create(:first_name => 'Tommy', :last_name => 'Van Der Waal', :email => 'swinths.edu', :password => 'wedy', :role => 'participant')   	  
-bill = User.create(:first_name => 'Bill', :last_name => 'McKibben', :email => 'swins.edu', :password => 'ndy', :role => 'participant')   	  
-joel = User.create(:first_name => 'Joe', :last_name => 'Rous', :email => 'jross@ups.edu', :password => 'hello', :role => 'researcher')
-robin = User.create(:first_name => 'Robin', :last_name => 'Dorn', :email => 'rdorn@ups.edu', :password => 'password', :role => 'admin')
-no_studies = User.create(:first_name => 'Damon', :last_name => 'Templeton', :email => 'da', :password => 'password', :role => 'participant')
+bobby = User.create(:first_name => 'Bobby', :last_name => 'Carpenter', :email => 'bcarpenter@ups.edu', :role => 'participant')
+sally = User.create(:first_name => 'Sally', :last_name => 'Winthrop', :email => 'swinthrop@ups.edu', :role => 'researcher')   	  
+hailey = User.create(:first_name => 'Hailey', :last_name => 'Ember', :email => 'd', :role => 'participant')   	  
+holly = User.create(:first_name => 'Holly', :last_name => 'Zender', :email => 'swin', :role => 'participant')   	  
+tommy = User.create(:first_name => 'Tommy', :last_name => 'Van Der Waal', :email => 'swinths.edu', :role => 'participant')   	  
+bill = User.create(:first_name => 'Bill', :last_name => 'McKibben', :email => 'swins.edu', :role => 'participant')   	  
+joel = User.create(:first_name => 'Joe', :last_name => 'Rous', :email => 'jross@ups.edu', :role => 'researcher')
+robin = User.create(:first_name => 'Robin', :last_name => 'Dorn', :email => 'rdorn@ups.edu', :role => 'admin')
+no_studies = User.create(:first_name => 'Damon', :last_name => 'Templeton', :email => 'da', :role => 'participant')
 
 db_study = Study.create(:title => 'Test Study', :description => 'Can we make this database work? Can we access the data?', :max_participants => 40, :duration => "30 min");
 desert_study = Study.create(:title => 'Desert Study', :description => 'How many humps does a camel have?', :max_participants => 150, :duration => "45 min");

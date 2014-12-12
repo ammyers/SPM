@@ -1,18 +1,37 @@
 -#  This file is app/views/users/index.html.haml
 %div#body
-  %h1 All Users
+  %h1 All Students
 
-  %ul.maincontent#users
+  %h3 Select A Course
+
+  = form_tag users_path, :method => :get do
+    %select{:name => "courses"}
+      = options_for_select( ["All Courses"] )
+      - @all_courses.each do |course|
+        = options_for_select( {"PSYC " + course.section + ": " + course.instructor => course.id} )
+    = submit_tag 'Select Course', :id => "course_submit"
+
+%table#users
+  %thead
+    %tr
+      %th= link_to "First Name", users_path(:sort_by=>"first_name")
+      %th= link_to "Last Name", users_path(:sort_by=>"last_name")
+      %th= link_to "Role", users_path(:sort_by=>"role")
+      %th Courses
+      %th= link_to "Studies Completed", users_path(:sort_by=>"completedstudies")
+      %th= link_to "Studies Signed Up For", users_path(:sort_by=>"signedupfor")
+      %th= link_to "Paper Option", users_path(:sort_by=>"paper_option")
+      %th More Info
+  %tbody
     - @users.each do |user|
-      - if user.role != 'admin'
-        %li
-          %div#top
-            %div#left
-              %p#title= user.first_name + " " + user.last_name 
-              %p#role= "Role: " + user.role.capitalize
-              %p= "Studies signed up for: #{user.studytimes.size}"
-              %p= "Studies completed: #{user.completedstudies.size}"
-              - if @me.admin?
-                %p= "Paper Option:  #{user.paper_yes_or_no}"
-            %div#right
-              = link_to "MORE INFO", user_path(user), { :class => "selection_link"}
+      %tr
+        %td= user.first_name
+        %td= user.last_name
+        %td= user.role.capitalize
+        %td
+          - user.courses.each do |c|
+            %p#courses= c.section
+        %td= user.completedstudies.size
+        %td= user.studytimes.size
+        %td= user.paper_yes_or_no
+        %td= link_to "MORE ABOUT #{user.name}", user_path(user), { :class => "selection_link"}

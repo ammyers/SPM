@@ -68,6 +68,8 @@ class User < ActiveRecord::Base
   	end
   end
 
+
+
   def admin?
   	return (self.role == "admin") 
   end
@@ -79,4 +81,9 @@ class User < ActiveRecord::Base
   def participant?
     return (self.role == "participant")
   end
+
+  def name
+    return self.first_name + " " + self.last_name
+  end
+
 end

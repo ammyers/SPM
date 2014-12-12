@@ -23,7 +23,7 @@ class Studytime < ActiveRecord::Base
   		if (0 < difference < 60*60*24)
   			# Then the study is in less than 24 hours
   			st.participants.each do |p|
-  				ReminderMailer.day_of_reminder(st, p).deliver
+  				#ReminderMailer.day_of_reminder(st, p).deliver
   			end 
   		# elsif (60*60*24 < difference < 60*60*48)
   		# 	# Then the study is not today, but tomorrow
@@ -32,5 +32,9 @@ class Studytime < ActiveRecord::Base
   		# 	end 
   		end
   	end
+  end
+
+  def toString
+  	return self.datetime.strftime("%A %b %e, %l:%M %p") + " in " + self.location
   end
 end

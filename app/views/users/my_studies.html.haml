@@ -19,7 +19,7 @@
                 | 
           %div#right
             Time and Location:
-            %p#time= studytime.datetime.strftime("%A %b %e, %l:%M %p") + " in " + studytime.location
+            %p#time= studytime.toString()
         %div#bottom
           %p#description= s.description
 

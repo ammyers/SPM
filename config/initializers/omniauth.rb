@@ -8,6 +8,7 @@ Rails.application.config.middleware.use OmniAuth::Builder do
     :extra_fields => [
       :memberOf #nonstandard detail recorded here as well
     ],
+    :uid_field => "sAMAccountName",
     :info_fields => {
       :uid => "sAMAccountName",
       :name => "sAMAccountName",

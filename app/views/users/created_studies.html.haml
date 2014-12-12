@@ -20,8 +20,12 @@
             = link_to "EDIT THIS STUDY", edit_study_path(study), { :class => "selection_link"}
           %div#right
             Times and Locations:
-            - study.studytimes.each do |studytime|
-              %p#time= studytime.datetime.strftime("%A %b %e, %l:%M %p") + " in " + studytime.location
+            = form_tag(studies_attendance_path(study.id), method: :post) do
+              - study.studytimes.each do |studytime|
+                %div
+                  %input{:checked => "", :name=> "studyTime", :type => "radio", :value => studytime.id}
+                  = studytime.toString()
+              %input{:type =>"submit", :value => "Take Attendance"}
         %div#bottom
           %p#description= study.description
 

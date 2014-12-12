@@ -22,8 +22,8 @@
 				- @user.studytimes.each do |s|
 					- study = s.study
 					- if @user.completedstudies.exists?(s)
-						%li#complete= study.title + " | " + s.datetime.strftime("%A %b %e, %l:%M %p") + " | " + s.location + " | COMPLETED"
+						%li#complete= study.title + " | " + s.toString + " | COMPLETED"
 					- else
-						%li#incomplete= study.title + " | " + s.datetime.strftime("%A %b %e, %l:%M %p") + " | " + s.location + " | NOT YET COMPLETED"
+						%li#incomplete= study.title + " | " + s.toString + " | NOT YET COMPLETED"
 		- if @mine || @admin			
 			%div#wrapper= link_to "EDIT MY ACCOUNT", edit_user_path(@user), { class: 'selection_link' }

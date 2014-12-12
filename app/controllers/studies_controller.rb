@@ -9,12 +9,10 @@ class StudiesController < ApplicationController
   end
 
   def index
-    #@me = get_user
     @studies = Study.all
   end
 
   def new
-    #@me = get_user
     # default: render 'new' template
   end
 
@@ -61,5 +59,62 @@ class StudiesController < ApplicationController
     @me.studytimes.delete(studytime)
     flash.alert = "You have left #{studytime.study.title}"
     redirect_to users_my_studies_path
+  end
+
+  def attendance
+    @me = get_user
+    puts @me.completedstudies
+    @time = Studytime.find_by_id(params[:studyTime])
+    @study = @time.study
+
+    #make a hash of participants => if they have completed this study/time
+    @participants = {} #user.id => boolean
+
+
+    temp = User.find_by_id(1)
+    #@participants[temp] = false
+
+    # if(temp.completedstudies.includes?(@time.id))
+    #   puts "blah"
+    # else
+    #   puts "yay"
+    # end
+
+    #for all of the participants of this study
+    @time.participants.each do |p|
+      # look at all their completed studies
+      if (p.completedstudies == [])
+        puts "no completedstudies"
+        @participants[p] = false
+        next
+      end
+      p.completedstudies.each do |s|
+        puts "**********"
+        p "heelo"
+        puts s
+        puts @time.id
+        puts "**********"
+        #if they have completed this study
+        if (s == @time.id)
+          #return true
+          @participants[p] = true
+          return
+        end
+      #if you get here, they haven't completed this study so value = false
+      @participants[p] = false
+      end
+    end
+    puts "**********"
+    puts @participants
+    puts "**********"
+
+  end
+
+  def confirm_attendance
+    user = User.find_by_id(params[:person_id])
+    studytime = params[:studytimes]
+    user.completedstudies << studytime
+    user.save!()
+   redirect_to users_start_study_path
   end
 end

@@ -8,7 +8,7 @@ class UsersController < ApplicationController
   end
 
   def index
-    @me = get_user
+    #@me = get_user
     #if not an admin, redirect
     if @me.role != 'admin'
       redirect_to studies_path

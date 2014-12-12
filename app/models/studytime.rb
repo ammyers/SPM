@@ -12,4 +12,9 @@ class Studytime < ActiveRecord::Base
   def confirm_location
   	self.location = "UNKNOWN" if self.location.nil?
   end
+
+  def toString
+  	return self.datetime.strftime("%A %b %e, %l:%M %p") + " in " + self.location
+  end
+
 end

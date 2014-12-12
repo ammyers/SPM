@@ -2,6 +2,8 @@
 
 %div#body
   %h1 My Created Studies (only available to researchers)
+  = link_to "CREATE NEW STUDY", new_study_path(), { :class => "selection_link"}
+  <br><br>
 
   %ul.maincontent#mycreatedstudies
     - @studies.each do |study|
@@ -17,10 +19,14 @@
               - if numresearchers > 0
                 | 
           %div#right
-            = link_to "EDIT THIS STUDY", study_path(study), { :class => "selection_link"}
+            = link_to "EDIT THIS STUDY", edit_study_path(study), { :class => "selection_link"}
           %div#right
             Times and Locations:
-            - study.studytimes.each do |studytime|
-              %p#time= studytime.datetime.strftime("%A %b %e, %l:%M %p") + " in " + studytime.location
+            = form_tag(studies_attendance_path(study.id), method: :post) do
+              - study.studytimes.each do |studytime|
+                %div
+                  %input{:checked => "", :name=> "studyTime", :type => "radio", :value => studytime.id}
+                  = studytime.toString()
+              %input{:type =>"submit", :value => "Take Attendance"}
         %div#bottom
           %p#description= study.description

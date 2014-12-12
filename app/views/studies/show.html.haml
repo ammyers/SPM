@@ -17,7 +17,7 @@
 		%h2 Available Times:
 		- @study.studytimes.each do |t|
 			-open = @study.max_participants - t.participants.size
-			%p#time= t.datetime.strftime("%A %b %e, %l:%M %p") + " in " + t.location
+			%p#time= t.toString()
 			%p#openings= "Open spots: #{open}"
 			- if open==0
 				%p#full= "FULL"

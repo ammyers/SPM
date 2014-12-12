@@ -66,3 +66,4 @@ bill.studytimes << desert_time4
 tommy.studytimes << moon_time1
 tommy.studytimes << desert_time1
 tommy.studytimes << ocean_time1
+tommy.completedstudies << ocean_time1

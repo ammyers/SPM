@@ -87,14 +87,14 @@ class UsersController < ApplicationController
 
   # setup page similar to edit page
   def setup
-    #@me set
+    # @me set
     @courses = @me.courses
   end
 
   def update
     @user = User.find(params[:id])
     @user.update_attributes(params[:user])
-    courseparams = params[:user][:courses]
+    #courseparams = params[:user][:courses]
     flash.alert = "Account updated."
     redirect_to user_path(@user)
   end

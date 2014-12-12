@@ -11,7 +11,7 @@ class UsersController < ApplicationController
   def index
     #@me = get_user
     #if not an admin, redirect
-    if @me.student?
+    if !@me.admin?
       redirect_to studies_path
     end
 
@@ -84,6 +84,7 @@ class UsersController < ApplicationController
   def edit
     @user = User.find params[:id]
     @courses = @user.courses
+    @all_courses = Course.all
   end
 
   # setup page similar to edit page
@@ -94,6 +95,7 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
+    params[:user][:setup] = true
     @user.update_attributes(params[:user])
     #courseparams = params[:user][:courses]
     flash.alert = "Account updated."

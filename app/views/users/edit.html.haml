@@ -2,25 +2,32 @@
 	%h1 Edit Account
 	%div.maincontent#edit
 		= form_for @user, method: :put do |u|
-			= u.label :role
-			= u.radio_button :role, 'participant'
-			Participant
-			= u.radio_button :role, 'researcher'
-			Researcher
+			= label :user, :role, 'Role'
+			<select name='user[role]'>
+			<option value = researcher> Researcher </option>
+			<option value = participant> Participant </option>
+			<option value = admin> Administrator </option>
+			</select>
 
-			= u.label :paper_option
-			= u.radio_button :paper_option, true
-			Yes
-			= u.radio_button :paper_option, false
-			No
-			%br
+			<br><br>
+
+			= label :user, :paper_option, 'Paper Option'
+			<select name='user[paper_option]'>
+			<option value = true> Yes </option>
+			<option value = false> No </option>
+			</select>
+
+			<br><br>
 
 			= u.label :course_option
 			%br
-			- Course.all.each do |c|
-				= u.check_box :course
-				c.toString 
+			- @all_courses.each do |c|
+				= check_box "course", c.id
+				= c.toString
+				<br>
 
-			= u.submit "Update User Info"
+			<br>
+
+			%div#wrapper= u.submit "Update User Info"
 
 		%div#wrapper= button_to "DELETE ACCOUNT", user_path(@user), {:method => :delete, :confirm => "Are you sure?"}

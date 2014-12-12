@@ -19,6 +19,7 @@ class StudiesController < ApplicationController
   def create
     @study = Study.new(params[:study])
     studytime = Studytime.new(params[:studytime])
+    @study.researchers << @me
     @study.studytimes << studytime
     @study.save!
 
@@ -84,16 +85,10 @@ class StudiesController < ApplicationController
     @time.participants.each do |p|
       # look at all their completed studies
       if (p.completedstudies == [])
-        puts "no completedstudies"
         @participants[p] = false
         next
       end
       p.completedstudies.each do |s|
-        puts "**********"
-        p "heelo"
-        puts s
-        puts @time.id
-        puts "**********"
         #if they have completed this study
         if (s == @time.id)
           #return true
@@ -104,9 +99,6 @@ class StudiesController < ApplicationController
       @participants[p] = false
       end
     end
-    puts "**********"
-    puts @participants
-    puts "**********"
 
   end
 

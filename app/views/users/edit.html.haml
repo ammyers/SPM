@@ -7,6 +7,7 @@
 			Participant
 			= u.radio_button :role, 'researcher'
 			Researcher
+			%br
 
 			= u.label :paper_option
 			= u.radio_button :paper_option, true
@@ -15,12 +16,6 @@
 			No
 			%br
 
-			= u.label :course_option
-			%br
-			- Course.all.each do |c|
-				= u.check_box :course
-				c.toString 
-
 			= u.submit "Update User Info"
 
-		%div#wrapper= button_to "DELETE ACCOUNT", user_path(@user), {:method => :delete, :confirm => "Are you sure?"}
+		%div= button_to "DELETE ACCOUNT", user_path(@user), {:method => :delete, :confirm => "Are you sure?"}

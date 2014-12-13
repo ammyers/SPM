@@ -7,23 +7,27 @@
 		%p= @user.paper_yes_or_no
 		%h2 Studies signed up for:
 		%p= @user.studytimes.size
-		%h2 Studies completed:
-		%p= @user.completedstudies.size
+		- if @havesignedup
+			%h2 Studies completed:
+			%p= @user.completedstudies.size
+			%h2 Study credits completed:
+			%p= @user.credits
 		%h2 Courses enrolled in:
 		- if @user.courses.size > 0
 			- @user.courses.each do |c|
 				%p= "Section: #{c.section} | Instructor: #{c.instructor}"
+				%p= link_to "REMOVE", users_leavecourse_path(:course => c)
 		- else
 			%p None
-			%div#wrapper= link_to "ADD COURSE", edit_user_path(@user), { class: 'selection_link' }
+		%div#wrapper= link_to "ADD COURSE", users_addcourse_path, { class: 'selection_link' }
 		- if @user.studytimes.size > 0	
 			%h2 Studylist:
 			%ul#studylist
 				- @user.studytimes.each do |s|
 					- study = s.study
 					- if @user.completedstudies.exists?(s)
-						%li#complete= study.title + " | " + s.toString + " | COMPLETED"
+						%li#complete= study.title + " | " + s.toString + " | COMPLETED (#{study.credits} credits)"
 					- else
-						%li#incomplete= study.title + " | " + s.toString + " | NOT YET COMPLETED"
+						%li#incomplete= study.title + " | " + s.toString + " | NOT YET COMPLETED (#{study.credits} credits)"
 		- if @mine || @admin			
-			%div#wrapper= link_to "EDIT MY ACCOUNT", edit_user_path(@user), { class: 'selection_link' }
+			%div#wrapper= link_to "EDIT ACCOUNT", edit_user_path(@user), { class: 'selection_link' }

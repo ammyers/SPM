@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
 
   attr_protected :uid, :provider #for omniauth authentication
-  attr_accessible :first_name, :last_name, :email, :role, :name, :member_of, :paper_option, :setup
+  attr_accessible :first_name, :last_name, :email, :role, :name, :member_of, :paper_option, :setup, :credits
 
   validates :first_name, :last_name, :email, presence: true
 

@@ -10,7 +10,6 @@ class SessionsController < ApplicationController
     session[:user_id] = user.id
     if user.student? && user.setup == false
       # this user hasn't seen the setup page yet
-      user.setup = true
       redirect_to users_setup_path
     elsif user.role == 'admin'
       redirect_to users_path
@@ -23,7 +22,7 @@ class SessionsController < ApplicationController
   #logout
   def destroy
     session.delete(:user_id)
-    flash.alert = 'Logged out successfully.'
+    flash.alert = 'Logged out'
     redirect_to root_path #where to go to when logged out
   end
 end

@@ -6,6 +6,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id]) # look up user by unique ID
     @mine = (@me == @user)
     @admin = @me.admin?
+    @havesignedup = !@user.studytimes.empty?
   end
 
   def index
@@ -63,6 +64,8 @@ class UsersController < ApplicationController
   def my_studies
     #@me = get_user
     @my_studytimes = @me.studytimes
+    flash.keep
+    redirect_to studies_path if @my_studytimes.empty?
   end
 
   def created_studies
@@ -83,18 +86,44 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find params[:id]
-    @courses = @user.courses
   end
 
   # setup page similar to edit page
   def setup
     # @me set
-    @courses = @me.courses
+    if @me.setup
+      flash.alert = "Error: Page not accessible"
+      redirect_to studies_path
+    end
+  end
+
+  # page to add a course, accessible for the edit page
+  def addcourse
+    @courseOptions = Course.all
+    @me.courses.each do |mine|
+      @courseOptions.delete(mine)
+    end
+  end
+
+  def joincourse
+    course = Course.find(params[:course])
+    @me.courses << course unless @me.courses.include? course
+    flash.alert = "Joined #{course.section}"
+    redirect_to user_path(@me)
+  end
+
+  def leavecourse
+    course = Course.find(params[:course])
+    @me.courses.delete(course)
+    flash.alert = "Left #{course.section}"
+    redirect_to user_path(@me)
   end
 
   def update
     @user = User.find(params[:id])
     @user.update_attributes(params[:user])
+    @user.setup = true
+    @user.save
     #courseparams = params[:user][:courses]
     flash.alert = "Account updated."
     redirect_to user_path(@user)
@@ -104,6 +133,6 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @user.destroy
     flash.alert = "user #{@user.full_name} deleted."
-    redirect_to users_path
+    redirect_to root_path
   end
 end

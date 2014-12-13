@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(:version => 20141124015345) do
     t.text     "description"
     t.integer  "max_participants", :default => 30
     t.string   "duration"
+    t.integer  "credits",          :default => 1
     t.datetime "created_at",                       :null => false
     t.datetime "updated_at",                       :null => false
   end
@@ -61,9 +62,9 @@ ActiveRecord::Schema.define(:version => 20141124015345) do
     t.string   "first_name"
     t.string   "last_name"
     t.string   "email"
-    t.string   "password"
     t.string   "role"
     t.boolean  "setup"
+    t.integer  "credits"
     t.datetime "created_at",                      :null => false
     t.datetime "updated_at",                      :null => false
     t.string   "provider"

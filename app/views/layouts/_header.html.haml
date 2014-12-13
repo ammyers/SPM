@@ -1,17 +1,20 @@
 %div#header
-  %h1 Subject Pool Manager
+  - if @me 
+    %h1= "SPM" 
+  - else 
+    %h1= "Psychology Subject Pool Manager"
   - p @me
   - if @me
     %ul.headerlink#navbar
-      %li= link_to "ALL STUDIES", studies_path
-      - if (@me.role != 'admin') && (@me.studytimes != [])
-        %li= link_to "MY STUDIES", users_my_studies_path
-      - if (@me.role == 'researcher') 
+      %li= link_to "All Studies", studies_path
+      - if (@me.student?) && (@me.studytimes != [])
+        %li= link_to "My Studies", users_my_studies_path
+      - if (@me.role == 'researcher')
         - if (@me.created_studies != [])
-          %li= link_to "STUDIES I RUN", users_created_studies_path
+          %li= link_to "Studies I Run", users_created_studies_path
         - else
-          %li= link_to "CREATE A STUDY", new_study_path
-      - if (@me.role == 'admin')
+          %li= link_to "Create a Study", new_study_path
+      - if (@me.admin?)
         %li= link_to "All Users", users_path
   - if flash.alert
     %p#alert= flash.alert

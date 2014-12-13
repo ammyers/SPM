@@ -6,19 +6,25 @@
       %li
         %div#top
           %div#left
-            %p#title= study.title
+            - if study.credits == 1
+              %p#title= "#{study.title} [#{study.credits} credit]"
+            - else
+              %p#title= "#{study.title} [#{study.credits} credits]"
             Researchers: 
             - numresearchers = study.researchers.size
             - study.researchers.each do |r|
-              = link_to "#{r.first_name} #{r.last_name}", user_path(r), { :class => "researcher_link"}
+              - if @me.admin?
+                = link_to "#{r.full_name}", user_path(r), { :class => "researcher_link"}
+              - else
+                = r.full_name
               - numresearchers -= 1
               - if numresearchers > 0
                 | 
-          %div#right
-            = link_to "VIEW STUDY: #{study.title}", study_path(study), { :class => "selection_link"}
           %div#right
             Available Times:
             - study.studytimes.each do |t|
               %p#time= t.toString()
         %div#bottom
           %p#description= study.description
+
+          %div#wrapper= link_to "SELECT STUDY: #{study.title}", study_path(study), { :class => "selection_link"}

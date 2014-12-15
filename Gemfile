@@ -53,6 +53,7 @@ end
 gem 'autoprefixer-rails'
 gem 'haml'
 gem 'jquery-rails'
+gem 'turbolinks'
  
 # for authorization
 gem 'omniauth'

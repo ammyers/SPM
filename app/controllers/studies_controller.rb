@@ -31,7 +31,7 @@ class StudiesController < ApplicationController
     @study.save!
 
     flash.alert = "#{@study.title} was successfully created."
-    redirect_to studies_path
+    redirect_to study_path(@study)
   end
 
   def edit
@@ -56,8 +56,12 @@ class StudiesController < ApplicationController
   def destroy
     #@me = get_user
     @study = Study.find(params[:id])
+    studytimes = Studytime.where(study_id: @study.id)
     @study.destroy
-    flash[:notice] = "Study '#{@study.title}' deleted."
+    studytimes.each do |st|
+      st.destroy
+    end
+    flash.alert = "Study '#{@study.title}' deleted."
     redirect_to studies_path
   end
 

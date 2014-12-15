@@ -51,7 +51,7 @@ ActiveRecord::Schema.define(:version => 20141124015345) do
   end
 
   create_table "studytimes", :force => true do |t|
-    t.datetime "datetime"
+    t.datetime "time"
     t.string   "location"
     t.integer  "study_id"
     t.datetime "created_at", :null => false
@@ -63,8 +63,8 @@ ActiveRecord::Schema.define(:version => 20141124015345) do
     t.string   "last_name"
     t.string   "email"
     t.string   "role"
-    t.boolean  "setup"
-    t.integer  "credits"
+    t.boolean  "setup",        :default => false
+    t.integer  "credits",      :default => 0
     t.datetime "created_at",                      :null => false
     t.datetime "updated_at",                      :null => false
     t.string   "provider"

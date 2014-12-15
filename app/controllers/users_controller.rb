@@ -13,6 +13,7 @@ class UsersController < ApplicationController
     #@me = get_user
     #if not an admin, redirect
     if @me.student?
+      flash.alert = "INACCESIBLE PAGE"
       redirect_to studies_path
     end
 

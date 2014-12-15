@@ -1,3 +1,14 @@
 - if @me
 	%div#footer
 		%p= "Name: #{@me.first_name} #{@me.last_name}\t||\tRole: #{@me.role.capitalize}\t||\tID: #{@me.id}"
+		-# = link_to "Admin", controller: :pages, action: :admintest
+		-# = link_to "Participant", controller: :pages, action: :participanttest
+		-# = link_to "Researcher", controller: :pages, action: :researchertest
+		-# = link_to "Send EMAILS", controller: :pages, action: :email
+
+- else
+	%div#footer
+		= link_to "Admin", controller: :pages, action: :admintest
+		= link_to "Participant", controller: :pages, action: :participanttest
+		= link_to "Researcher", controller: :pages, action: :researchertest
+		= link_to "Send EMAILS", controller: :pages, action: :email

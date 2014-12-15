@@ -26,8 +26,8 @@
 
       %p Please fill out your first study time. You can add additional sections on the Edit page.
 
-      = label :studytime, :datetime, 'Date and Time'
-      = datetime_select :studytime, :datetime, :required => true
+      = label :studytime, :time, 'Date and Time'
+      = datetime_select :studytime, :time, :required => true
       %br
 
       = label :studytime, :location, 'Location (eg. Wey 302)'

@@ -1,0 +1,2 @@
+class StudytimesController < ApplicationController
+end

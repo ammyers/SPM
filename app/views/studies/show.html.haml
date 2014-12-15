@@ -37,9 +37,12 @@
 				- elsif @hasjoined
 					%div#joinwrapper
 						%p#full= "ONLY ONE SECTION MAY BE JOINED"
+				- elsif @me.admin?
+					%div#joinwrapper
+						%p#joined= "OPEN"
 				- else
 					%div#joinwrapper= link_to "JOIN THIS STUDY SECTION", studies_join_path(:studytime => t), { :class => "selection_link"}
-		- if @mine
+		- if @mine || @me.admin?
 			%br
 			%br
 			%div#joinwrapper= link_to "EDIT THIS STUDY", edit_study_path(@study), { :class => "selection_link"}

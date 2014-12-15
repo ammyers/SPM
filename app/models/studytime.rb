@@ -13,25 +13,33 @@ class Studytime < ActiveRecord::Base
   	self.location = "UNKNOWN" if self.location.nil?
   end
 
-  def notify
+  def self.notify
   	# Notify by email the users who are in the studies that are today or tomorrow
   	# This method runs in schedule.config using Whatever and uses a Mailer
-  	# which is called ****(UNKNOWN). It runs every day at 0:00 (midnight). 
-  	current = Time.now
-  	Studytime.all.each do |st|
-  		difference = st.datetime.to_time - current
-  		if (0 < difference < 60*60*24)
-  			# Then the study is in less than 24 hours
-  			st.participants.each do |p|
-  				#ReminderMailer.day_of_reminder(st, p).deliver
-  			end 
-  		# elsif (60*60*24 < difference < 60*60*48)
-  		# 	# Then the study is not today, but tomorrow
-  		# 	st.participants.each do |p|
-  		# 		ReminderMailer.day_before_reminder(st, p).deliver
-  		# 	end 
-  		end
-  	end
+  	# which is called reminder_mailer. It runs every day.
+  	
+
+    # current = Time.now.utc
+    # st = Studytime.find(1).time
+    # return st-current
+    
+    #ReminderMailer.day_of_reminder(User.find(13), Studytime.find(12)).deliver
+  	
+
+    # Studytime.all.each do |st|
+  	# 	difference = st.time - current
+  	# 	if (difference < 60*60*24)
+  	# 		# Then the study is in less than 24 hours
+  	# 		st.participants.each do |p|
+  	# 			ReminderMailer.day_of_reminder(p, st).deliver
+  	# 		end 
+  	# 	# elsif (60*60*24 < difference < 60*60*48)
+  	# 	# 	# Then the study is not today, but tomorrow
+  	# 	# 	st.participants.each do |p|
+  	# 	# 		ReminderMailer.day_before_reminder(p, st).deliver
+  	# 	# 	end 
+  	# 	end
+  	# end
   end
 
   def toString

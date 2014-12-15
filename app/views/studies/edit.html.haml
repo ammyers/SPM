@@ -1,31 +1,34 @@
--# edit.html.haml using partial
+%div#body
+  %div.maincontent#edit
+    %h1 Edit Existing Study
 
-%h1 Edit Existing Study
+    = form_tag study_path(@study), :method => :put do
 
-= form_tag study_path(@study), :method => :put do
+      = label :study, :title, 'Title'
+      = text_field :study, :title
+      %br
 
-  = label :study, :title, 'Title'
-  = text_field :study, :title
-  %br
-  = label :study, :description, 'Description'
-  = text_field :study, :description
-  %br
-  = label :study, :max_participants, 'Max Number of Participants'
-  = text_field :study, :max_participants
-  %br
-  = label :study, :duration, 'Length of Study'
-  = text_field :study, :duration 
-  %br
-  - @studytimes.each do |st|
-    = label :st, :datetime, 'Date and Time'
-    = datetime_select :st, :datetime
+      %p Description
+      = text_area :study, :description
+      %br
 
-    = label :st, :location, 'Location'
-    = text_field :st, :location
+      = label :study, :max_participants, 'Max Number of Participants'
+      = text_field :study, :max_participants
+      %br
+      = label :study, :duration, 'Length of Study'
+      = text_field :study, :duration 
+      %br
+
+      = label :study, :credits, 'Credit Amount'
+      = number_field :study, :credits, :required => true
+      %br
+
+      %p Studytimes:
+      - @studytimes.each do |st|
+        %p= "--- #{st.toString}"
+
+      = submit_tag 'Update Study Info', :class => 'button', :id => 'save_changes'
+
     %br
-
-  = submit_tag 'Update Study Info'
-
-%br
-%br
-= button_to 'DELETE STUDY', study_path(@study), :method => :delete, :confirm => 'Are you sure?'
+    %br
+    = button_to 'DELETE STUDY', study_path(@study), :method => :delete, :confirm => 'Are you sure you want to completely delete this study? All data will be lost.', :class => 'button'

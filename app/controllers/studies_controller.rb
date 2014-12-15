@@ -6,6 +6,11 @@ class StudiesController < ApplicationController
     @study = Study.find(params[:id]) # look up study by unique ID
     # will render app/views/studys/show.<extension> by default
     @mine = @me.created_studies.include? @study
+    # true if the user has already joined a section of this study
+    @hasjoined = false
+    @me.studytimes.each do |st|
+      @hasjoined = true if st.study == @study
+    end
   end
 
   def index
@@ -19,11 +24,15 @@ class StudiesController < ApplicationController
   def create
     @study = Study.new(params[:study])
     studytime = Studytime.new(params[:studytime])
+    @study.researchers << @me
     @study.studytimes << studytime
+    studytime.study = @study
+    @me.created_studies << @study
+    studytime.save
     @study.save!
 
     flash.alert = "#{@study.title} was successfully created."
-    redirect_to studies_path
+    redirect_to study_path(@study)
   end
 
   def edit
@@ -34,6 +43,13 @@ class StudiesController < ApplicationController
   def update
     @study = Study.find params[:id]
     @study.update_attributes!(params[:study])
+    if params[:studytime]
+      @studytime = Studytime.new(params[:studytime])
+      @study.studytimes << @studytime
+      @studytime.study = @study
+      @studytime.save
+      @study.save
+    end
     flash.alert = "#{@study.title} was successfully updated."
     redirect_to study_path(@study)
   end
@@ -41,8 +57,12 @@ class StudiesController < ApplicationController
   def destroy
     #@me = get_user
     @study = Study.find(params[:id])
+    studytimes = Studytime.where(study_id: @study.id)
     @study.destroy
-    flash[:notice] = "Study '#{@study.title}' deleted."
+    studytimes.each do |st|
+      st.destroy
+    end
+    flash.alert = "Study '#{@study.title}' deleted."
     redirect_to studies_path
   end
 
@@ -58,63 +78,51 @@ class StudiesController < ApplicationController
     studytime = Studytime.find(params[:studytime])
     @me.studytimes.delete(studytime)
     flash.alert = "You have left #{studytime.study.title}"
-    redirect_to users_my_studies_path
+    if params[:path] == 'from_show'
+      redirect_to study_path(studytime.study)
+    else
+      redirect_to users_my_studies_path
+    end
   end
 
   def attendance
-    @me = get_user
-    puts @me.completedstudies
-    @time = Studytime.find_by_id(params[:studyTime])
+    @time = Studytime.find_by_id(params[:study_time_id])
     @study = @time.study
 
     #make a hash of participants => if they have completed this study/time
     @participants = {} #user.id => boolean
 
-
-    temp = User.find_by_id(1)
-    #@participants[temp] = false
-
-    # if(temp.completedstudies.includes?(@time.id))
-    #   puts "blah"
-    # else
-    #   puts "yay"
-    # end
+    p @time.participants
 
     #for all of the participants of this study
     @time.participants.each do |p|
       # look at all their completed studies
-      if (p.completedstudies == [])
-        puts "no completedstudies"
-        @participants[p] = false
-        next
-      end
-      p.completedstudies.each do |s|
-        puts "**********"
-        p "heelo"
-        puts s
-        puts @time.id
-        puts "**********"
+      @participants[p] = false
+      # if (p.completedstudies == [])
+      #   @participants[p] = false
+      #   next
+      # end
+      p.completedstudies.each do |studytime|
         #if they have completed this study
-        if (s == @time.id)
+        if (studytime.id == @time.id)
           #return true
           @participants[p] = true
-          return
         end
-      #if you get here, they haven't completed this study so value = false
-      @participants[p] = false
+        #if you get here, they haven't completed this study so value = false
       end
+
     end
-    puts "**********"
-    puts @participants
-    puts "**********"
+
+    p @participants
 
   end
 
   def confirm_attendance
     user = User.find_by_id(params[:person_id])
-    studytime = params[:studytimes]
+    studytime = Studytime.find_by_id(params[:time_id])
     user.completedstudies << studytime
+    user.credits += studytime.study.credits
     user.save!()
-   redirect_to users_start_study_path
+   redirect_to studies_attendance_path(studytime.id)
   end
 end

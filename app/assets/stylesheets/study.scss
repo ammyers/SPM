@@ -13,11 +13,18 @@ $page-background: white image-url("escheresque-light.png") repeat fixed;
 $listitem-background: rgba(172,0,0,0.2);
 $listitem-textcolor: black;
 $full-background: DarkGray;
-$full-color: $tannish;
+$full-color: black;
 $full-border-color: black;
 $joined-background: LightGreen;
 $joined-color: black;
 $joined-border-color: DarkGreen;
+
+.button {
+  margin: 10px;
+  font-weight: bold;
+  border: 3px solid $very-dark-red;
+  border-radius: 10;
+}
 
 #studies {
 	li {
@@ -38,23 +45,14 @@ $joined-border-color: DarkGreen;
         position: relative;
         top: 20px;
       }
-    }   
+    }
   }
 }
 
 #studyinfo {
-  #time {
-  }
-
-  #openings {
-  }
-
-  .selection_link {
-    display: block;
-  }
 
   p#full, p#joined {
-    display: block;
+    display: inline;
     text-decoration: none;
     font-weight: bold;
     border-radius: 10px;
@@ -70,5 +68,26 @@ $joined-border-color: DarkGreen;
     border: 3px solid $joined-border-color;
     background: $joined-background;
     color: $joined-color;
+  }
+
+  div#joinwrapper {
+    padding: 10 5 15 5;
+    height: auto;
+  }
+}
+
+#new, #edit {
+  h1, label{
+    padding: 5px;
+  }
+  input, select, textarea {
+    margin: 5px;
+  }
+
+  #save_changes {
+    font-weight: bold;
+    padding: 15px 40;
+    border: 3px solid $very-dark-red;
+    border-radius: 10;
   }
 }

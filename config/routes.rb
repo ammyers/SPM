@@ -5,15 +5,19 @@ TestManagement::Application.routes.draw do
   get 'users/my_studies' => 'users#my_studies'
   get 'users/created_studies' => 'users#created_studies'
   get 'users/setup' => 'users#setup'
+  get 'users/addcourse' => 'users#addcourse'
+  get 'users/joincourse' => 'users#joincourse'
+  get 'users/leavecourse' => 'users#leavecourse'
 
   get 'studies/join' => 'studies#join'
   get 'studies/leave' => 'studies#leave'
+  get 'studies/addstudytime' => 'studies#addstudytime'
   
   resources :users, :studies
 
   post 'studies/confirm_attendance/:person_id/:time_id', to: "studies#confirm_attendance", as: "studies_confirm_attendance"
 
-  match 'studies/:id/attendance', to: "studies#attendance", as: "studies_attendance"
+  match 'studies/:study_time_id/attendance', to: "studies#attendance", as: "studies_attendance"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

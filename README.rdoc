@@ -1,3 +1,25 @@
-http://polar-dusk-2632.herokuapp.com/
+heroku: http://polar-dusk-2632.herokuapp.com/
 
-http://sarahewallis.wix.com/cake
+pivotal tracker:https://www.pivotaltracker.com/n/projects/1174782
+
+Future Work:
+-if not logged, redirect to login page
+-add multiple time slots
+-turn researchers into links on view study page
+-multiple researchers
+-paper option: true/false -> All Studies, 1 paper, 2 papers
+-get add course to work
+-format/make pretty all student/all users
+-view admin for admins
+-Admin: create class
+-studies: have credit value, on all users - display # of credits signed up for, # of credits completed (drop down?)
+-add not: if doing essay, get assignment from prof
+-prevent students from signing up for more than one time in the same study
+-prevent admin from being able to sign up for studies
+-admin: when look at a study, see who's signed up for it
+-export data
+-drop down for length of time (0:30 min or less, 0:30 - 1:00, 1:00-1:30, more than 1:30)
+-accountability: no show or cancel: display on their page: Study Name | Time | Cancel Time/No Show
+-ethics statement... when sign up, I agree.... []
+-admins can edit students
+-admins set researchers by email, admins add admins?

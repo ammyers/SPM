@@ -93,12 +93,18 @@ div#userinfo {
     }
 }
 
-#setup {
+#setup, #edit {
     h1 {
         margin: 10px;
     }
 
-    input {
+    label, input {
         margin: 5px;
+    }
+}
+
+#addcourse {
+    #wrapper {
+        margin-left: 5;
     }
 }

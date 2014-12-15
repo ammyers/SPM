@@ -13,7 +13,10 @@
             Researchers: 
             - numresearchers = s.researchers.size
             - s.researchers.each do |r|
-              = link_to "#{r.first_name} #{r.last_name}", user_path(r), { :class => "researcher_link"}
+              - if @me.admin?
+                = link_to "#{r.first_name} #{r.last_name}", user_path(r), { :class => "researcher_link"}
+              - else
+                = r.full_name
               - numresearchers -= 1
               - if numresearchers > 0
                 | 
@@ -23,7 +26,7 @@
         %div#bottom
           %p#description= s.description
 
-          %div#wrapper= link_to "LEAVE THIS STUDY", studies_leave_path(:studytime => studytime), { :class => "selection_link"}
+          %div#wrapper= link_to "LEAVE THIS STUDY", studies_leave_path(:studytime => studytime, :path => 'from_my_studies'), { :class => "selection_link"}
 
   - if @my_studytimes.empty?
     %h2 You are not signed up for any studies

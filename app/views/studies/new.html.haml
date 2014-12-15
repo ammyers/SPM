@@ -1,27 +1,37 @@
- 
-%h1 Create New Study
+%div#body
+  %div.maincontent#new
+    %h1 Create New Study
 
-<div id="indent1">
-= form_tag studies_path do
+    = form_tag studies_path do
 
-  = label :study, :title, 'Title'
-  = text_field :study, 'title'
+      = label :study, :title, 'Title'
+      = text_field :study, 'title', :required => true
+      %br
 
-  = label :study, :description, 'Description'
-  = text_area :study, 'description'
+      %p Description
+      = text_area :study, 'description', :required => true
+      %br
 
-  = label :study, :max_participants, 'Max Number of Participants'
-  = text_field :study, :max_participants
+      = label :study, :max_participants, 'Max Number of Participants'
+      = number_field :study, :max_participants, :required => true
+      %br
 
-  = label :study, :duration, 'Length of Study'
-  = text_field :study, :duration
+      = label :study, :duration, 'Length of Study in Minutes (max length)'
+      = number_field :study, :duration, :required => true
+      %br
 
-  = label :studytime, :datetime, 'Date and Time'
-  = datetime_select :studytime, :datetime
+      = label :study, :credits, 'Credit Amount'
+      = number_field :study, :credits, :required => true
+      %br
 
-  = label :studytime, :location, 'Location'
-  = text_field :studytime, :location
-  <br> <br>
-  <input type="submit" id="save_changes" value="Save Changes">
+      %p Please fill out your first study time. You can add additional sections on the Edit page.
 
-</div>
+      = label :studytime, :datetime, 'Date and Time'
+      = datetime_select :studytime, :datetime, :required => true
+      %br
+
+      = label :studytime, :location, 'Location (eg. Wey 302)'
+      = text_field :studytime, :location, :required => true
+      %br
+
+      <input type="submit" id="save_changes" value="CREATE">

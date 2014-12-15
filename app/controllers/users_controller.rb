@@ -92,10 +92,14 @@ class UsersController < ApplicationController
   end
 
   def update
+    # @user = User.find(params[:id])
+    # @user.update_attributes(params[:user])
+    # #courseparams = params[:user][:courses]
+    # flash.alert = "Account updated."
+    # redirect_to user_path(@user)
     @user = User.find(params[:id])
-    @user.update_attributes(params[:user])
-    #courseparams = params[:user][:courses]
-    flash.alert = "Account updated."
+    @user.update_attributes params[:user]
+    flash.alert = "#{@user.first_name} #{@user.last_name} was successfully updated."
     redirect_to user_path(@user)
   end
 

@@ -18,6 +18,7 @@ class SessionsController < ApplicationController
       # this is a setup, non-admin user
       redirect_to studies_path #where go to when logged in
     end
+    # redirect_to studies_path
   end
 
   #logout

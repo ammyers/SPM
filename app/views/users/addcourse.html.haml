@@ -1,0 +1,11 @@
+%div#body
+	%h1 Add course
+	%div.maincontent#addcourse
+		- if @courseOptions.empty?
+			%h2= "There are no courses available to add."
+		- @courseOptions.each do |c|
+			%h2= c.toString
+
+			%div#wrapper= link_to "Add", users_joincourse_path(:course => c), { :class => "selection_link"}
+			%br
+		%h2 If a course you are in is not listed here, please let your professor know and they can add it to the database

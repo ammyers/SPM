@@ -6,9 +6,9 @@ sally = User.create(:first_name => 'Sally', :last_name => 'Winthrop', :email => 
 hailey = User.create(:first_name => 'Hailey', :last_name => 'Ember', :email => 'd', :role => 'participant')   	  
 holly = User.create(:first_name => 'Holly', :last_name => 'Zender', :email => 'swin', :role => 'participant')   	  
 tommy = User.create(:first_name => 'Tommy', :last_name => 'Van Der Waal', :email => 'swinths.edu', :role => 'participant')   	  
-bill = User.create(:first_name => 'Bill', :last_name => 'McKibben', :email => 'swins.edu', :role => 'participant')   	  
-joel = User.create(:first_name => 'Joe', :last_name => 'Rous', :email => 'jross@ups.edu', :role => 'researcher')
-robin = User.create(:first_name => 'Robin', :last_name => 'Dorn', :email => 'rdorn@ups.edu', :role => 'admin')
+bill = User.create(:first_name => 'Bill', :last_name => 'McKibben', :email => 'swins.edu', :role => 'participant', :member_of => 'student')   	  
+joel = User.create(:first_name => 'Joe', :last_name => 'Rous', :email => 'jross@ups.edu', :role => 'researcher', :member_of => 'student')
+robin = User.create(:first_name => 'Robin', :last_name => 'Dorn', :email => 'rdorn@ups.edu', :role => 'admin', :member_of => 'faculty')
 no_studies = User.create(:first_name => 'Damon', :last_name => 'Templeton', :email => 'da', :role => 'participant')
 
 db_study = Study.create(:title => 'Test Study', :description => 'Can we make this database work? Can we access the data?', :max_participants => 40, :duration => "30 min");
@@ -35,15 +35,15 @@ holly.courses << course_section1
 hailey.courses << course_section1
 bill.courses << course_section3
 
-db_time1 = Studytime.create(:datetime => DateTime.parse('9 Nov 2014 18:30:00'), :location => "Wey 310")
-desert_time1 = Studytime.create(:datetime => DateTime.parse('9 Nov 2014 17:30:00'), :location => "Wey 246")
-desert_time2 = Studytime.create(:datetime => DateTime.parse('9 Nov 2014 15:30:00'), :location => "Wey 340")
-desert_time3 = Studytime.create(:datetime => DateTime.parse('9 Jan 2014 08:30:00'), :location => "Wey 114")
-desert_time4 = Studytime.create(:datetime => DateTime.parse('23 Feb 2014 12:30:00'), :location => "Wey 114")
-ocean_time1 = Studytime.create(:datetime => DateTime.parse('14 Dec 2014 14:30:00'), :location => "Wey 298")
-ocean_time2 = Studytime.create(:datetime => DateTime.parse('1 Jan 2014 10:30:00'), :location => "Wey 114")
-sky_time1 = Studytime.create(:datetime => DateTime.parse('1 Jan 2014 10:30:00'), :location => "Wey 114")
-moon_time1 = Studytime.create(:datetime => DateTime.parse('1 Jan 2014 10:30:00'), :location => "Wey 114")
+db_time1 = Studytime.create(:datetime => Time.parse('14 Dec 2014 18:50:00 -0800'), :location => "Wey 310")
+desert_time1 = Studytime.create(:datetime => Time.parse('9 Nov 2014 17:30:00 -0800'), :location => "Wey 246")
+desert_time2 = Studytime.create(:datetime => Time.parse('9 Nov 2014 15:30:00 -0800'), :location => "Wey 340")
+desert_time3 = Studytime.create(:datetime => Time.parse('9 Jan 2014 08:30:00 -0800'), :location => "Wey 114")
+desert_time4 = Studytime.create(:datetime => Time.parse('23 Feb 2014 12:30:00 -0800'), :location => "Wey 114")
+ocean_time1 = Studytime.create(:datetime => Time.parse('14 Dec 2014 14:30:00 -0800'), :location => "Wey 298")
+ocean_time2 = Studytime.create(:datetime => Time.parse('1 Jan 2014 10:30:00 -0800'), :location => "Wey 114")
+sky_time1 = Studytime.create(:datetime => Time.parse('1 Jan 2014 10:30:00 -0800'), :location => "Wey 114")
+moon_time1 = Studytime.create(:datetime => Time.parse('1 Jan 2014 10:30:00 -0800'), :location => "Wey 114")
 
 db_study.studytimes << db_time1
 desert_study.studytimes << desert_time1

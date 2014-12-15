@@ -4,9 +4,9 @@
 
 		= form_for @me, method: :put do |u|
 			%p Are you signing up as a study participant or as a researcher?
-			= u.radio_button :role, 'participant'
+			= u.radio_button :role, 'participant', :required => true
 			Participant
-			= u.radio_button :role, 'researcher'
+			= u.radio_button :role, 'researcher', :required => true
 			Researcher
 			%br
 
@@ -17,4 +17,4 @@
 			No
 			%br
 
-			= u.submit "Setup User Account"
+			= u.submit "Setup User Account", :confirm => "Be sure to add your Psych course section on the next page to ensure that you receive credit for study participation"

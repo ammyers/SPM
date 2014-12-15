@@ -20,16 +20,21 @@
 # Learn more: http://github.com/javan/whenever
 
 # Every day send out notifications for the next day's studies
-every '0 0 * * * *' do
-	runner "Studytime.notify"
-end
+# The first number is the minute, the second is the hour
+# 0 0 = midnight
+#every :day, :at => '1:00 am' do
+# every 1.minutes do
+# 	runner "Studytime.notify"
+# end
 
-# Every Jan 1st
-every '0 0 1 1 * *' do
-	rake "db:reset"
-end
+# # Every Jan 1st at 00:01
+# every '1 0 1 1 *' do
+# 	rake "db:drop"
+# 	rake "db:migrate"
+# end
 
-# Every Jun 1st
-every '0 0 1 6 * *' do
-	rake "db:reset"
-end
+# # Every Jun 1st at 00:01
+# every '1 0 1 6 *' do
+# 	rake "db:drop"
+# 	rake "db:migrate"
+# end

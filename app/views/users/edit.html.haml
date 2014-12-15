@@ -9,7 +9,7 @@
 			<option value = admin> Administrator </option>
 			</select>
 
-			<br><br>
+			<br>
 
 			= label :user, :paper_option, 'Paper Option'
 			<select name='user[paper_option]'>
@@ -30,4 +30,4 @@
 
 			%div#wrapper= u.submit "Update User Info"
 
-		%div#wrapper= button_to "DELETE ACCOUNT", user_path(@user), {:method => :delete, :confirm => "Are you sure?"}
+		%div= button_to "DELETE ACCOUNT", user_path(@user), {:method => :delete, :confirm => "Are you sure?"}

@@ -5,9 +5,13 @@ TestManagement::Application.routes.draw do
   get 'users/my_studies' => 'users#my_studies'
   get 'users/created_studies' => 'users#created_studies'
   get 'users/setup' => 'users#setup'
+  get 'users/addcourse' => 'users#addcourse'
+  get 'users/joincourse' => 'users#joincourse'
+  get 'users/leavecourse' => 'users#leavecourse'
 
   get 'studies/join' => 'studies#join'
   get 'studies/leave' => 'studies#leave'
+  get 'studies/addstudytime' => 'studies#addstudytime'
   
   resources :users, :studies
 

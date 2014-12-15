@@ -6,6 +6,11 @@ class StudiesController < ApplicationController
     @study = Study.find(params[:id]) # look up study by unique ID
     # will render app/views/studys/show.<extension> by default
     @mine = @me.created_studies.include? @study
+    # true if the user has already joined a section of this study
+    @hasjoined = false
+    @me.studytimes.each do |st|
+      @hasjoined = true if st.study == @study
+    end
   end
 
   def index
@@ -21,10 +26,13 @@ class StudiesController < ApplicationController
     studytime = Studytime.new(params[:studytime])
     @study.researchers << @me
     @study.studytimes << studytime
+    studytime.study = @study
+    @me.created_studies << @study
+    studytime.save
     @study.save!
 
     flash.alert = "#{@study.title} was successfully created."
-    redirect_to studies_path
+    redirect_to study_path(@study)
   end
 
   def edit
@@ -35,6 +43,13 @@ class StudiesController < ApplicationController
   def update
     @study = Study.find params[:id]
     @study.update_attributes!(params[:study])
+    if params[:studytime]
+      @studytime = Studytime.new(params[:studytime])
+      @study.studytimes << @studytime
+      @studytime.study = @study
+      @studytime.save
+      @study.save
+    end
     flash.alert = "#{@study.title} was successfully updated."
     redirect_to study_path(@study)
   end
@@ -42,8 +57,12 @@ class StudiesController < ApplicationController
   def destroy
     #@me = get_user
     @study = Study.find(params[:id])
+    studytimes = Studytime.where(study_id: @study.id)
     @study.destroy
-    flash[:notice] = "Study '#{@study.title}' deleted."
+    studytimes.each do |st|
+      st.destroy
+    end
+    flash.alert = "Study '#{@study.title}' deleted."
     redirect_to studies_path
   end
 
@@ -59,7 +78,11 @@ class StudiesController < ApplicationController
     studytime = Studytime.find(params[:studytime])
     @me.studytimes.delete(studytime)
     flash.alert = "You have left #{studytime.study.title}"
-    redirect_to users_my_studies_path
+    if params[:path] == 'from_show'
+      redirect_to study_path(studytime.study)
+    else
+      redirect_to users_my_studies_path
+    end
   end
 
   def attendance
@@ -98,6 +121,7 @@ class StudiesController < ApplicationController
     user = User.find_by_id(params[:person_id])
     studytime = Studytime.find_by_id(params[:time_id])
     user.completedstudies << studytime
+    user.credits += studytime.study.credits
     user.save!()
    redirect_to studies_attendance_path(studytime.id)
   end

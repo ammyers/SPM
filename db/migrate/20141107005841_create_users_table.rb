@@ -5,7 +5,8 @@ class CreateUsersTable < ActiveRecord::Migration
       p.string :last_name
       p.string :email
       p.string :role
-      p.boolean :setup
+      p.boolean :setup, :default => false
+      p.integer :credits, :default => 0
       p.timestamps
  	 end
   end

@@ -13,7 +13,7 @@ TestManagement::Application.routes.draw do
 
   post 'studies/confirm_attendance/:person_id/:time_id', to: "studies#confirm_attendance", as: "studies_confirm_attendance"
 
-  match 'studies/:id/attendance', to: "studies#attendance", as: "studies_attendance"
+  match 'studies/:study_time_id/attendance', to: "studies#attendance", as: "studies_attendance"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -61,17 +61,18 @@ class UsersController < ApplicationController
   end
 
   def my_studies
-    #@me = get_user
     @my_studytimes = @me.studytimes
   end
 
   def created_studies
-    #@me = get_user
+    if(params[:selected_studytime])
+      redirect_to studies_attendance_path(params[:selected_studytime])
+    end
+    
     @studies = @me.created_studies
   end
 
   def new
-    #@me = get_user
     # default: render 'new' template
   end
 

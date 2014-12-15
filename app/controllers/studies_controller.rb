@@ -63,50 +63,42 @@ class StudiesController < ApplicationController
   end
 
   def attendance
-    @me = get_user
-    puts @me.completedstudies
-    @time = Studytime.find_by_id(params[:studyTime])
+    @time = Studytime.find_by_id(params[:study_time_id])
     @study = @time.study
 
     #make a hash of participants => if they have completed this study/time
     @participants = {} #user.id => boolean
 
-
-    temp = User.find_by_id(1)
-    #@participants[temp] = false
-
-    # if(temp.completedstudies.includes?(@time.id))
-    #   puts "blah"
-    # else
-    #   puts "yay"
-    # end
+    p @time.participants
 
     #for all of the participants of this study
     @time.participants.each do |p|
       # look at all their completed studies
-      if (p.completedstudies == [])
-        @participants[p] = false
-        next
-      end
-      p.completedstudies.each do |s|
+      @participants[p] = false
+      # if (p.completedstudies == [])
+      #   @participants[p] = false
+      #   next
+      # end
+      p.completedstudies.each do |studytime|
         #if they have completed this study
-        if (s == @time.id)
+        if (studytime.id == @time.id)
           #return true
           @participants[p] = true
-          return
         end
-      #if you get here, they haven't completed this study so value = false
-      @participants[p] = false
+        #if you get here, they haven't completed this study so value = false
       end
+
     end
+
+    p @participants
 
   end
 
   def confirm_attendance
     user = User.find_by_id(params[:person_id])
-    studytime = params[:studytimes]
+    studytime = Studytime.find_by_id(params[:time_id])
     user.completedstudies << studytime
     user.save!()
-   redirect_to users_start_study_path
+   redirect_to studies_attendance_path(studytime.id)
   end
 end

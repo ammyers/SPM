@@ -45,6 +45,40 @@ body {
   font: 100% Georgia, sans-serif;
   color: $ps-black;
   background-color: $white;
+  background-image: url("/app/assets/images/weyhall.jpg");
+}
+
+div#login {
+  padding-top: 100px;
+  padding-bottom: 50px;
+  text-align: center;
+
+  h1 {
+    font-size: 45px;
+  }
+
+}
+div#header {
+  color: $white;
+  padding: 5px;
+  display: block;
+  border-bottom: 15px solid $ps-black;
+  background: $maroon;
+  overflow: auto;
+}
+
+div#footer {
+  color: $white;
+  padding: 5px;
+  display: block;
+  border-top: 15px solid $ps-black;
+  background: $maroon;
+  overflow: auto;
+
+  padding: 5px;
+  font-weight: bold;
+  font-size: 12px;
+  
 }
 
 .btn-xlarge {
@@ -59,17 +93,9 @@ body {
             background-color: $maroon;
 }
 
-div#login {
-  padding-top: 100px;
-  padding-bottom: 50px;
-  text-align: center;
+.btn-logout {
 
-
-  h1 {
-    font-size: 45px;
-  }
 }
-
 
 /** {
   margin: 0;
@@ -81,19 +107,12 @@ html, body {
   padding: 0;
   background: $page-background;
   color: black;
-  font-family: Georgia, serif;
+  font-family: Georgia,block serif;
   font-size: 10pt;
 }
 
 */
-div#header {
-  color: $white;
-  padding: 5px;
-  display: block;
-  border-bottom: 15px solid $ps-black;
-  background: $maroon;
-  overflow: auto;
-}
+
 /*
   h1 {
     float: left;
@@ -279,15 +298,7 @@ div#body {
 
 
 
-div#footer {
-  border-top: 4px solid $footer-border-color;
-  //border-bottom: 4px solid $header-border-color;
-  background: $footer-background-color;
-  padding: 5px;
-  p {
-    padding: 5px;
-    font-weight: bold;
-  }
+
 }
 
 //  Sticky Footer by Ryan Fait

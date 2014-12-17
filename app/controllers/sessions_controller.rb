@@ -22,7 +22,7 @@ class SessionsController < ApplicationController
   #logout
   def destroy
     session.delete(:user_id)
-    flash.alert = 'Logged out'
+    flash.alert = 'Logged out successfully'
     redirect_to root_path #where to go to when logged out
   end
 end

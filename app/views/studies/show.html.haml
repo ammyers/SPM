@@ -7,42 +7,53 @@
 		- numresearchers = @study.researchers.size
 		- @study.researchers.each do |r|
 			- if @me.admin?
-				= link_to "#{r.first_name} #{r.last_name}", user_path(r), { :class => "researcher_link"}
+				= link_to "#{r.first_name} #{r.last_name}", user_path(r), :class => 'btn btn-link'
 			- else
 				%p= r.full_name
 			- numresearchers -= 1
 			- if numresearchers > 0
 				|
+
 		%h2 Description:
 		%p#description= @study.description
+
 		%h2 Length of Study: 
 		%p#duration= @study.duration
+
 		%h2 Credit Worth:
 		%p= @study.credits
+
 		%h2 Maximum participants per time slot: 
 		%p#max_participants= @study.max_participants 
+
 		%h2 Available Times:
 		- @study.studytimes.each do |t|
 			- open = @study.max_participants - t.participants.size
 			%p#time= t.toString
 			%p#openings= "Open spots: #{open}"
+
 			- if !@mine
 				- if @me.studytimes.exists?(t)
 					%div#joinwrapper
 						%p#joined= "JOINED"
-						= link_to "Leave", studies_leave_path(:studytime => t, :path => 'from_show')
+						= link_to "Leave", studies_leave_path(:studytime => t, :path => 'from_show'), :class => 'btn btn-danger'
+
 				- elsif open==0
 					%div#joinwrapper
 						%p#full= "FULL"
+
 				- elsif @hasjoined
 					%div#joinwrapper
 						%p#full= "ONLY ONE SECTION MAY BE JOINED"
+
 				- elsif @me.admin?
 					%div#joinwrapper
 						%p#joined= "OPEN"
+
 				- else
-					%div#joinwrapper= link_to "JOIN THIS STUDY SECTION", studies_join_path(:studytime => t), { :class => "selection_link"}
+					%div#joinwrapper= link_to "Join this section", studies_join_path(:studytime => t), :class => 'btn btn-default'
+
 		- if @mine || @me.admin?
 			%br
 			%br
-			%div#joinwrapper= link_to "EDIT THIS STUDY", edit_study_path(@study), { :class => "selection_link"}
+			%div#joinwrapper= link_to "Edit Your Study", edit_study_path(@study), :class => 'btn btn-default'

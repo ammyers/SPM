@@ -1,34 +1,36 @@
 %div#body
-  %div.maincontent#edit
+  %div
     %h1 Edit Existing Study
 
     = form_tag study_path(@study), :method => :put do
 
       = label :study, :title, 'Title'
       = text_field :study, :title
-      %br
-
-      %p Description
-      = text_area :study, :description
-      %br
-
+      
       = label :study, :max_participants, 'Max Number of Participants'
       = text_field :study, :max_participants
+
+      = label :study, :credits, 'Credit Amount'
+      = number_field :study, :credits, :required => true
+
+      %br
+      = label :study, :description, 'Description'
+      = text_area :study, :description
+
       %br
       = label :study, :duration, 'Length of Study'
       = text_field :study, :duration 
       %br
 
-      = label :study, :credits, 'Credit Amount'
-      = number_field :study, :credits, :required => true
+
       %br
 
       %p Studytimes:
       - @studytimes.each do |st|
         %p= "--- #{st.toString}"
 
-      = submit_tag 'Update Study Info', :class => 'button', :id => 'save_changes'
+      = submit_tag 'Update Study Info', :id => 'save_changes', :class => 'btn btn-default'
 
     %br
     %br
-    = button_to 'DELETE STUDY', study_path(@study), :method => :delete, :confirm => 'Are you sure you want to completely delete this study? All data will be lost.', :class => 'button'
+    = button_to 'Delete', study_path(@study), :method => :delete, :confirm => 'Are you sure you want to completely delete this study? All data will be lost.', :class => 'btn btn-danger'

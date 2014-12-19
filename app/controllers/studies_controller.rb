@@ -1,7 +1,5 @@
 class StudiesController < ApplicationController
 
-# @me unnecessary because of :set_current_user being performed in application controller 
-
   def show
     @study = Study.find(params[:id]) # look up study by unique ID
     # will render app/views/studys/show.<extension> by default
@@ -18,7 +16,6 @@ class StudiesController < ApplicationController
   end
 
   def new
-    # default: render 'new' template
   end
 
   def create

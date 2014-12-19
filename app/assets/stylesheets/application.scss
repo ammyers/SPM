@@ -40,6 +40,7 @@ $footer-push-amount-neg: -39px;
 $white: #ffffff;
 $maroon: #660000;
 $ps-black: #222222;
+$danger: #C9302C;
 
 body {
   font: 100% Georgia, sans-serif;
@@ -82,19 +83,27 @@ div#footer {
 }
 
 .btn-xlarge {
-    padding: 18px 28px;
-    font-size: 25px;
-    color: $white;
-    line-height: normal;
-    -webkit-border-radius: 8px;
-       -moz-border-radius: 8px;
-            border-radius: 8px;
-            border-color: #fff;
-            background-color: $maroon;
+  padding: 18px 28px;
+  font-size: 25px;
+  color: $white;
+  line-height: normal;
+  -webkit-border-radius: 8px;
+     -moz-border-radius: 8px;
+          border-radius: 8px;
+          border-color: #fff;
+          background-color: $maroon;
 }
 
 .btn-logout {
-
+  float: right;
+  margin: 0px 50px;
+  color: $white;
+  line-height: normal;
+  -webkit-border-radius: 8px;
+     -moz-border-radius: 8px;
+          border-radius: 8px;
+          border-color: #danger;
+          background-color: #danger;
 }
 
 /** {

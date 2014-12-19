@@ -20,9 +20,8 @@
       -
       = link_to "My Account", user_path(@me), :class => 'btn btn-default'
       // Destroys session for PS auth
-      = link_to "Log Out", logout_path, :class => 'btn btn-danger'
+      = link_to "Log Out", logout_path, :class => 'btn btn-logout'
 
   - if flash.alert
     %p#alert= flash.alert
-  / - if @me
 

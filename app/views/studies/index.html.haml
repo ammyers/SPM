@@ -14,17 +14,17 @@
             - numresearchers = study.researchers.size
             - study.researchers.each do |r|
               - if @me.admin?
-                = link_to "#{r.full_name}", user_path(r), { :class => "researcher_link"}
+                = link_to "#{r.full_name}", user_path(r), :class => 'btn btn=link'
               - else
                 = r.full_name
               - numresearchers -= 1
               - if numresearchers > 0
                 | 
           %div#right
-            Available Times:
+            %h3 Available Times:
             - study.studytimes.each do |t|
               %p#time= t.toString()
         %div#bottom
           %p#description= study.description
 
-          %div#wrapper= link_to "SELECT STUDY: #{study.title}", study_path(study), { :class => "selection_link"}
+          = link_to "Select #{study.title}", study_path(study), :class => 'btn btn-default'

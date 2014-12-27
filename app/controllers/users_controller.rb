@@ -13,7 +13,7 @@ class UsersController < ApplicationController
     #@me = get_user
     #if not an admin, redirect
     if !@me.admin?
-      flash.alert = "INACCESIBLE PAGE"
+      flash.alert = "INACCESSIBLE PAGE"
       redirect_to studies_path
     end
 
@@ -21,7 +21,7 @@ class UsersController < ApplicationController
     @all_courses = Course.all
 
     #1. we only want students
-    @users = User.where("role == 'participant' OR role == 'researcher'")
+    @users = User.where("role != 'admin'").paginate(:per_page => 5, :page => params[:page])
 
     #2. filter by course
       #if null or all_courses, include everyone - no filter

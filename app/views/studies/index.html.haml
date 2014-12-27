@@ -1,30 +1,26 @@
-%div#body
+.body
   %h1 All Current Studies
 
-  %ul.maincontent#studies
-    - @studies.each do |study|
-      %li
-        %div#top
-          %div#left
-            - if study.credits == 1
-              %p#title= "#{study.title} [#{study.credits} credit]"
-            - else
-              %p#title= "#{study.title} [#{study.credits} credits]"
-            Researchers: 
-            - numresearchers = study.researchers.size
-            - study.researchers.each do |r|
-              - if @me.admin?
-                = link_to "#{r.full_name}", user_path(r), :class => 'btn btn=link'
-              - else
-                = r.full_name
-              - numresearchers -= 1
-              - if numresearchers > 0
-                | 
-          %div#right
-            %h3 Available Times:
-            - study.studytimes.each do |t|
-              %p#time= t.toString()
-        %div#bottom
+.container-fluid
+  - @studies.each do |study|
+    .box
+      .row
+        .col-md-4
+          - if study.credits == 1
+            %p#title= "#{study.title} [#{study.credits} credit]"
+          - else
+            %p#title= "#{study.title} [#{study.credits} credits]"
+          Researchers: 
+          - numresearchers = study.researchers.size
+          - study.researchers.each do |r|
+            = link_to "#{r.full_name}", user_path(r), :class => 'btn btn=link'
+            - numresearchers -= 1
+            - if numresearchers > 0
+              | 
           %p#description= study.description
-
+        .col-md-3
+          %h3 Available Times:
+          - study.studytimes.each do |t|
+            %p#time= t.toString()
+        .col-md-3        
           = link_to "Select #{study.title}", study_path(study), :class => 'btn btn-default'

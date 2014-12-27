@@ -68,8 +68,6 @@ class User < ActiveRecord::Base
   	end
   end
 
-
-
   def admin?
   	return (self.role == "admin") 
   end

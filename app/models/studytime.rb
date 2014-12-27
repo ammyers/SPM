@@ -10,7 +10,7 @@ class Studytime < ActiveRecord::Base
   before_save :confirm_location
 
   def confirm_location
-  	self.location = "UNKNOWN" if self.location.nil?
+  	self.location = "Not Reported" if self.location.nil?
   end
 
   def self.notify

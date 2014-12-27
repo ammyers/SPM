@@ -12,20 +12,22 @@ class StudiesController < ApplicationController
   end
 
   def index
-    @studies = Study.all
+    # shuffles studies to reduce preferential choosing
+    @studies = Study.all.shuffle
   end
 
   def new
+    # default
   end
 
   def create
     @study = Study.new(params[:study])
     studytime = Studytime.new(params[:studytime])
-    @study.researchers << @me
+    #@study.researchers << @me     made duplicate entries in researchers table
     @study.studytimes << studytime
     studytime.study = @study
     @me.created_studies << @study
-    studytime.save
+    studytime.save!
     @study.save!
 
     flash.alert = "#{@study.title} was successfully created."

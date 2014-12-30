@@ -14,10 +14,15 @@ class StudiesController < ApplicationController
   def index
     # shuffles studies to reduce preferential choosing
     @studies = Study.all.shuffle
+    #paginate(:per_page => 5, :page => params[:page])
   end
 
   def new
     # default
+    if !@me.researcher?
+      flash.alert = "Only researchers can create studies"
+      redirect_to studies_path
+    end
   end
 
   def create
@@ -37,6 +42,11 @@ class StudiesController < ApplicationController
   def edit
     @study = Study.find params[:id]
     @studytimes = @study.studytimes
+    @mine = @me.created_studies.include? @study
+    if (!@mine || @me.admin?)
+      flash.alert = "This is not your study, unable to edit"
+      redirect_to study_path(@study)
+    end
   end
 
   def update
@@ -54,7 +64,6 @@ class StudiesController < ApplicationController
   end
 
   def destroy
-    #@me = get_user
     @study = Study.find(params[:id])
     studytimes = Studytime.where(study_id: @study.id)
     @study.destroy
@@ -66,7 +75,6 @@ class StudiesController < ApplicationController
   end
 
   def join
-    #@me = get_user
     @me.studytimes << Studytime.find(params[:studytime])
     count = @me.studytimes.size
     flash.alert = "You are now registered for #{count} studies"
@@ -86,6 +94,12 @@ class StudiesController < ApplicationController
 
   def attendance
     @time = Studytime.find_by_id(params[:study_time_id])
+    # @mine = @me.created_studies.include? @time
+    # if (!@mine || !@me.admin?)
+    #   flash.alert = "Unable to Access"
+    #   redirect_to studies_path
+    # end
+
     @study = @time.study
 
     #make a hash of participants => if they have completed this study/time
@@ -111,9 +125,7 @@ class StudiesController < ApplicationController
       end
 
     end
-
-    p @participants
-
+     p @participants
   end
 
   def confirm_attendance

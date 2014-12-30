@@ -5,9 +5,9 @@ class User < ActiveRecord::Base
 
   validates :first_name, :last_name, :email, presence: true
 
-  has_and_belongs_to_many :created_studies, join_table: "researchers", class_name: "Study"
+  has_and_belongs_to_many :created_studies, join_table: "researcher_studies", class_name: "Study"
 
-  has_and_belongs_to_many :studytimes, join_table: "participants"
+  has_and_belongs_to_many :studytimes, join_table: "participant_studies"
 
   has_and_belongs_to_many :completedstudies, join_table: "completions", class_name: "Studytime"
 

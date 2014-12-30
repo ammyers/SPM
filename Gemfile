@@ -61,4 +61,6 @@ gem 'omniauth-shibboleth'
 # allow your server to talk to UPS's server 
 gem 'rack-saml', '>= 0.1.1'
 
+# handy pagination
 gem 'will_paginate'
+gem 'will_paginate-bootstrap'

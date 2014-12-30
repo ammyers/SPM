@@ -5,7 +5,7 @@
   - @studies.each do |study|
     .box
       .row
-        .col-md-4
+        .col-md-3
           - if study.credits == 1
             %p#title= "#{study.title} [#{study.credits} credit]"
           - else
@@ -13,7 +13,7 @@
           Researchers: 
           - numresearchers = study.researchers.size
           - study.researchers.each do |r|
-            = link_to "#{r.full_name}", user_path(r), :class => 'btn btn=link'
+            = link_to "#{r.full_name}", user_path(r), :class => 'btn btn-link'
             - numresearchers -= 1
             - if numresearchers > 0
               | 

@@ -1,6 +1,4 @@
 class UsersController < ApplicationController
-
-  # @me set using :set_current_user being performed in application controller 
   
   def show
     @user = User.find(params[:id]) # look up user by unique ID
@@ -10,10 +8,9 @@ class UsersController < ApplicationController
   end
 
   def index
-    #@me = get_user
     #if not an admin, redirect
     if !@me.admin?
-      flash.alert = "INACCESSIBLE PAGE"
+      flash.alert = "Not an admin, unable to access"
       redirect_to studies_path
     end
 
@@ -64,7 +61,7 @@ class UsersController < ApplicationController
 
   def my_studies
     @my_studytimes = @me.studytimes
-    flash.keep
+    flash.alert = "You have no studies"
     redirect_to studies_path if @my_studytimes.empty?
   end
 
@@ -78,10 +75,13 @@ class UsersController < ApplicationController
 
   def new
     # default: render 'new' template
+    if (!@me.admin?)
+      flash.alert = "Not an admin, unable to access"
+      redirect_to studies_path
+    end
   end
 
   def create
-    #@me = get_user
     @user = User.create!(params[:user])
     redirect_to users_path
   end
@@ -90,11 +90,14 @@ class UsersController < ApplicationController
     @user = User.find params[:id]
     @courses = @user.courses
     @all_courses = Course.all
+    if @user != @me
+      flash.alert = "Not your account, unable to access"
+      redirect_to studies_path
+    end
   end
 
   # setup page similar to edit page
   def setup
-    # @me set
     if @me.setup
       flash.alert = "Error: Page not accessible"
       redirect_to studies_path

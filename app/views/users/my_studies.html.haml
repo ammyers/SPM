@@ -14,7 +14,7 @@
             - numresearchers = s.researchers.size
             - s.researchers.each do |r|
               - if @me.admin?
-                = link_to "#{r.first_name} #{r.last_name}", user_path(r), { :class => "researcher_link"}
+                = link_to "#{r.first_name} #{r.last_name}", user_path(r), :class => 'btn btn-link'
               - else
                 = r.full_name
               - numresearchers -= 1
@@ -26,7 +26,4 @@
         %div#bottom
           %p#description= s.description
 
-          %div#wrapper= link_to "LEAVE THIS STUDY", studies_leave_path(:studytime => studytime, :path => 'from_my_studies'), { :class => "selection_link"}
-
-  - if @my_studytimes.empty?
-    %h2 You are not signed up for any studies
+          = link_to "Leave This Study", studies_leave_path(:studytime => studytime, :path => 'from_my_studies'), :class => 'btn btn-danger'

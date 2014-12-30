@@ -5,11 +5,10 @@
     %select{:name => "courses"}
       = options_for_select( ["All Courses"] )
       - @all_courses.each do |course|
-        = course
         = options_for_select( {"PSYC " + course.section + ": " + course.instructor => course.id} )
-    = submit_tag 'Select Course', :id => "course_submit", :class => 'btn btn-primary'
+    = submit_tag 'Update List', :id => "course_submit", :class => 'btn btn-primary'
 
-%table.table.table-hover.table-bordered
+%table.table.table-hover.table-bordered.table-nonfluid
   %tr
     %th= link_to "ID Number", users_path( :sort_by => "id", :courses => @courses)
     %th= link_to "First Name", users_path( :sort_by => "first_name")
@@ -35,4 +34,4 @@
         //%td= user.paper_yes_or_no
         %td= link_to "Details of #{user.name}", user_path(user), :class => 'btn btn-link'
 %div#pagination
-  = will_paginate @users
+  = will_paginate @users, renderer: BootstrapPagination::Rails

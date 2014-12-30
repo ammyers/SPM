@@ -143,6 +143,17 @@ th, td {
   //border: 2px solid $ps-black;
   padding: 5px;
 }
+
+.table-nonfluid {
+  margin: 0 auto;
+  width: auto;
+}
+
+.container-fluid {
+  width: auto;
+  margin-left: 50px;
+  margin-right: 50px;
+}
 /** {
   margin: 0;
 }

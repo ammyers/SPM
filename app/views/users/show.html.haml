@@ -6,6 +6,14 @@
 			%h4= @user.role.capitalize
 			%h5 Paper Option:
 			%h4= @user.paper_yes_or_no
+			= form_for @user, method: :put do |u|
+				= label :user, :role, 'Role'
+				<select name='user[role]'>
+				<option value = researcher> Researcher </option>
+				<option value = participant> Participant </option>
+				<option value = admin> Administrator </option>
+				</select>
+				%div#wrapper= u.submit "Update User Info"
 		.col-md-3
 			%h2 <small> Studies signed up for: </small>
 			%p= @user.studytimes.size

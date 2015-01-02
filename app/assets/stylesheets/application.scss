@@ -48,6 +48,9 @@ body {
   background-color: $white;
   //background-image: url("/app/assets/images/weyhall.jpg");
 }
+p {
+  font-size: 12px;
+}
 
 div#pagination {
   text-align: center;
@@ -62,8 +65,12 @@ div#login {
   h1 {
     font-size: 45px;
   }
-
 }
+
+div#center {
+  text-align: center;
+}
+
 div#header {
   color: $white;
   padding: 5px;
@@ -121,6 +128,35 @@ div#footer {
           background-color: $maroon;
 }
 
+#alert {
+  float: left;
+  margin: 0 0 0 40px;
+  background-color: $very-dark-red;
+  color: white;
+  font-weight: bold;
+  border: 3px solid red;
+  padding: 10;
+  border-radius: 10px;
+  // Try an animation?
+  -webkit-animation: fadeout 3s;
+  -moz-animation: fadeout 3s;
+  animation: fadeout 3s;
+}
+
+//Some possible animations for the alert bar
+@-webkit-keyframes fadeout {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+@-moz-keyframes fadeout {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+@keyframes fadeout {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
 .row {
   padding-left: 50px;
 }
@@ -153,6 +189,16 @@ th, td {
   width: auto;
   margin-left: 50px;
   margin-right: 50px;
+}
+
+.alert {
+  text-align: center;
+  font-size: 20px;
+  width: 200px;
+}
+
+.form-horizontal {
+  width: 400px;
 }
 /** {
   margin: 0;
@@ -221,35 +267,10 @@ html, body {
 
 
 
+*/
 
-p#alert {
-  float: left;
-  margin: 0 0 0 40px;
-  background-color: $very-dark-red;
-  color: white;
-  font-weight: bold;
-  border: 3px solid red;
-  padding: 10;
-  border-radius: 10px;
-  // Try an animation?
-  -webkit-animation: fadeout 3s;
-  -moz-animation: fadeout 3s;
-  animation: fadeout 3s;
-}
 
-//Some possible animations for the alert bar
-@-webkit-keyframes fadeout {
-    from {opacity: 0;}
-    to {opacity: 1;}
-}
-@-moz-keyframes fadeout {
-    from {opacity: 0;}
-    to {opacity: 1;}
-}
-@keyframes fadeout {
-    from {opacity: 0;}
-    to {opacity: 1;}
-}
+/*
 
 div#body {
   padding: 15px;

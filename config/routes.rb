@@ -12,6 +12,8 @@ TestManagement::Application.routes.draw do
   get 'studies/join' => 'studies#join'
   get 'studies/leave' => 'studies#leave'
   get 'studies/addstudytime' => 'studies#addstudytime'
+
+  get 'users/admins' => "users#admins"
   
   resources :users, :studies
 

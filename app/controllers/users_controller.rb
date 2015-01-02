@@ -61,8 +61,8 @@ class UsersController < ApplicationController
 
   def my_studies
     @my_studytimes = @me.studytimes
-    flash.alert = "You have no studies"
     redirect_to studies_path if @my_studytimes.empty?
+    #flash.alert = "You have no studies"
   end
 
   def created_studies
@@ -94,6 +94,14 @@ class UsersController < ApplicationController
       flash.alert = "Not your account, unable to access"
       redirect_to studies_path
     end
+  end
+
+  def admins
+    if (!@me.admin?)
+      flash.alert = "Not an admin, unable to access"
+      redirect_to studies_path
+    end
+    @users = User.where("role == 'admin'")
   end
 
   # setup page similar to edit page

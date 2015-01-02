@@ -4,13 +4,6 @@
 	%div.maincontent#edit
 
 		= form_for @user, method: :put do |u|
-			= label :user, :role, 'Role'
-			<select name='user[role]'>
-			<option value = researcher> Researcher </option>
-			<option value = participant> Participant </option>
-			<option value = admin> Administrator </option>
-			</select>
-
 			<br>
 
 			= label :user, :paper_option, 'Paper Option'

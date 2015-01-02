@@ -1,0 +1,16 @@
+.body
+  %h1 Admin page
+
+%table.table.table-hover.table-bordered.table-nonfluid
+  %tr
+    %th="ID Number"
+    %th="First Name"
+    %th="Last Name"
+    %th="Role"
+  %tbody
+    - @users.each do |user|
+      %tr
+        %td= user.id
+        %td= user.first_name
+        %td= user.last_name
+        %td= user.role.capitalize

@@ -1,12 +1,11 @@
--#  This file is app/views/users/my_studies.html.haml
-
-%div#body
+.body
   %h1 My Studies
 
-  %ul.maincontent#mystudies
-    - @my_studytimes.each do |studytime|
-    - s = studytime.study
-      %li
+.container-fluid
+  - @my_studytimes.each do |studytime|
+  - s = studytime.study
+    .row
+      .col-md-3
         %div#top
           %div#left
             %p#title= s.title
@@ -25,5 +24,5 @@
             %p#time= studytime.toString()
         %div#bottom
           %p#description= s.description
-
-          = link_to "Leave This Study", studies_leave_path(:studytime => studytime, :path => 'from_my_studies'), :class => 'btn btn-danger'
+      .col-md-4
+        = link_to "Leave This Study", studies_leave_path(:studytime => studytime, :path => 'from_my_studies'), :class => 'btn btn-danger'

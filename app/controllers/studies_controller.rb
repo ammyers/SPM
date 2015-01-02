@@ -77,7 +77,10 @@ class StudiesController < ApplicationController
   def join
     @me.studytimes << Studytime.find(params[:studytime])
     count = @me.studytimes.size
-    flash.alert = "You are now registered for #{count} studies"
+    # if (count < 1)
+    #   flash.alert = "You are now registered for #{count} studies"
+    # end
+    flash.alert = "You are now registered for #{count} study"
     redirect_to users_my_studies_path
   end
 

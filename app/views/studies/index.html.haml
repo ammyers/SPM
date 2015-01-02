@@ -5,11 +5,11 @@
   - @studies.each do |study|
     .box
       .row
-        .col-md-3
+        .col-md-5
           - if study.credits == 1
-            %p#title= "#{study.title} [#{study.credits} credit]"
+            %h3= "#{study.title} [#{study.credits} credit]"
           - else
-            %p#title= "#{study.title} [#{study.credits} credits]"
+            %h3= "#{study.title} [#{study.credits} credits]"
           Researchers: 
           - numresearchers = study.researchers.size
           - study.researchers.each do |r|
@@ -19,8 +19,9 @@
               | 
           %p#description= study.description
         .col-md-3
-          %h3 Available Times:
+          %h3 <small> Available Times: </small>
           - study.studytimes.each do |t|
-            %p#time= t.toString()
-        .col-md-3        
-          = link_to "Select #{study.title}", study_path(study), :class => 'btn btn-default'
+            %p= t.toString()
+        %div#center
+          .col-md-3        
+            = link_to "Select #{study.title}", study_path(study), :class => 'btn btn-default'

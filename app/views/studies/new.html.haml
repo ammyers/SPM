@@ -1,37 +1,37 @@
-%div#body
-  %div.maincontent#new
-    %h1 Create New Study
+.body
+	%div.maincontent#new
+		%h1 Create New Study
 
-    = form_tag studies_path do
+		= form_tag studies_path do
 
-      = label :study, :title, 'Title'
-      = text_field :study, 'title', :required => true
-      %br
+			= label :study, :title, 'Title'
+			= text_field :study, 'title', :required => true
+			%br
 
-      %p Description
-      = text_area :study, 'description', :required => true
-      %br
+			%p Description
+			= text_area :study, 'description', :required => true
+			%br
 
-      = label :study, :max_participants, 'Max Number of Participants'
-      = number_field :study, :max_participants, :required => true
-      %br
+			= label :study, :max_participants, 'Max Number of Participants'
+			= number_field :study, :max_participants, :required => true
+			%br
 
-      = label :study, :duration, 'Length of Study in Minutes (max length)'
-      = number_field :study, :duration, :required => true
-      %br
+			= label :study, :duration, 'Length of Study in Minutes (max length)'
+			= number_field :study, :duration, :required => true
+			%br
 
-      = label :study, :credits, 'Credit Amount'
-      = number_field :study, :credits, :required => true
-      %br
+			= label :study, :credits, 'Credit Amount'
+			= number_field :study, :credits, :required => true
+			%br
 
-      %h5 <small> Please fill out your first study time. You can add additional sections on the Edit page. </small>
+			%h5 <small> Please fill out your first study time. You can add additional sections on the Edit page. </small>
 
-      = label :studytime, :datetime, 'Date and Time'
-      = datetime_select :studytime, :datetime, :required => true
-      %br
+			= label :studytime, :datetime, 'Date and Time'
+			= datetime_select :studytime, :datetime, :required => true
+			%br
 
-      = label :studytime, :location, 'Location (eg. Wey 302)'
-      = text_field :studytime, :location, :required => true
-      %br
+			= label :studytime, :location, 'Location (eg. Wey 302)'
+			= text_field :studytime, :location, :required => true
+			%br
 
-      = submit_tag 'Create Study', :class => 'btn btn-create'
+			= submit_tag 'Create Study', :class => 'btn btn-create'

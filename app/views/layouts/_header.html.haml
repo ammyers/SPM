@@ -7,6 +7,7 @@
 
       - if (@me.role == 'admin')
         = link_to "All Users", users_path, :class => 'btn btn-default'
+        = link_to "All Admins", users_admins_path, :class => 'btn btn-default'
 
       - if (@me.student?) && (@me.studytimes != [])
         = link_to "My Studies", users_my_studies_path, :class => 'btn btn-default'

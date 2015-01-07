@@ -2,9 +2,9 @@
 	.row
 		.col-md-3	
 			%h2= @user.full_name
-			%h5 Role: 
+			%h2 <small> Role: </small>
 			%h4= @user.role.capitalize
-			%h5 Paper Option:
+			%h2 <small> Paper Option: </small>
 			%h4= @user.paper_yes_or_no
 			= form_for @user, method: :put do |u|
 				= label :user, :role, 'Role'
@@ -18,12 +18,12 @@
 			%h2 <small> Studies signed up for: </small>
 			%p= @user.studytimes.size
 			- if @havesignedup
-				%h2 Studies completed:
+				%h2 <small> Studies completed: </small>
 				%p= @user.completedstudies.size
-				%h2 Study credits completed:
+				%h2 <small> Study credits completed: </small>
 				%p= @user.credits
 			- if @user.studytimes.size > 0	
-				%h5 Studylist:
+				%h2 <small> Studylist: </small>
 				%ul#studylist
 					- @user.studytimes.each do |s|
 						- study = s.study
@@ -32,12 +32,12 @@
 						- else
 							%li#incomplete= study.title + " | " + s.toString + " | NOT YET COMPLETED (#{study.credits} credits)"
 			- if @mine || @admin			
-				%h5 Courses enrolled in:
+				%h2 <small> Courses enrolled in: </small>
 				- if @user.courses.size > 0
 					- @user.courses.each do |c|
 						%h4= "Section: #{c.section} | Instructor: #{c.instructor}"
-						= link_to "Remove Course", users_leavecourse_path(:course => c), :class => 'btn btn-default';
+						= link_to "Remove Course", users_leavecourse_path(:course => c), :class => 'btn btn-danger';
 				- else
 					%h4 None
-				= link_to "Add Course", users_addcourse_path, :class => 'btn btn-default';
-				= link_to "Edit Account", edit_user_path(@user), :class => 'btn btn-default';
+				= link_to "Add Course", users_addcourse_path, :class => 'btn btn-success';
+				= link_to "Edit Account", edit_user_path(@user), :class => 'btn btn-info';

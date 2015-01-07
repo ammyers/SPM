@@ -35,21 +35,27 @@ $footer-border-color: $header-border-color;
 $footer-push-amount: 39px;
 $footer-push-amount-neg: -39px;
 
-
 // Commonly Used Colors
 $white: #ffffff;
 $maroon: #660000;
 $ps-black: #222222;
 $danger: #C9302C;
 
+
 body {
-  font: 100% Georgia, sans-serif;
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
   color: $ps-black;
   background-color: $white;
   //background-image: url("/app/assets/images/weyhall.jpg");
 }
+
 p {
-  font-size: 12px;
+  font-size: 14px;
+}
+
+h1, h2, h3 {
+  font-family: 'EB Garamond', serif;
 }
 
 div#pagination {
@@ -71,6 +77,10 @@ div#center {
   text-align: center;
 }
 
+div#middle {
+  padding-top: 20px;
+}
+
 div#header {
   color: $white;
   padding: 5px;
@@ -78,6 +88,17 @@ div#header {
   border-bottom: 15px solid $ps-black;
   background: $maroon;
   overflow: auto;
+
+   ul#navbar {
+    float: left;
+    list-style-type: none;
+    margin: 13px 0;
+    li {
+      display: inline;
+      padding: 0 2px;
+    }
+  }
+
 }
 
 div#footer {
@@ -89,8 +110,8 @@ div#footer {
   overflow: auto;
 
   padding: 5px;
-  font-weight: bold;
-  font-size: 12px;
+  //font-weight: bold;
+  font-size: 18px;
   
 }
 
@@ -102,20 +123,17 @@ div#footer {
   -webkit-border-radius: 8px;
      -moz-border-radius: 8px;
           border-radius: 8px;
-          border-color: #fff;
+          border-color: $white;
           background-color: $maroon;
 }
 
 .btn-logout {
   float: right;
-  margin: 0px 50px;
-  color: $white;
-  line-height: normal;
-  -webkit-border-radius: 8px;
-     -moz-border-radius: 8px;
-          border-radius: 8px;
-          border-color: $danger;
-          background-color: $danger;
+}
+
+.btn-myaccount {
+  float: right;
+  margin: 0 3px;
 }
 
 .btn-create {
@@ -133,7 +151,7 @@ div#footer {
   margin: 0 0 0 40px;
   background-color: $very-dark-red;
   color: white;
-  font-weight: bold;
+  font-size: 14px;
   border: 3px solid red;
   padding: 10;
   border-radius: 10px;
@@ -200,6 +218,20 @@ th, td {
 .form-horizontal {
   width: 400px;
 }
+
+/*.faitwrapper {
+  min-height: 100%;
+  height: auto !important; // This line and the next line are not necessary unless you need IE6 support 
+  height: 100%;
+  margin: 0 auto $footer-push-amount-neg; // the bottom margin is the negative value of the footer's height 
+}
+
+.faitfooter, .faitpush {
+  height: $footer-push-amount; // .push must be the same height as .footer
+}
+
+*/
+
 /** {
   margin: 0;
 }

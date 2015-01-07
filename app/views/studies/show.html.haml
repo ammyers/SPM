@@ -14,10 +14,10 @@
 					|
 
 			%h2 Description:
-			%p#description= @study.description
+			%p#description = @study.description
 
 			%h2 Length of Study: 
-			%p#duration= @study.duration
+			%p#duration = @study.duration
 
 			%h2 Credit Worth:
 			%p= @study.credits
@@ -53,7 +53,7 @@
 					- else
 						%div#joinwrapper= link_to "Join this section", studies_join_path(:studytime => t), :class => 'btn btn-default'
 
-			- if @mine || @me.admin?
+			- if @mine
 				%br
 				%br
 				%div#joinwrapper= link_to "Edit the Study", edit_study_path(@study), :class => 'btn btn-default'

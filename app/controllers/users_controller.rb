@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  
+
   def show
     @user = User.find(params[:id]) # look up user by unique ID
     @mine = (@me == @user)

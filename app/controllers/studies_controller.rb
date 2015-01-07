@@ -12,6 +12,7 @@ class StudiesController < ApplicationController
   end
 
   def index
+    @admin = @me.admin?
     # shuffles studies to reduce preferential choosing
     @studies = Study.all.shuffle
     #paginate(:per_page => 5, :page => params[:page])
@@ -43,7 +44,7 @@ class StudiesController < ApplicationController
     @study = Study.find params[:id]
     @studytimes = @study.studytimes
     @mine = @me.created_studies.include? @study
-    if (!@mine || @me.admin?)
+    if (!@mine || !@me.admin?)
       flash.alert = "This is not your study, unable to edit"
       redirect_to study_path(@study)
     end

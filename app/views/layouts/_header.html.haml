@@ -1,9 +1,11 @@
 %div#header
   %h1=  "Psychology Subject Pool Manager"
-  - p @me
   - if @me
-    %ul.headerlink#navbar
+    %ul#navbar
       = link_to "Studies", studies_path, :class => 'btn btn-default';
+      // Destroys session for PS auth
+      = link_to "Log Out", logout_path, :class => 'btn btn-logout btn-danger'
+      = link_to "My Account", user_path(@me), :class => 'btn btn-myaccount btn-default'
 
       - if (@me.role == 'admin')
         = link_to "All Users", users_path, :class => 'btn btn-default'
@@ -13,16 +15,10 @@
         = link_to "My Studies", users_my_studies_path, :class => 'btn btn-default'
 
       - if (@me.role == 'researcher')
+        = link_to "Create Study", new_study_path, :class => 'btn btn-default'
         - if (@me.created_studies != [])
           = link_to "Studies I Run", users_created_studies_path, :class => 'btn btn-default'
-          = link_to "Create Study", new_study_path, :class => 'btn btn-default'
-        - else
-          = link_to "Create Study", new_study_path, :class => 'btn btn-default'
       -
-      = link_to "My Account", user_path(@me), :class => 'btn btn-default'
-      // Destroys session for PS auth
-      = link_to "Log Out", logout_path, :class => 'btn btn-logout'
 
   - if flash.alert
     %p#alert= flash.alert
-

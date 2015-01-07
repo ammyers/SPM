@@ -1,4 +1,5 @@
 .body
+%div#center
   %h1 All Current Studies
 
 .container-fluid
@@ -22,6 +23,8 @@
           %h3 <small> Available Times: </small>
           - study.studytimes.each do |t|
             %p= t.toString()
-        %div#center
+        %div#middle.center
           .col-md-3        
             = link_to "Select #{study.title}", study_path(study), :class => 'btn btn-default'
+            - if @admin
+              = link_to "Select #{study.title}", study_path(study), :class => 'btn btn-default'

@@ -12,7 +12,6 @@ class StudiesController < ApplicationController
   end
 
   def index
-    @admin = @me.admin?
     # shuffles studies to reduce preferential choosing
     @studies = Study.all.shuffle
     #paginate(:per_page => 5, :page => params[:page])
@@ -29,7 +28,6 @@ class StudiesController < ApplicationController
   def create
     @study = Study.new(params[:study])
     studytime = Studytime.new(params[:studytime])
-    #@study.researchers << @me     made duplicate entries in researchers table
     @study.studytimes << studytime
     studytime.study = @study
     @me.created_studies << @study
@@ -44,7 +42,7 @@ class StudiesController < ApplicationController
     @study = Study.find params[:id]
     @studytimes = @study.studytimes
     @mine = @me.created_studies.include? @study
-    if (!@mine || !@me.admin?)
+    if !@mine
       flash.alert = "This is not your study, unable to edit"
       redirect_to study_path(@study)
     end
@@ -138,6 +136,6 @@ class StudiesController < ApplicationController
     user.completedstudies << studytime
     user.credits += studytime.study.credits
     user.save!()
-   redirect_to studies_attendance_path(studytime.id)
+    redirect_to studies_attendance_path(studytime.id)
   end
 end

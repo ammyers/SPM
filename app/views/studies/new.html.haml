@@ -16,10 +16,12 @@
 			= number_field :study, :max_participants, :required => true
 			%br
 
-			= label :study, :duration, 'Length of Study in Minutes (max length)'
-			= number_field :study, :duration, :required => true
-			%br
+			= label :study, :duration, 'Duration of Study'
+			%select{:name => "study[duration]"}
+				%option{:value => "30 mins"} Up to 30 mins
+				%option{:value => "60 mins"} Up to 60 mins
 
+			%br
 			= label :study, :credits, 'Credit Amount'
 			= number_field :study, :credits, :required => true
 			%br

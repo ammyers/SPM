@@ -25,4 +25,9 @@ class SessionsController < ApplicationController
     flash.alert = 'Logged out successfully'
     redirect_to root_path #where to go to when logged out
   end
+
+  def failure
+    flash.alert = 'Failed to Authenticate'
+    redirect_to pages_login_path
+  end
 end

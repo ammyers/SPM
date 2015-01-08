@@ -41,6 +41,8 @@ $maroon: #660000;
 $ps-black: #222222;
 $danger: #C9302C;
 
+$logo: image-url("logo.jpg");
+
 
 body {
   font-family: 'Roboto', sans-serif;
@@ -52,6 +54,11 @@ body {
 
 p {
   font-size: 14px;
+}
+
+h1.title {
+  font-family: 'EB Garamond', serif;
+  display: inline-block;
 }
 
 h1, h2, h3 {
@@ -88,17 +95,6 @@ div#header {
   border-bottom: 15px solid $ps-black;
   background: $maroon;
   overflow: auto;
-
-   ul#navbar {
-    float: left;
-    list-style-type: none;
-    margin: 13px 0;
-    li {
-      display: inline;
-      padding: 0 2px;
-    }
-  }
-
 }
 
 div#footer {
@@ -126,15 +122,14 @@ div#footer {
           border-color: $white;
           background-color: $maroon;
 }
-
+/*
 .btn-logout {
   float: right;
 }
 
 .btn-myaccount {
   float: right;
-  margin: 0 3px;
-}
+}*/
 
 .btn-create {
   color: $white;
@@ -147,7 +142,7 @@ div#footer {
 }
 
 #alert {
-  float: left;
+  float: right;
   margin: 0 0 0 40px;
   background-color: $very-dark-red;
   color: white;

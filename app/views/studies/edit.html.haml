@@ -8,7 +8,7 @@
       = text_field :study, :title
       
       = label :study, :max_participants, 'Max Number of Participants'
-      = text_field :study, :max_participants
+      = number_field :study, :max_participants
 
       = label :study, :credits, 'Credit Amount'
       = number_field :study, :credits, :required => true
@@ -18,9 +18,12 @@
       = text_area :study, :description
 
       %br
-      = label :study, :duration, 'Length of Study'
-      = text_field :study, :duration 
+      = label :study, :duration, 'Duration of Study'
+      %select{:name => "study[duration]"}
+        %option{:value => "30 mins"} Up to 30 mins
+        %option{:value => "60 mins"} Up to 60 mins
       %br
+
 
 
       %br

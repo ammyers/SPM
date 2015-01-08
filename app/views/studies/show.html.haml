@@ -1,11 +1,12 @@
 .body
 	%h1 Details about #{@study.title}
-	- if @mine
-		%h2 THIS STUDY BELONGS TO YOU
+	%div#center
+		- if @mine
+			%h2 THIS STUDY BELONGS TO YOU
 .container-fluid
 	.row
 		.col-md-4
-			%h2 Research Team: 
+			%h2 <small> Research Team: </small>
 			- numresearchers = @study.researchers.size
 			- @study.researchers.each do |r|
 				= link_to "#{r.first_name} #{r.last_name}", user_path(r), :class => 'btn btn-link'
@@ -13,20 +14,20 @@
 				- if numresearchers > 0
 					|
 
-			%h2 Description:
-			%p#description = @study.description
+			%h2 <small> Description: </small>
+			= @study.description
 
-			%h2 Length of Study: 
-			%p#duration = @study.duration
+			%h2 <small> Length of Study: </small>
+			= @study.duration
 
-			%h2 Credit Worth:
+			%h2 <small> Credit Worth: </small>
 			%p= @study.credits
 
-			%h2 Maximum participants per time slot: 
+			%h2 <small> Maximum participants per time slot: </small>
 			%p#max_participants= @study.max_participants 
 
 		.col-md-3
-			%h2 Available Times:
+			%h2 <small> Available Times: </small>
 			- @study.studytimes.each do |t|
 				- open = @study.max_participants - t.participants.size
 				%p#time= t.toString

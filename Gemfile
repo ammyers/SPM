@@ -64,3 +64,4 @@ gem 'rack-saml', '>= 0.1.1'
 # handy pagination
 gem 'will_paginate'
 gem 'will_paginate-bootstrap'
+gem 'ransack'

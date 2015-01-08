@@ -1,6 +1,6 @@
 %div#body
   %div
-    %h1 Edit Existing Study
+    %h1.title Edit Existing Study
 
     = form_tag study_path(@study), :method => :put do
 
@@ -20,19 +20,19 @@
       %br
       = label :study, :duration, 'Duration of Study'
       %select{:name => "study[duration]"}
-        %option{:value => "30 mins"} Up to 30 mins
-        %option{:value => "60 mins"} Up to 60 mins
+        %option{:value => "Up to 15 mins"} Up to 15 mins      
+        %option{:value => "Up to 30 mins"} Up to 30 mins
+        %option{:value => "Up to 45 mins"} Up to 45 mins
+        %option{:value => "Up to 60 mins"} Up to 60 mins
+        %option{:value => "60 mins or more"} 60 mins or more
       %br
-
-
-
       %br
 
       %p Studytimes:
       - @studytimes.each do |st|
         %p= "--- #{st.toString}"
 
-      = submit_tag 'Update Study Info', :id => 'save_changes', :class => 'btn btn-create'
+      = submit_tag 'Update Study Info', :id => 'save_changes', :class => 'btn btn-success'
 
     %br
     %br

@@ -12,13 +12,13 @@ class StudiesController < ApplicationController
   end
 
   def index
-    # shuffles studies to reduce preferential choosing
+    # Shuffles studies to reduce preferential choosing
     @studies = Study.all.shuffle
     #paginate(:per_page => 5, :page => params[:page])
   end
 
   def new
-    # default
+    # If not researcher, redirect to Studies page
     if !@me.researcher?
       flash.alert = "Only researchers can create studies"
       redirect_to studies_path
@@ -42,6 +42,7 @@ class StudiesController < ApplicationController
     @study = Study.find params[:id]
     @studytimes = @study.studytimes
     @mine = @me.created_studies.include? @study
+    # If not users study, redirect to Study path
     if !@mine
       flash.alert = "This is not your study, unable to edit"
       redirect_to study_path(@study)
@@ -69,7 +70,7 @@ class StudiesController < ApplicationController
     studytimes.each do |st|
       st.destroy
     end
-    flash.alert = "Study '#{@study.title}' deleted."
+    flash.alert = "Study: #{@study.title} was deleted."
     redirect_to studies_path
   end
 
@@ -79,7 +80,7 @@ class StudiesController < ApplicationController
     # if (count < 1)
     #   flash.alert = "You are now registered for #{count} studies"
     # end
-    flash.alert = "You are now registered for #{count} study"
+    flash.alert = "You are now registered for this study"
     redirect_to users_my_studies_path
   end
 

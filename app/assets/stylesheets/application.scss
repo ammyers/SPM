@@ -56,9 +56,15 @@ p {
   font-size: 14px;
 }
 
-h1.title {
+h1.header {
   font-family: 'EB Garamond', serif;
   display: inline-block;
+  padding-right: 25px;
+}
+
+h1.title {
+  font-family: 'EB Garamond', serif;
+  padding-left: 50px;
 }
 
 h1, h2, h3 {

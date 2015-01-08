@@ -1,22 +1,30 @@
 .body
-  %h1 All Users
+  %h1.title All Users
 %div#center
-  = form_tag users_path, :method => :get do
-    %select{:name => "courses"}
-      = options_for_select( ["All Courses"] )
-      - @all_courses.each do |course|
-        = options_for_select( {"PSYC " + course.section + ": " + course.instructor => course.id} )
-    = submit_tag 'Update List', :id => "course_submit", :class => 'btn btn-primary'
+  / = form_tag users_path, :method => :get do
+  /   %select{:name => "courses"}
+  /     = options_for_select( ["All Courses"] )
+  /     - @all_courses.each do |course|
+  /       /= course
+  /       = options_for_select( {course.section + ": " + course.instructor => course.id} )
+  /   = submit_tag 'Refresh', :id => "course_submit", :class => 'btn btn-primary'
+  = search_form_for @sort, url: users_path, :method => :get do |f|
+    = f.condition_fields do |c|
+      Sort:
+      = f.sort_fields do |s|
+        = s.sort_select
+    = f.submit "Search", :class => 'btn btn-primary'
+
 %table.table.table-hover.table-bordered.table-nonfluid
   %tr
-    %th= link_to "ID Number", users_path( :sort_by => "id", :courses => @courses)
-    %th= link_to "First Name", users_path( :sort_by => "first_name")
-    %th= link_to "Last Name", users_path( :sort_by => "last_name")
-    %th= link_to "Role", users_path( :sort_by => "role")
+    %th App ID
+    %th First Name
+    %th= sort_link @sort, :last_name, "Last Name"
+    %th Role
     %th Courses
-    %th= link_to "# Completed", users_path( :sort_by => "completedstudies")
-    %th= link_to "# Signed Up For", users_path( :sort_by => "signedupfor")
-    %th= link_to "Paper Option", users_path( :sort_by => "paper_option")
+    %th # Completed
+    %th # Signed Up For
+    %th Paper Option
     %th More Info
   %tbody
     - @users.each do |user|
@@ -24,7 +32,7 @@
         %td= user.id
         %td= user.first_name
         %td= user.last_name
-        %td= user.role.capitalize
+        %td= user.role
         %td
           - user.courses.each do |c|
             %p#courses= c.section
@@ -34,3 +42,13 @@
         %td= link_to "Details of #{user.name}", user_path(user), :class => 'btn btn-link'
 %div#pagination
   = will_paginate @users, renderer: BootstrapPagination::Rails
+%br
+
+
+/     #3. sort by selection
+/     
+/     elsif (params[:sort_by] == "signedupfor")
+/       @users.sort!() {|a, b| -1*(a.studytimes.size <=> b.studytimes.size) }
+/     elsif (params[:sort_by] == "completedstudies" )
+/       @users.sort!() {|a, b| -1*(a.completedstudies.size <=> b.completedstudies.size) 
+/     end

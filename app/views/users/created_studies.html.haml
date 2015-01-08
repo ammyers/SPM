@@ -1,6 +1,5 @@
--
 %div#body
-  %h1 My Created Studies
+  %h1.title My Created Studies
 
   %ul.maincontent#mycreatedstudies
     - @studies.each do |study|
@@ -16,7 +15,7 @@
               - if numresearchers > 0
                 | 
           %div#right
-            = link_to "Edit", edit_study_path(study), :class => 'btn btn-default'
+            = link_to "Edit", edit_study_path(study), :class => 'btn btn-warning'
           %div#right
             Times and Locations:
             = form_tag(users_created_studies_path, method: :get) do
@@ -25,3 +24,12 @@
                   %input{:checked => "", :name=> "selected_studytime", :type => "radio", :value => studytime.id}
                   = studytime.toString()
               %input{:type =>"submit", :value => "Take Attendance", :class => 'btn btn-info'}
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>

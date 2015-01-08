@@ -1,8 +1,8 @@
 .body
-	%h1 Details about #{@study.title}
+	%h1.title Details about #{@study.title}
 	%div#center
 		- if @mine
-			%h2 THIS STUDY BELONGS TO YOU
+			%h2 Your Study
 .container-fluid
 	.row
 		.col-md-4
@@ -57,4 +57,4 @@
 			- if @mine
 				%br
 				%br
-				%div#joinwrapper= link_to "Edit the Study", edit_study_path(@study), :class => 'btn btn-default'
+				%div#joinwrapper= link_to "Edit the Study", edit_study_path(@study), :class => 'btn btn-warning'

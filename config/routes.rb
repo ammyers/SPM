@@ -2,9 +2,6 @@ TestManagement::Application.routes.draw do
 
   root :to => "pages#login"
 
-  # Creates Standard CRUD routes
-  resources :users, :studies
-
   # Users Routes
   get 'users/my_studies' => 'users#my_studies'
   get 'users/created_studies' => 'users#created_studies'
@@ -20,6 +17,9 @@ TestManagement::Application.routes.draw do
   get 'studies/addstudytime' => 'studies#addstudytime'
   post 'studies/confirm_attendance/:person_id/:time_id', to: "studies#confirm_attendance", as: "studies_confirm_attendance"
   match 'studies/:study_time_id/attendance', to: "studies#attendance", as: "studies_attendance"
+
+  # Creates Standard CRUD routes
+  resources :users, :studies
 
   # Authentication Routes
   #     The priority is based upon order of creation:

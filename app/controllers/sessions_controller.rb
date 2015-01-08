@@ -3,7 +3,7 @@ class SessionsController < ApplicationController
 
   skip_before_filter :set_current_user #don't check for the user when authenticating
 
-  #login
+  # Login
   def create
     auth = request.env["omniauth.auth"]
     user = User.find_by_provider_and_uid(auth["provider"],auth["uid"]) || User.create_with_omniauth(auth)
@@ -19,15 +19,16 @@ class SessionsController < ApplicationController
     end
   end
 
-  #logout
+  # Logout
   def destroy
     session.delete(:user_id)
     flash.alert = 'Logged out successfully'
     redirect_to root_path #where to go to when logged out
   end
 
+  # Not authenticated
   def failure
-    flash.alert = 'Failed to Authenticate'
+    flash.alert = 'ERROR: Failed to Login'
     redirect_to pages_login_path
   end
 end

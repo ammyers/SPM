@@ -1,7 +1,7 @@
 %div#header
   /%img.img-rounded{:src => "images/logo.jpg"}
-  %img.img-rounded{:alt => "UPS Logo", :src => "logo.jpg"}
-  %h1.title=  "Psychology Subject Pool Manager"
+  /%img.img-rounded{:alt => "UPS Logo", :src => "logo.jpg"}
+  %h1.header= "Subject Pool Manager"
   - if @me
     = link_to "Studies", studies_path, :class => 'btn btn-default';
 

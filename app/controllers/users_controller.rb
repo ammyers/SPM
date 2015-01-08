@@ -5,58 +5,59 @@ class UsersController < ApplicationController
     @mine = (@me == @user)
     @admin = @me.admin?
     @havesignedup = !@user.studytimes.empty?
+
+    # if !@mine | @admin
+    #   flash.alert = "Unable to access"
+    #   redirect_to studies_path
+    # end
   end
 
   def index
-    #if not an admin, redirect
+    # If not admin, redirect to Studies page
     if !@me.admin?
       flash.alert = "Not an admin, unable to access"
       redirect_to studies_path
     end
-
-    #set variable to being all courses
+    # @courses = params[:courses]
+    # @sort_by = params[:sort_by]
     @all_courses = Course.all
+    @sort = User.ransack(params[:q])
+    # Only want students
+    @users = @sort.result.where("role != 'admin'").paginate(:per_page => 50, :page => params[:page])
+    @sort.build_condition if @sort.conditions.empty?
+    @sort.build_sort if @sort.sorts.empty?
+    # #2. filter by course
+    #  #if null or all_courses, include everyone - no filter
+    #  #if specific course selected, show only people in that class
+    # if (params[:courses] != "All Courses" && params[:courses] != nil)
+    #  @users.select!() do |user| # get list of users who have courses that match
+    #    temp = user.courses.select() do |course| # get list of courses that have same id
+    #      course.id.to_s == params[:courses]
+    #    end
+    #    temp.length > 0 # return if are some courses
+    #  end
+    # end
 
-    #1. we only want students
-    @users = User.where("role != 'admin'").paginate(:per_page => 5, :page => params[:page])
+    # if (params[:sort_by] == nil)
+    #   @users.sort!() {|a, b| -1*(a.last_name <=> b.last_name) }
+    # else
+    #   @users.sort!() {|a, b| (a.send(params[:sort_by]) <=> b.send(params[:sort_by]) ) } 
+    # end
 
-    #2. filter by course
-      #if null or all_courses, include everyone - no filter
-      #if specific course selected, show only people in that class
-    if (params[:courses] != "All Courses" && params[:courses] != nil)
-      @users.select!() do |user| # get list of users who have courses that match
-        temp = user.courses.select() do |course| # get list of courses that have same id
-          course.id.to_s == params[:courses]
-        end
-        temp.length > 0 # return if are some courses
-      end
-    end
-
-    #3. sort by selection
-    if (params[:sort_by] == nil)
-      @users.sort!() {|a, b| -1*(a.last_name <=> b.last_name) }
-    elsif (params[:sort_by] == "signedupfor")
-      @users.sort!() {|a, b| -1*(a.studytimes.size <=> b.studytimes.size) }
-    elsif (params[:sort_by] == "completedstudies" )
-      @users.sort!() {|a, b| -1*(a.completedstudies.size <=> b.completedstudies.size) }
-    else
-      @users.sort!() {|a, b| (a.send(params[:sort_by]) <=> b.send(params[:sort_by]) ) } 
-    end
-
-    #remembering filter (courses)
-    if @sort_by !=nil
-      session[:sort_by] = @sort_by
-    end
+    # #remembering filter (courses)
+    # if !@sort_by.nil?
+    #   session[:sort_by] = @sort_by
+    # end
     
-    if session[:courses] != @selected_courses && @selected_courses != nil
-      session[:courses] = @selected_courses
-    end
+    # if session[:courses] != @selected_courses && @selected_courses != nil
+    #   session[:courses] = @selected_courses
+    # end
 
-    if session[:courses] == nil
-      @selected_courses = @all_courses
-    else
-      @selected_courses = session[:courses]
-    end
+    # if session[:courses] == nil
+    #   @selected_courses = @all_courses
+    # else
+    #   @selected_courses = session[:courses]
+    # end    
   end
 
   def my_studies
@@ -74,7 +75,7 @@ class UsersController < ApplicationController
   end
 
   def new
-    # default: render 'new' template
+    # If not admin, redirect to Studies page
     if (!@me.admin?)
       flash.alert = "Not an admin, unable to access"
       redirect_to studies_path
@@ -90,6 +91,7 @@ class UsersController < ApplicationController
     @user = User.find params[:id]
     @courses = @user.courses
     @all_courses = Course.all
+    # If not my account, redirect to Studies page
     if @user != @me
       flash.alert = "Not your account, unable to access"
       redirect_to studies_path
@@ -97,7 +99,8 @@ class UsersController < ApplicationController
   end
 
   def admins
-    if (!@me.admin?)
+    # If not admin, redirect to Studies page
+    if !@me.admin?
       flash.alert = "Not an admin, unable to access"
       redirect_to studies_path
     end
@@ -106,6 +109,7 @@ class UsersController < ApplicationController
 
   # setup page similar to edit page
   def setup
+    # If account setup, redirect to Studies page
     if @me.setup
       flash.alert = "Error: Page not accessible"
       redirect_to studies_path

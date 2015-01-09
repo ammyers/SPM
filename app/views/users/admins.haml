@@ -1,11 +1,13 @@
 .body
   %h1.title Admin page
+  %div#center
+    %h2 <small> All Administrators with active accounts. Click on Last Name to sort.   </small>
 
 %table.table.table-hover.table-bordered.table-nonfluid
   %tr
     %th="ID Number"
-    %th="First Name"
-    %th="Last Name"
+    %th= sort_link @sort, :frst_name, "First Name"
+    %th= sort_link @sort, :last_name, "Last Name"
     %th="Role"
   %tbody
     - @users.each do |user|
@@ -14,3 +16,5 @@
         %td= user.first_name
         %td= user.last_name
         %td= user.role.capitalize
+%br
+%br

@@ -1,19 +1,12 @@
 .body
   %h1.title All Users
 %div#center
-  / = form_tag users_path, :method => :get do
-  /   %select{:name => "courses"}
-  /     = options_for_select( ["All Courses"] )
-  /     - @all_courses.each do |course|
-  /       /= course
-  /       = options_for_select( {course.section + ": " + course.instructor => course.id} )
-  /   = submit_tag 'Refresh', :id => "course_submit", :class => 'btn btn-primary'
-  = search_form_for @sort, url: users_path, :method => :get do |f|
-    = f.condition_fields do |c|
-      Sort:
-      = f.sort_fields do |s|
-        = s.sort_select
-    = f.submit "Search", :class => 'btn btn-primary'
+  = search_form_for @sort do |f|
+    = f.label :courses_section_or_courses_instructor_cont, "Course/Instructor (ex. 101C or Weisz)"
+    = f.text_field :courses_section_or_courses_instructor_cont
+    = f.submit "Refresh", class: "button"
+  %h2 <small> Search via course number or instructor last name. <br> **Please Note** You can search using incomplete terms - ie 201, Wei instead of full terms - though results may be wonky.   </small>
+  %h2 <small> Once you enter search criteria and refresh, you can sort list by clicking Last Name or Courses. <br> If you would like to reset your searches delete search field and click Refresh. </small>
 
 %table.table.table-hover.table-bordered.table-nonfluid
   %tr
@@ -21,7 +14,7 @@
     %th First Name
     %th= sort_link @sort, :last_name, "Last Name"
     %th Role
-    %th Courses
+    %th= sort_link @sort, :courses_section, "Courses"
     %th # Completed
     %th # Signed Up For
     %th Paper Option
@@ -32,10 +25,12 @@
         %td= user.id
         %td= user.first_name
         %td= user.last_name
-        %td= user.role
+        %td= user.role.capitalize
         %td
           - user.courses.each do |c|
-            %p#courses= c.section
+            = c.section + " - "
+            = c.instructor
+            %br
         %td= user.completedstudies.size
         %td= user.studytimes.size
         %td= user.paper_yes_or_no

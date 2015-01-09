@@ -22,8 +22,6 @@
           %h3 <small> Times Offered: </small>
           - study.studytimes.each do |t|
             %p= t.toString()
-        %div#middle.center
+        %div#middle
           .col-md-3        
             = link_to "Select #{study.title}", study_path(study), :class => 'btn btn-default'
-            - if @admin
-              = link_to "Select #{study.title}", study_path(study), :class => 'btn btn-default'

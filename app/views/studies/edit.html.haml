@@ -1,39 +1,44 @@
-%div#body
-  %div
-    %h1.title Edit Existing Study
+.body
+  %h1.title Edit Existing Study
+  .container-fluid
+    .row 
+      = form_tag study_path(@study), :method => :put do
+        .col-sm-2
+        .col-md-4
+          = label :study, :title, 'Title'
+          = text_field :study, :title
+          %br
+          %br
+          = label :study, :description, 'Description'
+          %br
+          = text_area :study, :description
+          %br
+          %br
+        .col-md-2
+          = label :study, :duration, 'Duration of Study'
+          %br
+          %select{:name => "study[duration]"}
+            %option{:value => "Up to 15 mins"} Up to 15 mins      
+            %option{:value => "Up to 30 mins"} Up to 30 mins
+            %option{:value => "Up to 45 mins"} Up to 45 mins
+            %option{:value => "Up to 60 mins"} Up to 60 mins
+            %option{:value => "60 mins or more"} 60 mins or more
+          %br
+          %br
+          = label :study, :max_participants, 'Max Number of Participants'
+          = number_field :study, :max_participants
+          %br
+          %br
+          = label :study, :credits, 'Credit Amount'
+          = number_field :study, :credits, :required => true
+          %br
+          %br
+          = label :study, :datetime, 'Study Times'
+          - @studytimes.each do |st|
+            %p= "--- #{st.to_s}"
+          %br
+          = submit_tag 'Update Study Info', :class => 'btn btn-info'
 
-    = form_tag study_path(@study), :method => :put do
-
-      = label :study, :title, 'Title'
-      = text_field :study, :title
-      
-      = label :study, :max_participants, 'Max Number of Participants'
-      = number_field :study, :max_participants
-
-      = label :study, :credits, 'Credit Amount'
-      = number_field :study, :credits, :required => true
-
-      %br
-      = label :study, :description, 'Description'
-      = text_area :study, :description
-
-      %br
-      = label :study, :duration, 'Duration of Study'
-      %select{:name => "study[duration]"}
-        %option{:value => "Up to 15 mins"} Up to 15 mins      
-        %option{:value => "Up to 30 mins"} Up to 30 mins
-        %option{:value => "Up to 45 mins"} Up to 45 mins
-        %option{:value => "Up to 60 mins"} Up to 60 mins
-        %option{:value => "60 mins or more"} 60 mins or more
-      %br
-      %br
-
-      %p Studytimes:
-      - @studytimes.each do |st|
-        %p= "--- #{st.toString}"
-
-      = submit_tag 'Update Study Info', :id => 'save_changes', :class => 'btn btn-success'
-
-    %br
-    %br
-    = button_to 'Delete', study_path(@study), :method => :delete, :confirm => 'Are you sure you want to delete this study? All data will be lost.', :class => 'btn btn-danger'
+          %br
+          %br
+          = button_to 'Delete', study_path(@study), :method => :delete, :confirm => 'Are you sure you want to delete this study? All data will be lost.', :class => 'btn btn-danger'

@@ -17,6 +17,7 @@
     %th= sort_link @sort, :courses_section, "Courses"
     %th # Completed
     %th # Signed Up For
+    %th Credits    
     %th Paper Option
     %th More Info
   %tbody
@@ -33,6 +34,7 @@
             %br
         %td= user.completedstudies.size
         %td= user.studytimes.size
+        %td= user.credits
         %td= user.paper_yes_or_no
         %td= link_to "Details of #{user.name}", user_path(user), :class => 'btn btn-link'
 %div#pagination

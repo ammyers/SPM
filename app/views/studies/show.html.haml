@@ -30,7 +30,7 @@
 			%h2 <small> Available Times: </small>
 			- @study.studytimes.each do |t|
 				- open = @study.max_participants - t.participants.size
-				%p#time= t.toString
+				%p#time= t.to_s
 				%p#openings= "Open spots: #{open}"
 
 				- if !@mine

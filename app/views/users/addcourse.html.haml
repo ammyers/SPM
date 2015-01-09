@@ -4,7 +4,7 @@
 		- if @courseOptions.empty?
 			%h2= "There are no courses available to add."
 		- @courseOptions.each do |c|
-			%h2= c.toString
+			%h2= c.to_s
 
 			%div#wrapper= link_to "Add", users_joincourse_path(:course => c), { :class => "selection_link"}
 			%br

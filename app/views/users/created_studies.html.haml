@@ -22,7 +22,7 @@
               - study.studytimes.each do |studytime|
                 %div
                   %input{:checked => "", :name=> "selected_studytime", :type => "radio", :value => studytime.id}
-                  = studytime.toString()
+                  = studytime.to_s()
               %input{:type =>"submit", :value => "Take Attendance", :class => 'btn btn-info'}
 <br/>
 <br/>

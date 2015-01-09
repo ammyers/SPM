@@ -14,22 +14,22 @@
 					%option{:value => "admin"} Administrator
 				%div#wrapper= u.submit "Update User Info"
 		.col-md-3
-			%h2 <small> Studies signed up for: </small>
-			%p= @user.studytimes.size
+			%h2 <small> Studies Enrolled In: </small>
+			%h4= @user.studytimes.size
 			- if @havesignedup
-				%h2 <small> Studies completed: </small>
-				%p= @user.completedstudies.size
-				%h2 <small> Study credits completed: </small>
-				%p= @user.credits
+				%h2 <small> Completed Studies: </small>
+				%h4= @user.completedstudies.size
+				%h2 <small> Credits Earned: </small>
+				%h4= @user.credits
 			- if @user.studytimes.size > 0	
-				%h2 <small> Studylist: </small>
+				%h2 <small> List of Studies: </small>
 				%ul#studylist
 					- @user.studytimes.each do |s|
 						- study = s.study
 						- if @user.completedstudies.exists?(s)
-							%li#complete= study.title + " | " + s.toString + " | COMPLETED (#{study.credits} credits)"
+							%li#complete= study.title + " | " + s.to_s + " | COMPLETED (#{study.credits} credits)"
 						- else
-							%li#incomplete= study.title + " | " + s.toString + " | NOT YET COMPLETED (#{study.credits} credits)"
+							%li#incomplete= study.title + " | " + s.to_s + " | NOT YET COMPLETED (#{study.credits} credits)"
 			- if @mine || @admin			
 				%h2 <small> Courses enrolled in: </small>
 				- if @user.courses.size > 0

@@ -42,7 +42,7 @@ class Studytime < ActiveRecord::Base
   	# end
   end
 
-  def toString
+  def to_s
   	return self.datetime.strftime("%A %b %e, %l:%M %p") + " in " + self.location
   end
 end

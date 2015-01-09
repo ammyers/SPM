@@ -1,37 +1,48 @@
 .body
 	%h1.title Create New Study
 	.container-fluid
-		= form_tag studies_path do
-			.col-md-3
-				= label :study, :title, 'Title'
-				= text_field :study, 'title', :required => true
-				%br
-
-				= label :study, :description, 'Description'
-				= text_area :study, 'description', :required => true
-				%br
-			.col-md-4
-				= label :study, :max_participants, 'Max Number of Participants'
-				= number_field :study, :max_participants, :required => true
-				%br
-
-				= label :study, :duration, 'Duration of Study'
-				%select{:name => "study[duration]"}
-					%option{:value => "30 mins"} Up to 30 mins
-					%option{:value => "60 mins"} Up to 60 mins
-				%br
-				= label :study, :credits, 'Credit Amount'
-				= number_field :study, :credits, :required => true
-				%br
-
-				%h5 <small> Please fill out your first study time. You can add additional sections on the Edit page. </small>
-
-				= label :studytime, :datetime, 'Date and Time'
-				= datetime_select :studytime, :datetime, :required => true
-				%br
-
-				= label :studytime, :location, 'Location (eg. Wey 302)'
-				= text_field :studytime, :location, :required => true
-				%br
-
-				= submit_tag 'Create Study', :class => 'btn btn-create'
+		.row
+			= form_tag studies_path do
+				.col-sm-2
+				.col-md-4
+					= label :study, :title, 'Title'
+					= text_field :study, 'title', :required => true
+					%br
+					%br
+					= label :study, :description, 'Description'
+					%br
+					= text_area :study, 'description', :required => true
+					%br
+					%br
+				.col-md-3
+					= label :study, :duration, 'Duration of Study'
+					%br
+					%select{:name => "study[duration]"}
+						%option{:value => "Up to 15 mins"} Up to 15 mins      
+						%option{:value => "Up to 30 mins"} Up to 30 mins
+						%option{:value => "Up to 45 mins"} Up to 45 mins
+						%option{:value => "Up to 60 mins"} Up to 60 mins
+						%option{:value => "60 mins or more"} 60 mins or more
+					%br
+					%br
+					= label :study, :max_participants, 'Max Number of Participants'
+					%br
+					= number_field :study, :max_participants, :required => true
+					%br	
+					%br				
+					= label :study, :credits, 'Credit Amount'
+					%br
+					= number_field :study, :credits, :required => true
+					%br
+					%br
+					= label :studytime, :datetime, 'Date and Time'
+					%h4 <small> Please fill out your first study time. You can add additional sections on the Edit page. </small>					
+					= datetime_select :studytime, :datetime, :required => true
+					%br
+					%br
+					= label :studytime, :location, 'Location (eg. Wey 302)'
+					= text_field :studytime, :location, :required => true
+					%br
+					%br
+					%br
+					= submit_tag 'Create Study', :class => 'btn btn-success'

@@ -17,7 +17,7 @@
 			%br
 			- @all_courses.each do |c|
 				= check_box "course", c.id
-				= c.toString
+				= c.to_s
 				<br>
 
 			<br>

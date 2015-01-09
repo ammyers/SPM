@@ -37,7 +37,7 @@
           - @studytimes.each do |st|
             %p= "--- #{st.to_s}"
           %br
-          = submit_tag 'Update Study Info', :class => 'btn btn-info'
+          = submit_tag 'Update Study Info', :id => 'save_changes' :class => 'btn btn-info'
 
           %br
           %br

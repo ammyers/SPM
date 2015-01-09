@@ -17,12 +17,10 @@
         .col-md-2
           = label :study, :duration, 'Duration of Study'
           %br
-          %select{:name => "study[duration]"}
-            %option{:value => "Up to 15 mins"} Up to 15 mins      
+          %select{:name => "study[duration]"}     
             %option{:value => "Up to 30 mins"} Up to 30 mins
-            %option{:value => "Up to 45 mins"} Up to 45 mins
             %option{:value => "Up to 60 mins"} Up to 60 mins
-            %option{:value => "60 mins or more"} 60 mins or more
+            %option{:value => "Time in Description"} Time in Description
           %br
           %br
           = label :study, :max_participants, 'Max Number of Participants'
@@ -30,15 +28,18 @@
           %br
           %br
           = label :study, :credits, 'Credit Amount'
-          = number_field :study, :credits, :required => true
+          %br
+          %select{:name => "study[credits]"}     
+            %option{:value => "1"} 1
+            %option{:value => "2"} 2
+            %option{:value => "Credits in Description"} Credits in Description
           %br
           %br
           = label :study, :datetime, 'Study Times'
           - @studytimes.each do |st|
             %p= "--- #{st.to_s}"
           %br
-          = submit_tag 'Update Study Info', :id => 'save_changes' :class => 'btn btn-info'
+          = submit_tag 'Update Study Info', :id => 'save_changes', :class => 'btn btn-info'
 
           %br
           %br
-          = button_to 'Delete', study_path(@study), :method => :delete, :confirm => 'Are you sure you want to delete this study? All data will be lost.', :class => 'btn btn-danger'

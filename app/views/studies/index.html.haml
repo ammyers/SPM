@@ -10,7 +10,6 @@
             %h3= "#{study.title} [#{study.credits} credit]"
           - else
             %h3= "#{study.title} [#{study.credits} credits]"
-          Researchers: 
           - numresearchers = study.researchers.size
           - study.researchers.each do |r|
             = link_to "#{r.full_name}", user_path(r), :class => 'btn btn-link'

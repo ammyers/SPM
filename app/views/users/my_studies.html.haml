@@ -8,7 +8,7 @@
       .col-md-3
         %div#top
           %div#left
-            %p#title= s.title
+            %p#title= link_to "#{s.title}", study_path(s), :class => 'btn btn-link'
             Researchers: 
             - numresearchers = s.researchers.size
             - s.researchers.each do |r|

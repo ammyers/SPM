@@ -39,13 +39,3 @@
         %td= link_to "Details of #{user.name}", user_path(user), :class => 'btn btn-link'
 %div#pagination
   = will_paginate @users, renderer: BootstrapPagination::Rails
-%br
-
-
-/     #3. sort by selection
-/     
-/     elsif (params[:sort_by] == "signedupfor")
-/       @users.sort!() {|a, b| -1*(a.studytimes.size <=> b.studytimes.size) }
-/     elsif (params[:sort_by] == "completedstudies" )
-/       @users.sort!() {|a, b| -1*(a.completedstudies.size <=> b.completedstudies.size) 
-/     end

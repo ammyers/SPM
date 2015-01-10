@@ -40,12 +40,14 @@ $white: #ffffff;
 $maroon: #660000;
 $ps-black: #222222;
 $danger: #C9302C;
+$gray: #919191;
 
 $logo: image-url("logo.jpg");
 
 
 body {
   padding-top: 85px;
+  padding-bottom: 50px;
   font-family: 'Roboto', sans-serif;
   font-size: 14px;
   color: $ps-black;
@@ -194,11 +196,12 @@ body {
 
 .row {
   padding-left: 50px;
+  padding-bottom: 10px;
 }
 
 .box {
-  border: 3px solid $danger;
-  border-radius: 50px;
+  border: 3px solid $gray;
+  /*border-radius: 50px;*/
   border-left: 100px;
   border-right: 100px;
 }

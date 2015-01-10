@@ -45,76 +45,88 @@ $logo: image-url("logo.jpg");
 
 
 body {
+  padding-top: 85px;
   font-family: 'Roboto', sans-serif;
   font-size: 14px;
   color: $ps-black;
   background-color: $white;
   //background-image: url("/app/assets/images/weyhall.jpg");
-}
 
-p {
-  font-size: 14px;
-}
-
-h1.header {
-  font-family: 'EB Garamond', serif;
-  display: inline-block;
-  padding-right: 25px;
-}
-
-h1.title {
-  font-family: 'EB Garamond', serif;
-  padding-left: 50px;
-}
-
-h1, h2, h3 {
-  font-family: 'EB Garamond', serif;
-}
-
-div#pagination {
-  text-align: center;
-  font-size: 20px;
-}
-  
-div#login {
-  padding-top: 100px;
-  padding-bottom: 50px;
-  text-align: center;
-
-  h1 {
-    font-size: 45px;
+  p {
+    font-size: 14px;
   }
-}
 
-div#middle {
-  padding-top: 20px;
-}
+  h1.header {
+    font-family: 'EB Garamond', serif;
+    display: inline-block;
+    padding-right: 25px;
+  }
 
-div#center {
-  text-align: center;
-}
+  h1.title {
+    font-family: 'EB Garamond', serif;
+    padding-left: 50px;
+  }
 
-div#header {
-  color: $white;
-  padding: 5px;
-  display: block;
-  border-bottom: 15px solid $ps-black;
-  background: $maroon;
-  overflow: auto;
-}
+  h1, h2, h3 {
+    font-family: 'EB Garamond', serif;
+  }
 
-div#footer {
-  color: $white;
-  padding: 5px;
-  display: block;
-  border-top: 15px solid $ps-black;
-  background: $maroon;
-  overflow: auto;
+  div#pagination {
+    text-align: center;
+    font-size: 20px;
+  }
+    
+  div#login {
+    padding-top: 100px;
+    padding-bottom: 50px;
+    text-align: center;
 
-  padding: 5px;
-  //font-weight: bold;
-  font-size: 18px;
-  
+    h1 {
+      font-size: 45px;
+    }
+  }
+
+  div#middle {
+    padding-top: 20px;
+  }
+
+  div#center {
+    text-align: center;
+  }
+
+  div#header {
+    color: $white;
+    padding: 5px;
+    display: block;
+    border-bottom: 15px solid $ps-black;
+    background: $maroon;
+    overflow: auto;
+  }
+
+  div#footer {
+    color: $white;
+    padding: 5px;
+    display: block;
+    border-top: 15px solid $ps-black;
+    background: $maroon;
+    overflow: auto;
+
+    padding: 5px;
+    //font-weight: bold;
+    font-size: 18px;
+    
+  }
+
+/* Necessary helpers to align buttons */
+  p#logout {
+    float: right;
+    margin: 30px 30px -10px;
+  }
+
+  p#myaccount {
+    float: right;
+    margin: 30px -20px -10px;
+  } 
 }
 
 .btn-xlarge {
@@ -127,6 +139,10 @@ div#footer {
           border-radius: 8px;
           border-color: $white;
           background-color: $maroon;
+}
+
+.btn {
+  font-size: 16px;
 }
 
 .btn-logout {

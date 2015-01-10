@@ -1,4 +1,4 @@
-%div#header
+%div#header.navbar-fixed-top
   /%img.img-rounded{:alt => "UPS Logo", :src => "logo.jpg"}
   %h1.header= "Subject Pool Manager"
   - if @me
@@ -16,8 +16,8 @@
         = link_to "Studies I Run", users_created_studies_path, :class => 'btn btn-default'  
       = link_to "Create Study", new_study_path, :class => 'btn btn-default'      
 
-    = link_to "Log Out", logout_path, :class => 'btn btn-logout btn-danger'
-    = link_to "My Account", user_path(@me), :class => 'btn btn-default btn-myaccount'
+      %p#logout= link_to "Log Out", logout_path, :class => 'btn btn-logout btn-danger'
+      %p#myaccount= link_to "My Account", user_path(@me), :class => 'btn btn-default btn-myaccount'
 
   - if flash.alert
     %p#alert= flash.alert

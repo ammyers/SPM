@@ -3,7 +3,7 @@ class Study < ActiveRecord::Base
 
   has_and_belongs_to_many :researchers, join_table: "researcher_studies", class_name: "User"
 
-  has_many :studytimes
+  has_many :studytimes, dependent: :destroy
 
   validates :title, :duration, presence: true 
   validates :credits, :max_participants, :numericality => {:greater_than_or_equal_to => 1}

@@ -1,5 +1,5 @@
 %div#body
-  %h1.title My Created Studies
+  %h1.title My Created Studies - Make into Table ADAM
 
   %ul.maincontent#mycreatedstudies
     - @studies.each do |study|
@@ -16,6 +16,7 @@
                 | 
           %div#right
             = link_to "Edit", edit_study_path(study), :class => 'btn btn-warning'
+            /= button_to 'Delete', study_path(@study), :method => :delete, :confirm => 'Are you sure you want to delete this study? All data will be lost.', :class => 'btn btn-danger' 
           %div#right
             Times and Locations:
             = form_tag(users_created_studies_path, method: :get) do
@@ -24,12 +25,3 @@
                   %input{:checked => "", :name=> "selected_studytime", :type => "radio", :value => studytime.id}
                   = studytime.to_s()
               %input{:type =>"submit", :value => "Take Attendance", :class => 'btn btn-info'}
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>

@@ -19,6 +19,8 @@
               | 
           %p#description= study.description
         .col-md-3
+          %h3 <small> Duration: </small>
+          = study.duration
           %h3 <small> Times Offered: </small>
           - study.studytimes.each do |t|
             %p= t.to_s()

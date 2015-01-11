@@ -1,5 +1,6 @@
 %div#header.navbar-fixed-top
   /%img.img-rounded{:alt => "UPS Logo", :src => "logo.jpg"}
+  = link_to (image_tag "logo.png",:size => '80x80'), studies_path
   %h1.header= "Subject Pool Manager"
   - if @me
     = link_to "Studies", studies_path, :class => 'btn btn-default';

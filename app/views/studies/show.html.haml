@@ -5,6 +5,7 @@
 			%h2 Your Study
 .container-fluid
 	.row
+		.col-md-2
 		.col-md-4
 			%h2 <small> Research Team: </small>
 			- numresearchers = @study.researchers.size
@@ -13,7 +14,6 @@
 				- numresearchers -= 1
 				- if numresearchers > 0
 					|
-
 			%h2 <small> Description: </small>
 			= @study.description
 
@@ -25,14 +25,13 @@
 
 			%h2 <small> Maximum participants per time slot: </small>
 			%p#max_participants= @study.max_participants 
-
 		.col-md-3
 			%h2 <small> Available Times: </small>
+			%br
 			- @study.studytimes.each do |t|
 				- open = @study.max_participants - t.participants.size
 				%p#time= t.to_s
-				%p#openings= "Open spots: #{open}"
-
+				%h4.open= "Open spots: #{open}"
 				- if !@mine
 					- if @me.studytimes.exists?(t)
 						.alert.alert-success
@@ -50,10 +49,9 @@
 					- elsif @me.admin?
 						.alert.alert-success
 							%p#joined= "Open"
-
 					- else
 						%div#joinwrapper= link_to "Join this section", studies_join_path(:studytime => t), :class => 'btn btn-default'
-
+					%br
 			- if @mine
 				%br
 				%br

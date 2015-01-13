@@ -69,6 +69,10 @@ body {
     padding-left: 50px;
   }
 
+  h4.open {
+    font-family: 'Roboto', sans-serif;
+  }
+
   h1, h2, h3 {
     font-family: 'EB Garamond', serif;
   }
@@ -218,9 +222,6 @@ th, td {
   width: auto;
 }
 
-.td-x {
-  width: 100px;
-}
 .container-fluid {
   width: auto;
   margin-left: 50px;

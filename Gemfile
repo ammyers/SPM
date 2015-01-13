@@ -16,6 +16,8 @@ group :development, :test do
 	gem 'sqlite3'
   gem 'cucumber-rails-training-wheels' # some pre-fabbed step definitions  
   gem 'launchy'          # a useful debugging aid for user stories
+  gem 'rspec-rails', '~> 3.0.0'
+  gem 'factory_girl_rails'
 end
 
 group :production do
@@ -24,12 +26,6 @@ end
 
 group :development do
   gem "debugger"
-end
-
-# Testing gems
-group :development, :test do
-  gem 'rspec-rails', '~> 3.0.0'
-  gem 'factory_girl_rails'
 end
 
 gem 'simplecov', :require => false, :group => :test
@@ -54,6 +50,7 @@ gem 'autoprefixer-rails'
 gem 'haml'
 gem 'jquery-rails'
 gem 'turbolinks'
+gem 'jquery-ui-rails'
  
 # for authorization
 gem 'omniauth'

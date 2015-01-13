@@ -1,28 +1,19 @@
 .body
-  %h1.title My Studies Make into TABLE ADAM
-
-.container-fluid
-  - @my_studytimes.each do |studytime|
-  - s = studytime.study
-    .row
-      .col-md-3
-        %div#top
-          %div#left
-            %p#title= link_to "#{s.title}", study_path(s), :class => 'btn btn-link'
-            Researchers: 
-            - numresearchers = s.researchers.size
-            - s.researchers.each do |r|
-              - if @me.admin?
-                = link_to "#{r.first_name} #{r.last_name}", user_path(r), :class => 'btn btn-link'
-              - else
-                = r.full_name
-              - numresearchers -= 1
-              - if numresearchers > 0
-                | 
-          %div#right
-            Time and Location:
-            %p#time= studytime.to_s()
-        %div#bottom
-          %p#description= s.description
-      .col-md-4
-        = link_to "Leave This Study", studies_leave_path(:studytime => studytime, :path => 'from_my_studies'), :class => 'btn btn-danger'
+  %h1.title My Studies
+%div#center
+%br
+  %table.table.table-hover.table-bordered.table-nonfluid
+    %tr
+      %th Title
+      %th Researcher
+      %th Time and Location
+      %th Button
+    %tbody
+      - @my_studytimes.each do |studytime|
+      - s = studytime.study      
+        %tr
+          %td= link_to "#{s.title}", study_path(s), :class => 'btn btn-link'
+          - s.researchers.each do |r|
+            %td= r.full_name
+          %td= studytime.to_s()
+          %td= link_to "Leave This Study", studies_leave_path(:studytime => studytime, :path => 'from_my_studies'), :class => 'btn btn-danger'

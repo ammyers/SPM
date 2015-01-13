@@ -14,13 +14,12 @@ no_studies = User.create(:first_name => 'Damon', :last_name => 'Templeton', :ema
 db_study = Study.create(:title => 'Test Study', :description => 'Can we make this database work? Can we access the data?', :max_participants => 40, :duration => " up to 30 mins");
 desert_study = Study.create(:title => 'Desert Study', :description => 'How many humps does a camel have?', :max_participants => 150, :duration => "up to 60 mins");
 ocean_study = Study.create(:title => 'Ocean Study', :description => 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.', :max_participants => 2, :duration => "Time in Description");
-sky_study = Study.create(:title => 'The Effects of The Sky', :description => 'Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. ', :max_participants => 20, :duration => "up to 30 mins");
+sky_study = Study.create(:title => 'The Effects of The Sky', :description => 'Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.', :max_participants => 20, :duration => "up to 30 mins");
 moon_study = Study.create(:title => 'Three Moons and Four Gorges', :description => ' Lorem Ipsum is not simply random text.', :max_participants => 15, :duration => "up to 60 mins");
 
 sally.created_studies << desert_study
 joel.created_studies << db_study
 sally.created_studies << ocean_study
-joel.created_studies << ocean_study
 joel.created_studies << sky_study
 
 course_section1 = Course.create(:section => '101A', :instructor => 'Weisz')

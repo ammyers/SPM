@@ -28,11 +28,22 @@ class StudiesController < ApplicationController
   def create
     @study = Study.new(params[:study])
     studytime = Studytime.new(params[:studytime])
+    #studytime2 = Studytime.new(params[:studytime2])
+
     @study.studytimes << studytime
+    #@study.studytimes << studytime2
+
     studytime.study = @study
+    #studytime2.study = @study2
+
     @me.created_studies << @study
+    #@me.created_studies << @study2
+
     studytime.save!
+    #studytime2.save!
+
     @study.save!
+    #@study2.save!
 
     flash.alert = "#{@study.title} was successfully created."
     redirect_to study_path(@study)

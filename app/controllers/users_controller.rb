@@ -76,10 +76,10 @@ class UsersController < ApplicationController
   # setup page similar to edit page
   def setup
     # If account setup, redirect to Studies page
-    if @me.setup
-      flash.alert = "Error: Page not accessible"
-      redirect_to studies_path
-    end
+    # if @me.setup
+    #   flash.alert = "Error: Page not accessible"
+    #   redirect_to studies_path
+    # end
   end
 
   # page to add a course, accessible for the edit page

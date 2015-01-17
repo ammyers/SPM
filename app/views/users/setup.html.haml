@@ -1,7 +1,6 @@
-%div#body
-	%div#setup.maincontent
-		%h1.title Account Setup
-
+.body
+	%h1.title Account Setup
+	%div#center
 		= form_for @me, method: :put do |u|
 			%p Are you signing up as a study participant or as a researcher?
 			= u.radio_button :role, 'participant', :required => true
@@ -17,4 +16,4 @@
 			No
 			%br
 
-			= u.submit "Finish Setup", :confirm => "By submitting you confirm that all this information is correct and that you chose the correct role."
+			= u.submit "Finish Setup", :confirm => "By submitting you confirm that all this information is correct and that you chose the correct role.", :class => 'btn btn-success'

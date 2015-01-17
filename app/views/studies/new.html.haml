@@ -25,7 +25,7 @@
 					%br
 					= label :study, :max_participants, 'Max Number of Participants'
 					%br
-					= number_field :study, :max_participants, :required => true
+					= number_field :study, :max_participants, in: 1..200, :required => true
 					%br	
 					%br				
 					= label :study, :credits, 'Credit Amount'

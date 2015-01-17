@@ -21,36 +21,36 @@
 			= @study.duration
 
 			%h2 <small> Credit Worth: </small>
-			%p= @study.credits
+			= @study.credits
 
 			%h2 <small> Maximum participants per time slot: </small>
-			%p#max_participants= @study.max_participants 
+			= @study.max_participants 
 		.col-md-3
 			%h2 <small> Available Times: </small>
 			%br
 			- @study.studytimes.each do |t|
 				- open = @study.max_participants - t.participants.size
-				%p#time= t.to_s
-				%h4.open= "Open spots: #{open}"
+				= t.to_s
+				%h4= "Open spots: #{open}"
 				- if !@mine
 					- if @me.studytimes.exists?(t)
 						.alert.alert-success
-							%p#joined= "Joined"
+							= "Joined"
 							= link_to "Leave", studies_leave_path(:studytime => t, :path => 'from_show'), :class => 'btn btn-danger'
 
 					- elsif open == 0
 						.alert.alert-danger
-							%p#full= "Study Full"
+							= "Study Full"
 
 					- elsif @hasjoined
 						.alert.alert-warning
-							%p#full= "Allowed only one section"
+							= "Allowed only one section"
 
 					- elsif @me.admin?
 						.alert.alert-success
-							%p#joined= "Open"
+							= "Open"
 					- else
-						%div#joinwrapper= link_to "Join this section", studies_join_path(:studytime => t), :class => 'btn btn-default'
+						= link_to "Join this section", studies_join_path(:studytime => t), :class => 'btn btn-default'
 					%br
 			- if @mine
 				%br

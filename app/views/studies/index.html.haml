@@ -17,13 +17,13 @@
             - numresearchers -= 1
             - if numresearchers > 0
               | 
-          %p#description= study.description
+          = study.description
         .col-md-3
           %h3 <small> Duration: </small>
           = study.duration
           %h3 <small> Times Offered: </small>
           - study.studytimes.each do |t|
-            %p= t.to_s()
+            = t.to_s()
         %div#middle
           .col-md-3        
             = link_to "Select #{study.title}", study_path(study), :class => 'btn btn-default'

@@ -1,21 +1,22 @@
 .body
-  %h1.title My Created Studies
+  %h1.title My Created Studies FIX ATTENDANCE
 %div#center
 %br
   %table.table.table-hover.table-bordered.table-nonfluid
     %tr
       %th Title
       %th Times and Locations
-      %th Edit
+      %th 
+      %th 
     %tbody
       - @studies.each do |study|
         %tr
           = form_tag(users_created_studies_path, method: :get) do
-            %td= study.title
+            %td= link_to "#{study.title}", study_path(study), :class => 'btn btn-link'
             - study.studytimes.each do |studytime|
               %td
                 %input{:checked => "", :name=> "selected_studytime", :type => "radio", :value => studytime.id}
                 = studytime.to_s()
                 %input{:type =>"submit", :value => "Take Attendance", :class => 'btn btn-info'}
             %td= link_to "Edit", edit_study_path(study), :class => 'btn btn-warning'
-            /= button_to 'Delete', study_path(@study), :method => :delete, :confirm => 'Are you sure you want to delete this study? All data will be lost.', :class => 'btn btn-danger' 
+          %td= link_to 'Delete', study_path(study), :method => :delete, :confirm => 'Study Deleted. Press Cancel to Undo if it was a mistake.', :class => 'btn btn-danger' 

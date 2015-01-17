@@ -6,12 +6,12 @@
         .col-sm-2
         .col-md-4
           = label :study, :title, 'Title'
-          = text_field :study, :title
+          = text_field :study, :title, :required => true
           %br
           %br
           = label :study, :description, 'Description'
           %br
-          = text_area :study, :description
+          = text_area :study, :description, :required => true
           %br
           %br
         .col-md-2
@@ -24,7 +24,7 @@
           %br
           %br
           = label :study, :max_participants, 'Max Number of Participants'
-          = number_field :study, :max_participants
+          = number_field :study, :max_participants, in: 1..200, :required => true
           %br
           %br
           = label :study, :credits, 'Credit Amount'

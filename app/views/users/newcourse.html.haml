@@ -1,11 +1,11 @@
-%h1 Create New Course
+%h1.title Create New Course
+%div#center
+	= form_tag courses_path do
 
-= form_tag courses_path do
+		= label :course, :section, 'Section'
+		= text_field :course, 'section'
 
-  = label :course, :section, 'Section'
-  = text_field :course, 'section'
+		= label :course, :instructor, 'Instructor'
+		= text_field :course, 'instructor'
 
-  = label :course, :instructor, 'Instructor'
-  = text_field :course, 'instructor'
-
-  = submit_tag 'Create Course'
+		= submit_tag 'Create Course', :class => 'btn btn-success'

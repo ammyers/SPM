@@ -1,12 +1,29 @@
-%div#body
+.body
 	%h1.title Study Attendance: #{@study.title}
-	%h2= @time.to_s()
-	<br><br>
-	= "In order to confirm the attendance of your participants, click 'Here' next to anyone's name that comes. If anyone shows up who is not on the list, have them log in (and sign up if necessary) and sign up for this study and then add them."
-	<br><br>
-	- @participants.each do |p, bool|
-		= p.name
-		- if(!bool)
-			= form_tag(studies_confirm_attendance_path(p.id, @time.id), method: :post, :style=>"display:inline") do
-				%input{:type =>"submit", :value => "Here"}
-		<br>
+	%h1.title= @time.to_s()
+	%br
+	%div#center
+		%h2 <small> Click 'Confirm' next to anyone's name that attends this study. </small>
+		%h2 <small> If someone shows up who is not on this list, have them log in and sign up for this study to then confirm them. </small>
+		%br
+		%br
+		%table.table.table-hover.table-nonfluid
+			%tr
+				%th Name
+				%th Email
+				%th Confirm Participation
+			%tbody
+				- @participants.each do |p, bool|
+					%tr
+						- if(!bool)
+							%td.alert.alert-danger= p.name
+							%td= mail_to p.email
+							%td
+								= form_tag(studies_confirm_attendance_path(p.id, @time.id), method: :post, :style => "display:inline") do
+									%input{:type => "submit", :value => "Confirm", :class => 'btn btn-warning'}
+						- else
+							%td.alert.alert-success= p.name
+							%td= mail_to p.email	
+							%td &#10003 Credit Given
+%br
+%br

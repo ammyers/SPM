@@ -1,3 +1,3 @@
 - if @me
 	%div#footer.navbar-fixed-bottom
-		= "Name: #{@me.first_name} #{@me.last_name}\t|\tRole: #{@me.role.capitalize}\t|\tApp ID: #{@me.id}"
+		= "Logged in as: #{@me.full_name}\t|\t#{@me.role.capitalize}\t|\tUser ID: #{@me.id}"

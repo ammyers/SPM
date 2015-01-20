@@ -84,9 +84,9 @@ class UsersController < ApplicationController
 
   # page to add a course, accessible from the edit page
   def addcourse
-    @courseOptions = Course.all
+    @courses = Course.all
     @me.courses.each do |mine|
-      @courseOptions.delete(mine)
+      @courses.delete(mine)
     end
   end
 

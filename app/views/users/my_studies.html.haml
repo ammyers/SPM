@@ -7,13 +7,17 @@
       %th Title
       %th Researcher
       %th Time and Location
-      %th Button
+      %th 
     %tbody
       - @my_studytimes.each do |studytime|
-      - s = studytime.study      
+      - s = studytime.study
+      - s_time = studytime.datetime.time      
         %tr
           %td= link_to "#{s.title}", study_path(s), :class => 'btn btn-link'
           - s.researchers.each do |r|
             %td= r.full_name
-          %td= studytime.to_s()
-          %td= link_to "Leave This Study", studies_leave_path(:studytime => studytime, :path => 'from_my_studies'), :class => 'btn btn-danger'
+            %td= studytime.to_s()
+            - if s_time < @time
+              %td.alert.alert-warning= mail_to r.email
+            - else
+              %td= link_to "Leave This Study", studies_leave_path(:studytime => studytime, :path => 'from_my_studies'), :class => 'btn btn-danger'

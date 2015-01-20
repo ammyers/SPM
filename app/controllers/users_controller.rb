@@ -21,11 +21,10 @@ class UsersController < ApplicationController
     @sort = User.ransack(params[:q])
     # Only want students
     @users = @sort.result.where("role != 'admin'").paginate(:per_page => 5, :page => params[:page])
-    # @sort.build_condition if @sort.conditions.empty?
-    # @sort.build_sort if @sort.sorts.empty?
   end
 
   def my_studies
+    @time = Time.now.utc + (60 * 60 * 24) # Right now + 24 hours
     @my_studytimes = @me.studytimes
     redirect_to studies_path if @my_studytimes.empty?
     #flash.alert = "You have no studies"
@@ -40,11 +39,8 @@ class UsersController < ApplicationController
   end
 
   def new
-    # If not admin, redirect to Studies page
-    if (!@me.admin?)
-      flash.alert = "Not an admin, unable to access"
-      redirect_to studies_path
-    end
+    flash.alert = "Feature not Available"
+    redirect_to studies_path
   end
 
   def create
@@ -82,7 +78,11 @@ class UsersController < ApplicationController
     # end
   end
 
-  # page to add a course, accessible for the edit page
+  def newcourse
+    @courses = Course.all
+  end
+
+  # page to add a course, accessible from the edit page
   def addcourse
     @courseOptions = Course.all
     @me.courses.each do |mine|
@@ -118,6 +118,7 @@ class UsersController < ApplicationController
   def destroy
     @user = User.find(params[:id])
     @user.destroy
+    session.delete(:user_id)
     flash.alert = "user #{@user.full_name} deleted."
     redirect_to root_path
   end

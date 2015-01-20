@@ -1,0 +1,11 @@
+%h1 Create New Course
+
+= form_tag courses_path do
+
+  = label :course, :section, 'Section'
+  = text_field :course, 'section'
+
+  = label :course, :instructor, 'Instructor'
+  = text_field :course, 'instructor'
+
+  = submit_tag 'Create Course'

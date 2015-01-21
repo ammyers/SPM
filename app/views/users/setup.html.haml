@@ -1,19 +1,26 @@
 .body
 	%h1.title Account Setup
 	%div#center
+		%h4 
+			Name: 
+			= @me.full_name
+		%br
+		%h4
+			Email:
+			= @me.email
+		%br
+		%h2 <small> If you'd like to change your first name, please do so here. </small>
+		%h2 <small> This will be your ONLY chance so please ensure it is typed correctly. There is NO WAY to edit past this point. </small>
+		%br
 		= form_for @me, method: :put do |u|
-			%p Are you signing up as a study participant or as a researcher?
+			= label :user, :first_name, "Preferred First Name"
+			= text_field :user, :first_name
+			%br
+			Are you signing up as a study participant or as a researcher?
 			= u.radio_button :role, 'participant', :required => true
 			Participant
 			= u.radio_button :role, 'researcher', :required => true
-			Researcher
+			Researcher			
 			%br
-
-			%p If you are a participant, do you plan to write a paper instead of completing studies?
-			= u.radio_button :paper_option, true
-			Yes
-			= u.radio_button :paper_option, false
-			No
 			%br
-
-			= u.submit "Finish Setup", :confirm => "By submitting you confirm that all this information is correct and that you chose the correct role.", :class => 'btn btn-success'
+			= u.submit "Finish Setup", :confirm => "By submitting you confirm that this information is correct and that you chose the correct role.", :class => 'btn btn-success'

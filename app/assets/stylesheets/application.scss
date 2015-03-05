@@ -49,13 +49,13 @@ body {
   padding-top: 100px;
   padding-bottom: 50px;
   font-family: 'Roboto', sans-serif;
-  font-size: 14px;
+  font-size: 12px;
   color: $ps-black;
   background-color: $white;
   //background-image: url("/app/assets/images/weyhall.jpg");
 
   p {
-    font-size: 14px;
+    font-size: 12px;
   }
 
   h1.header {
@@ -66,7 +66,8 @@ body {
 
   h1.title {
     font-family: 'EB Garamond', serif;
-    padding-left: 50px;
+    font-size: 30px;
+    padding-left: 40px;
   }
 
   h4.open {
@@ -79,7 +80,7 @@ body {
 
   div#pagination {
     text-align: center;
-    font-size: 20px;
+    font-size: 14px;
   }
     
   div#login {
@@ -88,7 +89,7 @@ body {
     text-align: center;
 
     h1 {
-      font-size: 45px;
+      font-size: 30px;
     }
   }
 
@@ -120,7 +121,7 @@ body {
 
     padding: 5px;
     //font-weight: bold;
-    font-size: 18px;
+    font-size: 14px;
     
   }
 
@@ -150,7 +151,7 @@ body {
 }
 
 .btn {
-  font-size: 16px;
+  font-size: 12px;
 }
 
 .btn-logout {
@@ -176,7 +177,7 @@ body {
   margin: 0 0 0 40px;
   background-color: $very-dark-red;
   color: white;
-  font-size: 14px;
+  font-size: 12px;
   border: 3px solid red;
   padding: 10;
   border-radius: 10px;
@@ -207,16 +208,12 @@ body {
 
 .box {
   border: 3px solid $gray;
-  /*border-radius: 50px;*/
   border-left: 100px;
   border-right: 100px;
 }
 
 th, td {
-  vertical-align: middle;
-  text-align: center;
-  //border: 2px solid $ps-black;
-  padding: 5px;
+  font-size: 12px;
 }
 
 .table-nonfluid {
@@ -232,220 +229,10 @@ th, td {
 
 .alert {
   text-align: center;
-  font-size: 20px;
+  font-size: 12px;
   width: 200px;
 }
 
 .form-horizontal {
   width: 400px;
 }
-
-/*.faitwrapper {
-  min-height: 100%;
-  height: auto !important; // This line and the next line are not necessary unless you need IE6 support 
-  height: 100%;
-  margin: 0 auto $footer-push-amount-neg; // the bottom margin is the negative value of the footer's height 
-}
-
-.faitfooter, .faitpush {
-  height: $footer-push-amount; // .push must be the same height as .footer
-}
-
-*/
-
-/** {
-  margin: 0;
-}
-
-html, body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  background: $page-background;
-  color: black;
-  font-family: Georgia,block serif;
-  font-size: 10pt;
-}
-
-*/
-
-/*
-  h1 {
-    float: left;
-    margin: 3px 3px 3px 10px;
-    padding: 0;
-    color: $header-text-color;
-    font-size: 30px;
-    font-weight: bold;
-    font-family: Georgia, serif
-  }
-
-  .headerlink {
-    a {
-      color: $nav-button-text-color;
-      text-decoration: none;
-      font-weight: bold;
-      padding: 10;
-      background: $nav-button-background;
-      border: 3px solid $nav-button-border-color;
-      border-radius: 16px;
-    }
-  
-    :hover {
-      background: $nav-button-background-hover;
-      color: black;
-    }
-  }
-
-  ul#navbar {
-    float: left;
-    list-style-type: none;
-    margin: 13px 0;
-    li {
-      display: inline;
-      padding: 0 2px;
-    }
-  }
-
-  p#logout {
-    float: right;
-    margin: 13px 0 13px 5px;
-  }
-
-  p#myaccount {
-    float: right;
-    margin: 13px 0;
-  }
-}
-
-
-
-*/
-
-
-/*
-
-div#body {
-  padding: 15px;
-
-  h1,h2 {
-    padding-bottom: 10;
-  }
-
-  div#wrapper {
-    padding: 8px 0px;
-    height: auto;
-  }
-
-  .maincontent {
-    padding: 0;
-    border: 3px solid $very-dark-red;
-    border-radius: 10px;
-    background: $maincontent-list-background;
-
-    p#description {
-      margin-bottom: 10px;
-    }
-    p#title {
-      font-size: 150%;
-      font-weight: bold;
-    }
-
-    p#time {
-      font-weight: bold;
-      color: $very-dark-red;
-    }
-  }
-
-  // Main content lists, such as studies and users
-  ul.maincontent {
-    list-style-type: none;
-
-    li {
-      margin: 10px;
-      padding: 5px;
-
-      div#top {
-        overflow: auto;
-        padding: 5px;
-        height: auto;
-      }
-
-      div#bottom {
-        padding: 5px;
-      }
-
-      div#left {
-        display: inline;
-        float: left;
-      }
-
-      div#right {
-        display: inline;
-        float: right;
-      }
-    }
-  }
-
-  div.maincontent {
-    h2 {
-      padding: 5px;
-    }
-
-    p {
-      padding: 5px;
-    }
-
-    a.researcher_link {
-      padding: 5px;
-    }
-  }
-
-  // This a-link is the researcher names
-  a.researcher_link {
-    text-decoration: none;
-    color: $researcher-link-color;
-    margin-bottom: 5px;
-  }
-  :hover.researcher_link {
-    color: $researcher-link-hover-color;
-  }
-
-  // This a-link is the selection option
-  a.selection_link {
-    text-decoration: none;
-    font-weight: bold;
-    border: 3px solid $selection-link-border-color;
-    border-radius: 10px;
-    background: $selection-link-background;
-    color: $selection-link-color;
-    padding: 5px;
-  }
-  :hover.selection_link {
-    background: $selection-link-hover-background;
-    color: $selection-link-hover-color;
-  }
-}
-
-
-
-
-}
-
-//  Sticky Footer by Ryan Fait
-//  http://ryanfait.com/
-.faitwrapper {
-  min-height: 100%;
-  height: auto !important; // This line and the next line are not necessary unless you need IE6 support 
-  height: 100%;
-  margin: 0 auto $footer-push-amount-neg; // the bottom margin is the negative value of the footer's height 
-}
-
-.faitfooter, .faitpush {
-  height: $footer-push-amount; // .push must be the same height as .footer
-}
-
-table#users th.hilite {
-  background-color: yellow;
-}
-*/

@@ -35,7 +35,7 @@ gem 'whenever', :require => false
 
 gem 'sass-rails',   '~> 3.2.3'
 gem 'coffee-rails', '~> 3.2.1'
-gem 'bootstrap-sass'
+gem 'bootstrap-sass-backport', '~> 3.3.1.0'
 
 
 gem 'autoprefixer-rails'

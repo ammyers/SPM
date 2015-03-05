@@ -33,24 +33,18 @@ gem 'simplecov', :require => false, :group => :test
 #Cron jobs thru Whenever
 gem 'whenever', :require => false
 
-# Gems used only for assets and not required
-# in production environments by default.
-group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
-  gem 'coffee-rails', '~> 3.2.1'
-  gem 'bootstrap-sass', '~> 3.3.1'
+gem 'sass-rails',   '~> 3.2.3'
+gem 'coffee-rails', '~> 3.2.1'
+gem 'bootstrap-sass'
 
-  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  #gem 'therubyracer', :platforms => :ruby
-
-  gem 'uglifier', '>= 1.0.3'
-end
 
 gem 'autoprefixer-rails'
 gem 'haml'
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jquery-ui-rails'
+gem 'sprockets'
+gem 'uglifier', '>= 1.0.3'
  
 # for authorization
 gem 'omniauth'

@@ -12,8 +12,8 @@ class StudiesController < ApplicationController
   end
 
   def index
-    # Shuffles studies to reduce preferential choosing
-    @studies = Study.all.shuffle
+    # Sorted alphabetically by title
+    @studies = Study.all.sort_by { |study| study.title}
     #paginate(:per_page => 5, :page => params[:page])
   end
 

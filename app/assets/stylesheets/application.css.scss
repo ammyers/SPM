@@ -1,0 +1,238 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+// General color options - not necessarily used 
+$red-velvet-cake: #BA0000;
+$very-dark-red: #520000;
+$tannish: #FFF2C9;
+// Check app/assets/images for background image options
+$page-background: white image-url("escheresque-light.png") repeat fixed;
+
+// Header variables
+$header-background-color: rgba(172,0,0,0.3);
+$header-text-color: black;
+$header-border-color: $red-velvet-cake;
+
+// Nav bar variables
+$nav-button-background: $page-background;
+$nav-button-background-hover: rgba(255,255,255,0.6);
+$nav-button-text-color: black;
+$nav-button-border-color: $very-dark-red;
+
+// Main content variables
+$maincontent-list-background: transparent;
+$researcher-link-color: $very-dark-red;
+$researcher-link-hover-color: $red-velvet-cake;
+$selection-link-background: $page-background;
+$selection-link-color: black;
+$selection-link-hover-background: rgba(0,0,0,0.3);
+$selection-link-hover-color: white;
+$selection-link-border-color: $red-velvet-cake;
+
+// Footer stuff
+$footer-background-color: $header-background-color;
+$footer-border-color: $header-border-color;
+$footer-push-amount: 39px;
+$footer-push-amount-neg: -39px;
+
+// Commonly Used Colors
+$white: #ffffff;
+$maroon: #660000;
+$ps-black: #222222;
+$danger: #C9302C;
+$gray: #807E57;
+
+$logo: image-url("logo.jpg");
+
+
+body {
+  padding-top: 100px;
+  padding-bottom: 50px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 12px;
+  color: $ps-black;
+  background-color: $white;
+  //background-image: url("/app/assets/images/weyhall.jpg");
+
+  p {
+    font-size: 12px;
+  }
+
+  h1.header {
+    font-family: 'EB Garamond', serif;
+    display: inline-block;
+    padding-right: 25px;
+  }
+
+  h1.title {
+    font-family: 'EB Garamond', serif;
+    font-size: 30px;
+    padding-left: 40px;
+  }
+
+  h4.open {
+    font-family: 'Roboto', sans-serif;
+  }
+
+  h1, h2, h3 {
+    font-family: 'EB Garamond', serif;
+  }
+
+  div#pagination {
+    text-align: center;
+    font-size: 14px;
+  }
+    
+  div#login {
+    padding-top: 100px;
+    padding-bottom: 50px;
+    text-align: center;
+
+    h1 {
+      font-size: 30px;
+    }
+  }
+
+  div#middle {
+    padding-top: 20px;
+    text-align: center;
+  }
+
+  div#center {
+    text-align: center;
+  }
+
+  div#header {
+    color: $white;
+    padding: 5px;
+    display: block;
+    border-bottom: 15px solid $ps-black;
+    background: $maroon;
+    overflow: auto;
+  }
+
+  div#footer {
+    color: $white;
+    padding: 5px;
+    display: block;
+    border-top: 15px solid $ps-black;
+    background: $maroon;
+    overflow: auto;
+
+    padding: 5px;
+    //font-weight: bold;
+    font-size: 14px;
+    
+  }
+
+/* Necessary helpers to align buttons */
+  p#logout {
+    float: right;
+    margin: 30px 30px -10px;
+  }
+
+  p#myaccount {
+    float: right;
+    margin: 30px -20px -10px;
+  } 
+}
+
+.btn-xlarge {
+  width: 25%;
+  padding: 18px 28px;
+  font-size: 25px;
+  color: $white;
+  line-height: normal;
+  -webkit-border-radius: 8px;
+     -moz-border-radius: 8px;
+          border-radius: 8px;
+          border-color: $white;
+          background-color: $maroon;
+}
+
+.btn {
+  font-size: 12px;
+}
+
+.btn-logout {
+  float: right;
+}
+
+.btn-myaccount {
+  float: right;
+}
+
+.btn-create {
+  color: $white;
+  line-height: normal;
+  -webkit-border-radius: 8px;
+     -moz-border-radius: 8px;
+          border-radius: 8px;
+          border-color: #fff;
+          background-color: $maroon;
+}
+
+#alert {
+  float: right;
+  margin: 0 0 0 40px;
+  background-color: $very-dark-red;
+  color: white;
+  font-size: 12px;
+  border: 3px solid red;
+  padding: 10;
+  border-radius: 10px;
+  // Try an animation?
+  -webkit-animation: fadeout 3s;
+  -moz-animation: fadeout 3s;
+  animation: fadeout 3s;
+}
+
+//Some possible animations for the alert bar
+@-webkit-keyframes fadeout {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+@-moz-keyframes fadeout {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+@keyframes fadeout {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+.row {
+  padding-left: 50px;
+  padding-bottom: 10px;
+}
+
+.box {
+  border: 3px solid $gray;
+  border-left: 100px;
+  border-right: 100px;
+}
+
+th, td {
+  font-size: 12px;
+}
+
+.table-nonfluid {
+  margin: 0 auto;
+  width: auto;
+}
+
+.container-fluid {
+  width: auto;
+  margin-left: 50px;
+  margin-right: 50px;
+}
+
+.alert {
+  text-align: center;
+  font-size: 12px;
+  width: 200px;
+}
+
+.form-horizontal {
+  width: 400px;
+}

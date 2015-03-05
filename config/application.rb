@@ -61,5 +61,8 @@ module TestManagement
 
     #Prevent failure on Heroku assets precompile
     config.assets.initialize_on_precompile = false
+
+    # Precompile *all* assets, except those that start with underscore
+    config.assets.precompile << /(^[^_\/]|\/[^_])[^\/]*$/
   end
 end

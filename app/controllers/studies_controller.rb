@@ -1,4 +1,5 @@
 class StudiesController < ApplicationController
+  respond_to :html, :js
 
   def show
     @study = Study.find(params[:id]) # look up study by unique ID
@@ -23,6 +24,7 @@ class StudiesController < ApplicationController
       flash.alert = "Only researchers can create studies"
       redirect_to studies_path
     end
+    @study = Study.new
   end
 
   def create
@@ -46,7 +48,9 @@ class StudiesController < ApplicationController
     #@study2.save!
 
     flash.alert = "#{@study.title} was successfully created."
-    redirect_to study_path(@study)
+    redirect_to studies_path
+    # @studies = Study.all
+    # @study  = Study.create(study_params)
   end
 
   def edit
@@ -150,4 +154,9 @@ class StudiesController < ApplicationController
     user.save!()
     redirect_to studies_attendance_path(studytime.id)
   end
+
+  private
+    def study_params
+      params.require(:study)
+    end
 end

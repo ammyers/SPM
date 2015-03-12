@@ -1,0 +1,27 @@
+.container-fluid
+	- @studies.each do |study|
+		.box
+		%br
+			.row
+				.col-md-5
+					- if study.credits == 1
+						%h3= "#{study.title} [#{study.credits} credit]"
+					- else
+						%h3= "#{study.title} [#{study.credits} credits]"
+					- numresearchers = study.researchers.size
+					- study.researchers.each do |r|
+						= link_to "#{r.full_name}", user_path(r), :class => 'btn btn-link'
+						- numresearchers -= 1
+						- if numresearchers > 0
+							| 
+					%br
+					= study.description
+				.col-md-3
+					%h3 <small> Duration: </small>
+					= study.duration
+					%h3 <small> Times Offered: </small>
+					- study.studytimes.each do |t|
+						= t.to_s()
+				%div#middle
+					.col-md-3        
+						= link_to "Select #{study.title}", study_path(study), :class => 'btn btn-default'

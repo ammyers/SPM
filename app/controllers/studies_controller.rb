@@ -1,4 +1,5 @@
 class StudiesController < ApplicationController
+  before_filter :all_studies, only: [:index, :create]
   respond_to :html, :js
 
   def show
@@ -12,11 +13,11 @@ class StudiesController < ApplicationController
     end
   end
 
-  def index
-    # Sorted alphabetically by title
-    @studies = Study.all.sort_by { |study| study.title}
-    #paginate(:per_page => 5, :page => params[:page])
-  end
+  # def index
+  #   # # Sorted alphabetically by title
+  #   @studies = Study.all.sort_by { |study| study.title}
+  #   # #paginate(:per_page => 5, :page => params[:page])
+  # end
 
   def new
     # If not researcher, redirect to Studies page
@@ -30,27 +31,19 @@ class StudiesController < ApplicationController
   def create
     @study = Study.new(params[:study])
     studytime = Studytime.new(params[:studytime])
-    #studytime2 = Studytime.new(params[:studytime2])
 
     @study.studytimes << studytime
-    #@study.studytimes << studytime2
 
     studytime.study = @study
-    #studytime2.study = @study2
 
     @me.created_studies << @study
-    #@me.created_studies << @study2
 
     studytime.save!
-    #studytime2.save!
 
     @study.save!
-    #@study2.save!
 
     flash.alert = "#{@study.title} was successfully created."
-    redirect_to studies_path
-    # @studies = Study.all
-    # @study  = Study.create(study_params)
+    @studies = Study.all.sort_by { |study| study.title}
   end
 
   def edit
@@ -156,6 +149,9 @@ class StudiesController < ApplicationController
   end
 
   private
+    def all_studies
+      @studies = Study.all.sort_by { |study| study.title}
+    end
     def study_params
       params.require(:study)
     end

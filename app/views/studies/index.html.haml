@@ -1,6 +1,7 @@
 .body
   %h1.title All Current Studies
   #study-form{:style => "display:none;"}
+/ #studies= render @studies   makes it so AJAX updates studies page on creation
 .container-fluid
   - @studies.each do |study|
     .box
@@ -19,6 +20,7 @@
               | 
           %br
           = study.description
+          = study.researchers.inspect
         .col-md-3
           %h3 <small> Duration: </small>
           = study.duration

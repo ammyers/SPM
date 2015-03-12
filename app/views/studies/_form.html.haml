@@ -1,7 +1,15 @@
 .container-fluid
 	.row
-		= form_tag studies_path do
+		= form_tag studies_path, remote: true do
 			.col-sm-2
+				/ = label :study, :researchers, 'Researchers'
+				/ %select{:name => "study[duration]"}     
+				/ 	%option{:value => "Adam Myers"} Up to 30 mins
+				/ 	%option{:value => "Whatever"} Up to 60 mins
+				/ 	%option{:value => ""} Time in Description
+				/ %br
+				/ need to add list of researchers as drop down here
+
 			.col-md-4
 				= label :study, :title, 'Title'
 				= text_field :study, 'title', :required => true
